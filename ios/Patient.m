@@ -60,8 +60,7 @@ static sqlite3_stmt *addStmt=nil;
 {
     [self allocateBed];
 }
-
--(NSString*)getdbPath
+-(NSString *)getdbPath
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentdir=[paths objectAtIndex:0];
@@ -86,34 +85,34 @@ static sqlite3_stmt *addStmt=nil;
 
 -(void)allocateBed
 {
-    NSMutableArray *values = [[NSMutableArray alloc]init];
+    NSMutableArray *values1 = [[NSMutableArray alloc]init];
     
-    [values addObject:txt_Name.text];
+    [values1 addObject:txt_Name.text];
     
-    [values addObject:txt_Address.text];
+    [values1 addObject:txt_Address.text];
     
-    [values addObject:txt_CellNo.text];
+    [values1 addObject:txt_CellNo.text];
     
     NSString *dbpath=[self getdbPath];
     
     if (sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
     {
-        if (addStmt==nil)
+        if (addStmt == nil)
         {
-            const char *sql="insert into Patient(Name,Address,CellNo)values(?,?,?)";
+            const char *sql="insert into Patient(Patientname,Address,CellNo)values(?,?,?)";
             
-            if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL)!=SQLITE_OK)
+            if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) !=SQLITE_OK)
             {
                 
                 NSAssert(0, @"error while creating sataement '%s'",sqlite3_errmsg(database));
             }
         }
-        sqlite3_bind_text(addStmt, 1, [[values objectAtIndex:0]UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(addStmt, 1, [[values1 objectAtIndex:0]UTF8String], -1, SQLITE_TRANSIENT);
         
-        sqlite3_bind_text(addStmt, 2, [[values objectAtIndex:1]UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(addStmt, 2, [[values1 objectAtIndex:1]UTF8String], -1, SQLITE_TRANSIENT);
         
-        sqlite3_bind_text(addStmt, 2, [[values objectAtIndex:2]UTF8String], -1, SQLITE_TRANSIENT);
-        
+        sqlite3_bind_text(addStmt, 3, [[values1 objectAtIndex:2]UTF8String], -1, SQLITE_TRANSIENT);
+    
         if (SQLITE_DONE !=sqlite3_step(addStmt)) 
             
             NSAssert1(0, @"error '%s'", sqlite3_errmsg(database));
@@ -123,4 +122,12 @@ static sqlite3_stmt *addStmt=nil;
         
 }
 
+-(IBAction)cancel:(id)sender
+{
+    
+}
+  
+        
+    
+    
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6C97139B15627840008BD7A0 /* PatientDetails.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6C97139A15627840008BD7A0 /* PatientDetails.sqlite */; };
 		6C97139E1562785A008BD7A0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C97139D1562785A008BD7A0 /* libsqlite3.0.dylib */; };
+		6CA058C3156399680060F37E /* BedStatus.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6CA058C2156399680060F37E /* BedStatus.sqlite */; };
 		6CF3B29C156239BA00C1320B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF3B29B156239BA00C1320B /* UIKit.framework */; };
 		6CF3B29E156239BA00C1320B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF3B29D156239BA00C1320B /* Foundation.framework */; };
 		6CF3B2A0156239BA00C1320B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF3B29F156239BA00C1320B /* CoreGraphics.framework */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		6C97139A15627840008BD7A0 /* PatientDetails.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PatientDetails.sqlite; sourceTree = "<group>"; };
 		6C97139D1562785A008BD7A0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		6CA058C2156399680060F37E /* BedStatus.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BedStatus.sqlite; sourceTree = "<group>"; };
 		6CF3B297156239BA00C1320B /* HospitalBedManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalBedManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF3B29B156239BA00C1320B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6CF3B29D156239BA00C1320B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +100,7 @@
 		6CF3B28C156239BA00C1320B = {
 			isa = PBXGroup;
 			children = (
+				6CA058C2156399680060F37E /* BedStatus.sqlite */,
 				6C97139D1562785A008BD7A0 /* libsqlite3.0.dylib */,
 				6C97139A15627840008BD7A0 /* PatientDetails.sqlite */,
 				6CF3B34815625EA100C1320B /* Patient.h */,
@@ -253,6 +256,7 @@
 				6CF3B343156257BA00C1320B /* HospitalBed.xib in Resources */,
 				6CF3B34C15625EA100C1320B /* Patient.xib in Resources */,
 				6C97139B15627840008BD7A0 /* PatientDetails.sqlite in Resources */,
+				6CA058C3156399680060F37E /* BedStatus.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

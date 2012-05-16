@@ -10,6 +10,7 @@
 #import "Patient.h"
 
 @implementation HospitalBed
+
 @synthesize nextButton;
 //static  int Occupied=0;
 //static int underMaint=1;
@@ -124,7 +125,8 @@
 -(IBAction)next:(id)sender
 {
     Patient *patient=[[Patient alloc]initWithNibName:@"Patient" bundle:nil];
-    
+    patient.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:patient animated:YES];
     
 }
 
