@@ -1,0 +1,43 @@
+START TRANSACTION ;
+create database if not exists twareachout ;
+use twareachout ;
+
+create table if not exists cc_user (
+loginid varchar (12),
+password varchar(16),
+custguid varchar(36),
+isadmin boolean,
+isactive boolean);
+
+insert into cc_user values ('deborah', 'password', '8D1CCA64-7637-11E1-992F-83134924019B', false, true);
+insert into cc_user values ('simon', 'password', 'BA339352-7637-11E1-A67B-A4134924019B', false, true);
+insert into cc_user values ('mukul', 'password', '40AC9A7A-7316-11E1-93EB-4E544824019B', false, true);
+insert into cc_user values ('admin', 'admin','', true, true);
+
+create table if not exists cc_customer (
+custguid varchar(36),
+custname varchar(64),
+custaddr varchar(128),
+contact  varchar(64),
+contemail varchar(64),
+contphone varchar(15)) ;
+
+insert into cc_customer values ('8D1CCA64-7637-11E1-992F-83134924019B', 'Hospital Lakesure LLC','', 'Deborah Sanders', 'deborah.sanders@lakesure.org', '(808) 123 0311');
+insert into cc_customer values ('BA339352-7637-11E1-A67B-A4134924019B', 'Canada Claims LLC', '', 'Simon Pilander', 'simon.pilander@cclaims.com', '(913) 144 1977');
+insert into cc_customer values ('40AC9A7A-7316-11E1-93EB-4E544824019B', 'Trendwise Analytics LLC','', 'Mukul Biswas', 'mukul@trendwise.com', '(984) 581 5003');
+
+create table if not exists cc_center (
+centguid varchar(36),
+custguid varchar(36),
+logoextn varchar(6),
+disptitl varchar(64),
+to_email varchar(128),
+cc_email varchar(128),
+lang char(2)) ;
+
+insert into cc_center values ('4E172D56-7992-11E1-B4C9-26A04824019B','8D1CCA64-7637-11E1-992F-83134924019B','.jpg', 'Hospital Lakesure', 'hana.shinnin@gmail.com', 'hana.shinnin@gmail.com','EN');
+insert into cc_center values ('562B6AA6-7993-11E1-ABD4-51A24824019B','BA339352-7637-11E1-A67B-A4134924019B','.jpg', 'Canada Claims Comment Center', 'mukul@canadaclaims.com', 'mukul@canadaclaims.com','FR');
+insert into cc_center values ('481077F0-7316-11E1-B4BD-4F544824019B','40AC9A7A-7316-11E1-93EB-4E544824019B','.jpg', 'Trendwise Financial Services', 'hana.shinnin@gmail.com', 'hana.shinnin@gmail.com','EN');
+insert into cc_center values ('6BF6A86E-7993-11E1-89E6-70A24824019B','40AC9A7A-7316-11E1-93EB-4E544824019B','.jpg', 'Trendwise Analytical Division', 'hana.shinnin@gmail.com', 'hana.shinnin@gmail.com','EN');
+
+commit ;

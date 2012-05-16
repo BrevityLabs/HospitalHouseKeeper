@@ -1,0 +1,140 @@
+article, header, section, nav, footer {
+	display:block;
+}
+html, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ul, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	border:4px;
+}
+
+div {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	border:1px ;
+}
+h1, h2, h3, h4, h5, h6 {
+	display:block;
+	font-family: 'Droid Sans', sans-serif;
+	font-weight:normal;
+}
+h1 {
+	font-size:18px;
+	padding:0px 0 13px 0;
+	color:#228899;
+}
+h2 {
+	font-size:16px;
+	font-weight:normal;
+	color:#228899;
+	padding:0 0 5px 0;
+}
+h3 {
+	font-size:14px;
+	font-weight:normal;
+	color:#228822;
+	padding:0 0 5px 0;
+}
+h4{
+	margin:0 0 0px 0;
+	padding:0px 0 3px 0;
+	font-size:15px;
+	color:#228899;
+}
+h5, h6 {
+	font-size:15px;
+	padding:0px;
+}
+input, select, textarea {
+	font-family: 'Droid Sans', sans-serif;
+	font-size:11px;
+	margin:0;
+	padding:0;
+	outline:none;
+}
+p:first-child {
+	margin:0px;
+	padding-top:0;
+}
+P {
+	margin:0 0 20px !important;
+	padding:0 0 0 0px;
+}
+a {
+	color:#000077;
+	text-decoration:none;
+	transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition:all 0.3s ease-out;
+	-o-transition:all 0.3s ease-out;
+}
+a:hover {
+	text-decoration:none;
+	transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition:all 0.3s ease-out;
+	-o-transition:all 0.3s ease-out;
+}
+a:focus {
+	outline:none;
+}
+/*----------- Universal Items -------------*/
+span.mandatory {
+	font-size:12px;
+	color:#ff0000;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+/* ---------COMMON HACKS -----------*/
+.clearfix:after {
+	content: ".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+/* Hides from IE-mac \*/
+ *:first-child+html .clearfix {
+	height:1%;
+}
+* html .clearfix {
+	height:1%;
+}
+/* End hide from IE-mac */
+
+.hide {
+	display:none;
+}
+.disclaimer {
+	display:none
+}
+.clear {
+	clear:both;
+}
+.fRight {
+	float:right !important;
+}
+.fLeft {
+	float:left !important;
+}
+.fNone {
+	float:none !important;
+
+}
+.m0{
+	margin:0 !important;
+}
+.mr0{
+	margin-right:0px !important;
+}
+.mb0{
+	margin-bottom:0px !important;
+}
+.pTop{
+	padding:20px 0 34px 0;
+}
+/* Custom Selection Colour */
+/*::selection { background: #ffba00; color:#000; }
+::-moz-selection { background: #ffba00; color:#000; }*/
+
+.c2 {border-bottom:none !important;}
