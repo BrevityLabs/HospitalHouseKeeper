@@ -171,7 +171,7 @@ static sqlite3_stmt *updateStmt=nil;
  if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK)
  {
  //NSString *BedNo;
- const char * sql1 = "select  BedNo from BedInformation where Status !='1'";
+ const char * sql1 = "select  BedNo from BedInformation where Status ='3'";
  sqlite3_stmt *selctStmt;
  
  //NSString *bedVacant=[NSString stringWithFormat:@"select  BedNo from BedInformation where status !='1'"];
@@ -206,38 +206,41 @@ static sqlite3_stmt *updateStmt=nil;
     hospBed.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
     [self presentModalViewController:hospBed animated:YES];
 }
--(IBAction)cancel:(id)sender
-{
-    
-}
+
   
 -(void)updateBedStatus
  {
+     NSMutableArray *BedStatus = [[NSMutableArray alloc]init];
  
- 
- NSString *dbpath1=[self getdbPath1];
- if (sqlite3_open([dbpath1 UTF8String], &database) == SQLITE_OK)
-  {
-      if (updateStmt ==nil)
-      { 
-          NSString *sqlStatement = [NSString stringWithFormat:@"Update  BedInformation Status ='1' where BedNo= '%@'",txt_BedNo.text]; 
-  
- if (sqlite3_prepare_v2(database, [sqlStatement UTF8String], -1, &updateStmt, NULL)!=SQLITE_OK)
-   
- NSAssert(0, @"error while creating sataement '%s'",sqlite3_errmsg(database));
-      }
- 
-    
- sqlite3_bind_text(updateStmt, 1, [sqlStatement UTF8String], -1, NULL);
- if (SQLITE_DONE !=sqlite3_step(updateStmt)) 
- 
- NSAssert1(0, @"error '%s'", sqlite3_errmsg(database));
- sqlite3_reset(updateStmt);
+     [BedStatus addObject:txt_BedNo.text];
+     
+     NSString *dbpath1=[self getdbPath1];
+     
+     if (sqlite3_open([dbpath1 UTF8String], &database) == SQLITE_OK)
+     {
+         if ( updateStmt == nil)
+         {
+             NSString *sqlStatement = [NSString stringWithFormat:@"update BedInformation  set Status ='1' where BedNo = '%@'",txt_BedNo.text];
+             const char *sql2 = [sqlStatement UTF8String];             
+             if (sqlite3_prepare_v2(database, sql2, -1, &updateStmt, NULL) != SQLITE_OK)
+             {
+                 
+                 NSAssert(0, @"error while creating sataement '%s'",sqlite3_errmsg(database));
+             }
+         }
+         sqlite3_bind_text(updateStmt, 1, [[BedStatus objectAtIndex:0]UTF8String], -1, SQLITE_TRANSIENT);
+         
+                  
+         if (SQLITE_DONE !=sqlite3_step(updateStmt)) 
+             
+             NSAssert1(0, @"error '%s'", sqlite3_errmsg(database));
+         sqlite3_reset(updateStmt);
+         
+     }
       
-  }
  }
- 
- 
+    
+  
  
         
     

@@ -15,7 +15,7 @@
     UITextField *txt_Name,*txt_Address,*txt_CellNo,*txt_BedNo;
     
     UILabel *label_BedNo;
-    
+   
 }
 
 @property(nonatomic,retain)IBOutlet UIButton *savebutton,*cancelbutton;
