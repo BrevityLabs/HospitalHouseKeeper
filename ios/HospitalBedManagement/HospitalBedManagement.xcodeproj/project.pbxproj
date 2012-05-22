@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6CB67657156B69E00014CAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB67656156B69E00014CAA0 /* UIKit.framework */; };
+		6CB67659156B69E00014CAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB67658156B69E00014CAA0 /* Foundation.framework */; };
+		6CB6765B156B69E00014CAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6765A156B69E00014CAA0 /* CoreGraphics.framework */; };
+		6CB67661156B69E00014CAA0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CB6765F156B69E00014CAA0 /* InfoPlist.strings */; };
+		6CB67663156B69E00014CAA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB67662156B69E00014CAA0 /* main.m */; };
+		6CB67667156B69E00014CAA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB67666156B69E00014CAA0 /* AppDelegate.m */; };
+		6CB6766A156B69E00014CAA0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB67669156B69E00014CAA0 /* ViewController.m */; };
+		6CB6766D156B69E00014CAA0 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB6766B156B69E00014CAA0 /* ViewController.xib */; };
+		6CB67675156B69E00014CAA0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB67674156B69E00014CAA0 /* SenTestingKit.framework */; };
+		6CB67676156B69E00014CAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB67656156B69E00014CAA0 /* UIKit.framework */; };
+		6CB67677156B69E00014CAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB67658156B69E00014CAA0 /* Foundation.framework */; };
+		6CB6767F156B69E00014CAA0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CB6767D156B69E00014CAA0 /* InfoPlist.strings */; };
+		6CB67682156B69E00014CAA0 /* HospitalBedManagementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB67681156B69E00014CAA0 /* HospitalBedManagementTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6CB67678156B69E00014CAA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CB67649156B69E00014CAA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CB67651156B69E00014CAA0;
+			remoteInfo = HospitalBedManagement;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6CB67652156B69E00014CAA0 /* HospitalBedManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalBedManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CB67656156B69E00014CAA0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6CB67658156B69E00014CAA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6CB6765A156B69E00014CAA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6CB6765E156B69E00014CAA0 /* HospitalBedManagement-Info.plist */ = {isa = PBXFileReference; path = "HospitalBedManagement-Info.plist"; sourceTree = "<group>"; };
+		6CB67660156B69E00014CAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6CB67662156B69E00014CAA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6CB67664156B69E00014CAA0 /* HospitalBedManagement-Prefix.pch */ = {isa = PBXFileReference; path = "HospitalBedManagement-Prefix.pch"; sourceTree = "<group>"; };
+		6CB67665156B69E00014CAA0 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		6CB67666156B69E00014CAA0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6CB67668156B69E00014CAA0 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		6CB67669156B69E00014CAA0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6CB6766C156B69E00014CAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		6CB67673156B69E00014CAA0 /* HospitalBedManagementTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HospitalBedManagementTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CB67674156B69E00014CAA0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6CB6767C156B69E00014CAA0 /* HospitalBedManagementTests-Info.plist */ = {isa = PBXFileReference; path = "HospitalBedManagementTests-Info.plist"; sourceTree = "<group>"; };
+		6CB6767E156B69E00014CAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6CB67680156B69E00014CAA0 /* HospitalBedManagementTests.h */ = {isa = PBXFileReference; path = HospitalBedManagementTests.h; sourceTree = "<group>"; };
+		6CB67681156B69E00014CAA0 /* HospitalBedManagementTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HospitalBedManagementTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6CB6764F156B69E00014CAA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB67657156B69E00014CAA0 /* UIKit.framework in Frameworks */,
+				6CB67659156B69E00014CAA0 /* Foundation.framework in Frameworks */,
+				6CB6765B156B69E00014CAA0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CB6766F156B69E00014CAA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB67675156B69E00014CAA0 /* SenTestingKit.framework in Frameworks */,
+				6CB67676156B69E00014CAA0 /* UIKit.framework in Frameworks */,
+				6CB67677156B69E00014CAA0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6CB67647156B69E00014CAA0 = {
+			isa = PBXGroup;
+			children = (
+				6CB6765C156B69E00014CAA0 /* HospitalBedManagement */,
+				6CB6767A156B69E00014CAA0 /* HospitalBedManagementTests */,
+				6CB67655156B69E00014CAA0 /* Frameworks */,
+				6CB67653156B69E00014CAA0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6CB67653156B69E00014CAA0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6CB67652156B69E00014CAA0 /* HospitalBedManagement.app */,
+				6CB67673156B69E00014CAA0 /* HospitalBedManagementTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6CB67655156B69E00014CAA0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CB67656156B69E00014CAA0 /* UIKit.framework */,
+				6CB67658156B69E00014CAA0 /* Foundation.framework */,
+				6CB6765A156B69E00014CAA0 /* CoreGraphics.framework */,
+				6CB67674156B69E00014CAA0 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6CB6765C156B69E00014CAA0 /* HospitalBedManagement */ = {
+			isa = PBXGroup;
+			children = (
+				6CB67665156B69E00014CAA0 /* AppDelegate.h */,
+				6CB67666156B69E00014CAA0 /* AppDelegate.m */,
+				6CB67668156B69E00014CAA0 /* ViewController.h */,
+				6CB67669156B69E00014CAA0 /* ViewController.m */,
+				6CB6766B156B69E00014CAA0 /* ViewController.xib */,
+				6CB6765D156B69E00014CAA0 /* Supporting Files */,
+			);
+			path = HospitalBedManagement;
+			sourceTree = "<group>";
+		};
+		6CB6765D156B69E00014CAA0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6CB6765E156B69E00014CAA0 /* HospitalBedManagement-Info.plist */,
+				6CB6765F156B69E00014CAA0 /* InfoPlist.strings */,
+				6CB67662156B69E00014CAA0 /* main.m */,
+				6CB67664156B69E00014CAA0 /* HospitalBedManagement-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6CB6767A156B69E00014CAA0 /* HospitalBedManagementTests */ = {
+			isa = PBXGroup;
+			children = (
+				6CB67680156B69E00014CAA0 /* HospitalBedManagementTests.h */,
+				6CB67681156B69E00014CAA0 /* HospitalBedManagementTests.m */,
+				6CB6767B156B69E00014CAA0 /* Supporting Files */,
+			);
+			path = HospitalBedManagementTests;
+			sourceTree = "<group>";
+		};
+		6CB6767B156B69E00014CAA0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6CB6767C156B69E00014CAA0 /* HospitalBedManagementTests-Info.plist */,
+				6CB6767D156B69E00014CAA0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6CB67651156B69E00014CAA0 /* HospitalBedManagement */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CB67685156B69E00014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagement" */;
+			buildPhases = (
+				6CB6764E156B69E00014CAA0 /* Sources */,
+				6CB6764F156B69E00014CAA0 /* Frameworks */,
+				6CB67650156B69E00014CAA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HospitalBedManagement;
+			productName = HospitalBedManagement;
+			productReference = 6CB67652156B69E00014CAA0 /* HospitalBedManagement.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6CB67672156B69E00014CAA0 /* HospitalBedManagementTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CB67688156B69E00014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagementTests" */;
+			buildPhases = (
+				6CB6766E156B69E00014CAA0 /* Sources */,
+				6CB6766F156B69E00014CAA0 /* Frameworks */,
+				6CB67670156B69E00014CAA0 /* Resources */,
+				6CB67671156B69E00014CAA0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6CB67679156B69E00014CAA0 /* PBXTargetDependency */,
+			);
+			name = HospitalBedManagementTests;
+			productName = HospitalBedManagementTests;
+			productReference = 6CB67673156B69E00014CAA0 /* HospitalBedManagementTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6CB67649156B69E00014CAA0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 6CB6764C156B69E00014CAA0 /* Build configuration list for PBXProject "HospitalBedManagement" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6CB67647156B69E00014CAA0;
+			productRefGroup = 6CB67653156B69E00014CAA0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6CB67651156B69E00014CAA0 /* HospitalBedManagement */,
+				6CB67672156B69E00014CAA0 /* HospitalBedManagementTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6CB67650156B69E00014CAA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB67661156B69E00014CAA0 /* InfoPlist.strings in Resources */,
+				6CB6766D156B69E00014CAA0 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CB67670156B69E00014CAA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB6767F156B69E00014CAA0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6CB67671156B69E00014CAA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6CB6764E156B69E00014CAA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB67663156B69E00014CAA0 /* main.m in Sources */,
+				6CB67667156B69E00014CAA0 /* AppDelegate.m in Sources */,
+				6CB6766A156B69E00014CAA0 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CB6766E156B69E00014CAA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB67682156B69E00014CAA0 /* HospitalBedManagementTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6CB67679156B69E00014CAA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CB67651156B69E00014CAA0 /* HospitalBedManagement */;
+			targetProxy = 6CB67678156B69E00014CAA0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6CB6765F156B69E00014CAA0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6CB67660156B69E00014CAA0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6CB6766B156B69E00014CAA0 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6CB6766C156B69E00014CAA0 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+		6CB6767D156B69E00014CAA0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6CB6767E156B69E00014CAA0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6CB67683156B69E00014CAA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		6CB67684156B69E00014CAA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6CB67686156B69E00014CAA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HospitalBedManagement/HospitalBedManagement-Prefix.pch";
+				INFOPLIST_FILE = "HospitalBedManagement/HospitalBedManagement-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6CB67687156B69E00014CAA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HospitalBedManagement/HospitalBedManagement-Prefix.pch";
+				INFOPLIST_FILE = "HospitalBedManagement/HospitalBedManagement-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6CB67689156B69E00014CAA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HospitalBedManagement.app/HospitalBedManagement";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HospitalBedManagement/HospitalBedManagement-Prefix.pch";
+				INFOPLIST_FILE = "HospitalBedManagementTests/HospitalBedManagementTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6CB6768A156B69E00014CAA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HospitalBedManagement.app/HospitalBedManagement";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HospitalBedManagement/HospitalBedManagement-Prefix.pch";
+				INFOPLIST_FILE = "HospitalBedManagementTests/HospitalBedManagementTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6CB6764C156B69E00014CAA0 /* Build configuration list for PBXProject "HospitalBedManagement" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CB67683156B69E00014CAA0 /* Debug */,
+				6CB67684156B69E00014CAA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CB67685156B69E00014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagement" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CB67686156B69E00014CAA0 /* Debug */,
+				6CB67687156B69E00014CAA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6CB67688156B69E00014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagementTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CB67689156B69E00014CAA0 /* Debug */,
+				6CB6768A156B69E00014CAA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6CB67649156B69E00014CAA0 /* Project object */;
+}
