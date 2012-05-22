@@ -8,8 +8,22 @@
 
 #import "ViewController.h"
 
+#import "MaintStaffLogin.h"
+
 @implementation ViewController
 
+@synthesize nurseStaffButton,maintStaffButton,staticButton;
+
+
+-(IBAction)maintStaffButton:(id)sender
+{
+    MaintStaffLogin *maintLog = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
+    
+    maintLog.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+    
+    [self presentModalViewController:maintLog animated:YES];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

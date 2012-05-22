@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C7F4293156BAB940035E059 /* BedStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7F4291156BAB940035E059 /* BedStatusView.m */; };
+		6C7F4294156BAB940035E059 /* BedStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C7F4292156BAB940035E059 /* BedStatusView.xib */; };
 		6CB6776B156BA03A0014CAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776A156BA03A0014CAA0 /* UIKit.framework */; };
 		6CB6776D156BA03A0014CAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776C156BA03A0014CAA0 /* Foundation.framework */; };
 		6CB6776F156BA03A0014CAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776E156BA03A0014CAA0 /* CoreGraphics.framework */; };
@@ -20,6 +22,25 @@
 		6CB6778B156BA03A0014CAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776C156BA03A0014CAA0 /* Foundation.framework */; };
 		6CB67793156BA03A0014CAA0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CB67791156BA03A0014CAA0 /* InfoPlist.strings */; };
 		6CB67796156BA03A0014CAA0 /* HospitalBedManagementSystemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB67795156BA03A0014CAA0 /* HospitalBedManagementSystemTests.m */; };
+		6CB677A6156BA0E60014CAA0 /* MaintStaffLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB677A4156BA0E60014CAA0 /* MaintStaffLogin.m */; };
+		6CB677A7156BA0E60014CAA0 /* MaintStaffLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677A5156BA0E60014CAA0 /* MaintStaffLogin.xib */; };
+		6CB677BC156BA1CC0014CAA0 /* bed_status1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677AD156BA1CC0014CAA0 /* bed_status1.png */; };
+		6CB677BD156BA1CC0014CAA0 /* bed_status2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677AE156BA1CC0014CAA0 /* bed_status2.png */; };
+		6CB677BE156BA1CC0014CAA0 /* bed_status3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677AF156BA1CC0014CAA0 /* bed_status3.png */; };
+		6CB677BF156BA1CC0014CAA0 /* emergency_beds.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B0156BA1CC0014CAA0 /* emergency_beds.png */; };
+		6CB677C0156BA1CC0014CAA0 /* general_beds.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B1156BA1CC0014CAA0 /* general_beds.png */; };
+		6CB677C1156BA1CC0014CAA0 /* icon_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B2156BA1CC0014CAA0 /* icon_green.png */; };
+		6CB677C2156BA1CC0014CAA0 /* icon_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B3156BA1CC0014CAA0 /* icon_list.png */; };
+		6CB677C3156BA1CC0014CAA0 /* icon_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B4156BA1CC0014CAA0 /* icon_red.png */; };
+		6CB677C4156BA1CC0014CAA0 /* icon_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B5156BA1CC0014CAA0 /* icon_tile.png */; };
+		6CB677C5156BA1CC0014CAA0 /* loginheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B6156BA1CC0014CAA0 /* loginheader.png */; };
+		6CB677C6156BA1CC0014CAA0 /* mainheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B7156BA1CC0014CAA0 /* mainheader.png */; };
+		6CB677C7156BA1CC0014CAA0 /* samplereport.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B8156BA1CC0014CAA0 /* samplereport.png */; };
+		6CB677C8156BA1CC0014CAA0 /* titlebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677B9156BA1CC0014CAA0 /* titlebar.png */; };
+		6CB677C9156BA1CC0014CAA0 /* titlebar_m.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677BA156BA1CC0014CAA0 /* titlebar_m.png */; };
+		6CB677CA156BA1CC0014CAA0 /* view1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677BB156BA1CC0014CAA0 /* view1.png */; };
+		6CB677D1156BA61F0014CAA0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB677D0156BA61F0014CAA0 /* libsqlite3.0.dylib */; };
+		6CB677D8156BA73B0014CAA0 /* MaintLoginTable.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6CB677D7156BA73B0014CAA0 /* MaintLoginTable.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,25 +54,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C7F4290156BAB940035E059 /* BedStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BedStatusView.h; sourceTree = "<group>"; };
+		6C7F4291156BAB940035E059 /* BedStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BedStatusView.m; sourceTree = "<group>"; };
+		6C7F4292156BAB940035E059 /* BedStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BedStatusView.xib; sourceTree = "<group>"; };
 		6CB67766156BA03A0014CAA0 /* HospitalBedManagementSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalBedManagementSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB6776A156BA03A0014CAA0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6CB6776C156BA03A0014CAA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6CB6776E156BA03A0014CAA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		6CB67772156BA03A0014CAA0 /* HospitalBedManagementSystem-Info.plist */ = {isa = PBXFileReference; path = "HospitalBedManagementSystem-Info.plist"; sourceTree = "<group>"; };
+		6CB67772156BA03A0014CAA0 /* HospitalBedManagementSystem-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HospitalBedManagementSystem-Info.plist"; sourceTree = "<group>"; };
 		6CB67774156BA03A0014CAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6CB67776156BA03A0014CAA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6CB67778156BA03A0014CAA0 /* HospitalBedManagementSystem-Prefix.pch */ = {isa = PBXFileReference; path = "HospitalBedManagementSystem-Prefix.pch"; sourceTree = "<group>"; };
-		6CB67779156BA03A0014CAA0 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		6CB67778156BA03A0014CAA0 /* HospitalBedManagementSystem-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HospitalBedManagementSystem-Prefix.pch"; sourceTree = "<group>"; };
+		6CB67779156BA03A0014CAA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6CB6777A156BA03A0014CAA0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6CB6777C156BA03A0014CAA0 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		6CB6777C156BA03A0014CAA0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6CB6777D156BA03A0014CAA0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6CB67780156BA03A0014CAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		6CB67787156BA03A0014CAA0 /* HospitalBedManagementSystemTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HospitalBedManagementSystemTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB67788156BA03A0014CAA0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		6CB67790156BA03A0014CAA0 /* HospitalBedManagementSystemTests-Info.plist */ = {isa = PBXFileReference; path = "HospitalBedManagementSystemTests-Info.plist"; sourceTree = "<group>"; };
+		6CB67790156BA03A0014CAA0 /* HospitalBedManagementSystemTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HospitalBedManagementSystemTests-Info.plist"; sourceTree = "<group>"; };
 		6CB67792156BA03A0014CAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6CB67794156BA03A0014CAA0 /* HospitalBedManagementSystemTests.h */ = {isa = PBXFileReference; path = HospitalBedManagementSystemTests.h; sourceTree = "<group>"; };
+		6CB67794156BA03A0014CAA0 /* HospitalBedManagementSystemTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HospitalBedManagementSystemTests.h; sourceTree = "<group>"; };
 		6CB67795156BA03A0014CAA0 /* HospitalBedManagementSystemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HospitalBedManagementSystemTests.m; sourceTree = "<group>"; };
+		6CB677A3156BA0E60014CAA0 /* MaintStaffLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintStaffLogin.h; sourceTree = "<group>"; };
+		6CB677A4156BA0E60014CAA0 /* MaintStaffLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintStaffLogin.m; sourceTree = "<group>"; };
+		6CB677A5156BA0E60014CAA0 /* MaintStaffLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintStaffLogin.xib; sourceTree = "<group>"; };
+		6CB677AD156BA1CC0014CAA0 /* bed_status1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bed_status1.png; sourceTree = "<group>"; };
+		6CB677AE156BA1CC0014CAA0 /* bed_status2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bed_status2.png; sourceTree = "<group>"; };
+		6CB677AF156BA1CC0014CAA0 /* bed_status3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bed_status3.png; sourceTree = "<group>"; };
+		6CB677B0156BA1CC0014CAA0 /* emergency_beds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emergency_beds.png; sourceTree = "<group>"; };
+		6CB677B1156BA1CC0014CAA0 /* general_beds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = general_beds.png; sourceTree = "<group>"; };
+		6CB677B2156BA1CC0014CAA0 /* icon_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_green.png; sourceTree = "<group>"; };
+		6CB677B3156BA1CC0014CAA0 /* icon_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_list.png; sourceTree = "<group>"; };
+		6CB677B4156BA1CC0014CAA0 /* icon_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_red.png; sourceTree = "<group>"; };
+		6CB677B5156BA1CC0014CAA0 /* icon_tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tile.png; sourceTree = "<group>"; };
+		6CB677B6156BA1CC0014CAA0 /* loginheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginheader.png; sourceTree = "<group>"; };
+		6CB677B7156BA1CC0014CAA0 /* mainheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainheader.png; sourceTree = "<group>"; };
+		6CB677B8156BA1CC0014CAA0 /* samplereport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = samplereport.png; sourceTree = "<group>"; };
+		6CB677B9156BA1CC0014CAA0 /* titlebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlebar.png; sourceTree = "<group>"; };
+		6CB677BA156BA1CC0014CAA0 /* titlebar_m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlebar_m.png; sourceTree = "<group>"; };
+		6CB677BB156BA1CC0014CAA0 /* view1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view1.png; sourceTree = "<group>"; };
+		6CB677D0156BA61F0014CAA0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		6CB677D7156BA73B0014CAA0 /* MaintLoginTable.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaintLoginTable.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CB677D1156BA61F0014CAA0 /* libsqlite3.0.dylib in Frameworks */,
 				6CB6776B156BA03A0014CAA0 /* UIKit.framework in Frameworks */,
 				6CB6776D156BA03A0014CAA0 /* Foundation.framework in Frameworks */,
 				6CB6776F156BA03A0014CAA0 /* CoreGraphics.framework in Frameworks */,
@@ -81,6 +126,15 @@
 		6CB6775B156BA0390014CAA0 = {
 			isa = PBXGroup;
 			children = (
+				6C7F4290156BAB940035E059 /* BedStatusView.h */,
+				6C7F4291156BAB940035E059 /* BedStatusView.m */,
+				6C7F4292156BAB940035E059 /* BedStatusView.xib */,
+				6CB677D7156BA73B0014CAA0 /* MaintLoginTable.sqlite */,
+				6CB677D0156BA61F0014CAA0 /* libsqlite3.0.dylib */,
+				6CB677AC156BA1CC0014CAA0 /* Images */,
+				6CB677A3156BA0E60014CAA0 /* MaintStaffLogin.h */,
+				6CB677A4156BA0E60014CAA0 /* MaintStaffLogin.m */,
+				6CB677A5156BA0E60014CAA0 /* MaintStaffLogin.xib */,
 				6CB67770156BA03A0014CAA0 /* HospitalBedManagementSystem */,
 				6CB6778E156BA03A0014CAA0 /* HospitalBedManagementSystemTests */,
 				6CB67769156BA03A0014CAA0 /* Frameworks */,
@@ -149,6 +203,28 @@
 				6CB67791156BA03A0014CAA0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6CB677AC156BA1CC0014CAA0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				6CB677AD156BA1CC0014CAA0 /* bed_status1.png */,
+				6CB677AE156BA1CC0014CAA0 /* bed_status2.png */,
+				6CB677AF156BA1CC0014CAA0 /* bed_status3.png */,
+				6CB677B0156BA1CC0014CAA0 /* emergency_beds.png */,
+				6CB677B1156BA1CC0014CAA0 /* general_beds.png */,
+				6CB677B2156BA1CC0014CAA0 /* icon_green.png */,
+				6CB677B3156BA1CC0014CAA0 /* icon_list.png */,
+				6CB677B4156BA1CC0014CAA0 /* icon_red.png */,
+				6CB677B5156BA1CC0014CAA0 /* icon_tile.png */,
+				6CB677B6156BA1CC0014CAA0 /* loginheader.png */,
+				6CB677B7156BA1CC0014CAA0 /* mainheader.png */,
+				6CB677B8156BA1CC0014CAA0 /* samplereport.png */,
+				6CB677B9156BA1CC0014CAA0 /* titlebar.png */,
+				6CB677BA156BA1CC0014CAA0 /* titlebar_m.png */,
+				6CB677BB156BA1CC0014CAA0 /* view1.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +299,24 @@
 			files = (
 				6CB67775156BA03A0014CAA0 /* InfoPlist.strings in Resources */,
 				6CB67781156BA03A0014CAA0 /* ViewController.xib in Resources */,
+				6CB677A7156BA0E60014CAA0 /* MaintStaffLogin.xib in Resources */,
+				6CB677BC156BA1CC0014CAA0 /* bed_status1.png in Resources */,
+				6CB677BD156BA1CC0014CAA0 /* bed_status2.png in Resources */,
+				6CB677BE156BA1CC0014CAA0 /* bed_status3.png in Resources */,
+				6CB677BF156BA1CC0014CAA0 /* emergency_beds.png in Resources */,
+				6CB677C0156BA1CC0014CAA0 /* general_beds.png in Resources */,
+				6CB677C1156BA1CC0014CAA0 /* icon_green.png in Resources */,
+				6CB677C2156BA1CC0014CAA0 /* icon_list.png in Resources */,
+				6CB677C3156BA1CC0014CAA0 /* icon_red.png in Resources */,
+				6CB677C4156BA1CC0014CAA0 /* icon_tile.png in Resources */,
+				6CB677C5156BA1CC0014CAA0 /* loginheader.png in Resources */,
+				6CB677C6156BA1CC0014CAA0 /* mainheader.png in Resources */,
+				6CB677C7156BA1CC0014CAA0 /* samplereport.png in Resources */,
+				6CB677C8156BA1CC0014CAA0 /* titlebar.png in Resources */,
+				6CB677C9156BA1CC0014CAA0 /* titlebar_m.png in Resources */,
+				6CB677CA156BA1CC0014CAA0 /* view1.png in Resources */,
+				6CB677D8156BA73B0014CAA0 /* MaintLoginTable.sqlite in Resources */,
+				6C7F4294156BAB940035E059 /* BedStatusView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +354,8 @@
 				6CB67777156BA03A0014CAA0 /* main.m in Sources */,
 				6CB6777B156BA03A0014CAA0 /* AppDelegate.m in Sources */,
 				6CB6777E156BA03A0014CAA0 /* ViewController.m in Sources */,
+				6CB677A6156BA0E60014CAA0 /* MaintStaffLogin.m in Sources */,
+				6C7F4293156BAB940035E059 /* BedStatusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +527,7 @@
 				6CB6779B156BA03A0014CAA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6CB6779C156BA03A0014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagementSystemTests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +536,7 @@
 				6CB6779E156BA03A0014CAA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
