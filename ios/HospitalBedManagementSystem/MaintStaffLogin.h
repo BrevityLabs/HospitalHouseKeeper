@@ -27,5 +27,5 @@
 
 -(NSString *)getDBPath;
 
--(void)passwordValidation;
+//-(void)passwordValidation;
 @end

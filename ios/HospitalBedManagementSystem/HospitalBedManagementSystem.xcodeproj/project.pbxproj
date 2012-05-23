@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C7E89C0156CE0D0004B47FF /* BedInformation.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6C7E89BF156CE0D0004B47FF /* BedInformation.sqlite */; };
 		6C7F4293156BAB940035E059 /* BedStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7F4291156BAB940035E059 /* BedStatusView.m */; };
 		6C7F4294156BAB940035E059 /* BedStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C7F4292156BAB940035E059 /* BedStatusView.xib */; };
 		6CB6776B156BA03A0014CAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776A156BA03A0014CAA0 /* UIKit.framework */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C7E89BF156CE0D0004B47FF /* BedInformation.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BedInformation.sqlite; sourceTree = "<group>"; };
 		6C7F4290156BAB940035E059 /* BedStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BedStatusView.h; sourceTree = "<group>"; };
 		6C7F4291156BAB940035E059 /* BedStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BedStatusView.m; sourceTree = "<group>"; };
 		6C7F4292156BAB940035E059 /* BedStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BedStatusView.xib; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		6CB6775B156BA0390014CAA0 = {
 			isa = PBXGroup;
 			children = (
+				6C7E89BF156CE0D0004B47FF /* BedInformation.sqlite */,
 				6C7F4290156BAB940035E059 /* BedStatusView.h */,
 				6C7F4291156BAB940035E059 /* BedStatusView.m */,
 				6C7F4292156BAB940035E059 /* BedStatusView.xib */,
@@ -317,6 +320,7 @@
 				6CB677CA156BA1CC0014CAA0 /* view1.png in Resources */,
 				6CB677D8156BA73B0014CAA0 /* MaintLoginTable.sqlite in Resources */,
 				6C7F4294156BAB940035E059 /* BedStatusView.xib in Resources */,
+				6C7E89C0156CE0D0004B47FF /* BedInformation.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

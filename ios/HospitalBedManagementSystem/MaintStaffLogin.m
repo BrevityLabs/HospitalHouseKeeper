@@ -60,7 +60,7 @@ static sqlite3_stmt *addStmt = nil;
 
 -(IBAction)loginClicked:(id)sender
 {
-    [self passwordValidation];
+    //[self passwordValidation];
     
     [self clickLogin];
     
@@ -129,7 +129,7 @@ static sqlite3_stmt *addStmt = nil;
 }
 
 
--(void)passwordValidation
+/*-(void)passwordValidation
 {
     NSString *pwd=[NSString stringWithString:txtPassword.text];
     int lngth=[pwd length]; 
@@ -157,7 +157,7 @@ static sqlite3_stmt *addStmt = nil;
         [txtPassword becomeFirstResponder];
     }
 
-}
+}*/
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
