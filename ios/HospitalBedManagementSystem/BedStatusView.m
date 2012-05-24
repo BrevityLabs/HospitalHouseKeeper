@@ -10,6 +10,9 @@
 
 #import <sqlite3.h>
 
+#import "MaintStaffDetailView.h"
+
+#import "MaintStaffLogin.h"
 
 static sqlite3 *database = nil;
 
@@ -17,7 +20,7 @@ static sqlite3 *database = nil;
 
 @implementation BedStatusView
 
-@synthesize maintBedView,listViewButton,gridViewButton;
+@synthesize maintBedView,listViewButton,gridViewButton,signOutButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,12 +46,12 @@ static sqlite3 *database = nil;
     [super viewDidLoad];
     
     [self getMaintBedNumber];
-    for(int i = 0; i< [bedNoArray count] ; i++) 
+    for(int i = 1; i< [bedNoArray count] ; i++) 
     {
-        for (int j = 1; j<= i; j++) 
+        for (int j = 0; j<= i; j++) 
         {
-            NSString *str=[bedNoArray objectAtIndex:i];
-            [self drawBedAvailable:(258 * i) y: (j*168.0) width:204.8 height:150.0 bedId:str]   ;
+            NSString *str=[bedNoArray objectAtIndex:j];
+            [self drawBedAvailable:(258 * j) y: (i*250.0) width:204.8 height:150.0 bedId:str]   ;
         }
     }
     
@@ -62,19 +65,30 @@ static sqlite3 *database = nil;
     // e.g. self.myOutlet = nil;
 }
 
-/*-(IBAction)gridView:(id)sender
+-(IBAction)gridView:(id)sender
 {
-    [self getMaintBedNumber];
-    for(int i = 0; i< [bedNoArray count] ; i++) 
+    if (self.view ==nil)
     {
-        for (int j = 1; j >=i; j++) 
+        
+ 
+    [self getMaintBedNumber];
+    for(int i = 1; i< [bedNoArray count] ; i++) 
+    {
+        for (int j = 0; j <=i; j++) 
         {
-            NSString *str=[bedNoArray objectAtIndex:i];
-            [self drawBedAvailable:(204.8 * i) y: (j*150.0) width:204.8 height:150.0 bedId:str]   ;
+            NSString *str=[bedNoArray objectAtIndex:j];
+            [self drawBedAvailable:(204.8 * j) y: (i*150.0) width:204.8 height:150.0 bedId:str]   ;
         }
     }
-}*/
+        
+    }
+}
 
+
+-(IBAction)signOut:(id)sender
+{
+    [self clickSignOut];
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -102,26 +116,31 @@ static sqlite3 *database = nil;
     
     [maintBedView addSubview:img];
     
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(LABEL_X, LABEL_Y, LABEL_WIDTH, LABEL_HEIGHT)];
-     
-     
-    label.text = _bedId;
-
-    label.textAlignment = UITextAlignmentCenter;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    label.textColor = [UIColor redColor];
+    [button addTarget:self action:@selector(maintStaffDetilView:) forControlEvents:UIControlEventTouchUpInside];
     
-    label.font = [UIFont boldSystemFontOfSize:25.0];
+    button.frame=CGRectMake(BUTTON_X, BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
+      [button setTitle:_bedId forState:UIControlStateNormal]; 
     
-    label.backgroundColor = [UIColor whiteColor];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
     
-    [maintBedView addSubview:label];
+    [button setBackgroundColor:[UIColor yellowColor]]; 
+    
+    [maintBedView addSubview:button];
     
     [self.view addSubview:maintBedView];
     
 }
 
-
+-(IBAction)maintStaffDetilView:(id)sender
+{
+    MaintStaffDetailView *maintStaff = [[MaintStaffDetailView alloc]initWithNibName:@"MaintStaffDetailView" bundle:nil];
+    
+    maintStaff.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentModalViewController:maintStaff animated:YES];
+}
 -(NSString *)getDBPath1
 {
     NSArray *paths1 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -179,5 +198,14 @@ static sqlite3 *database = nil;
         
         sqlite3_close(database);
   
+}
+
+-(void)clickSignOut
+{
+    MaintStaffLogin *maintLogin = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
+    
+    maintLogin.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentModalViewController:maintLogin animated:YES];
 }
 @end

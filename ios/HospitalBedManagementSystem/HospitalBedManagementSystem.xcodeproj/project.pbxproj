@@ -10,6 +10,8 @@
 		6C7E89C0156CE0D0004B47FF /* BedInformation.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6C7E89BF156CE0D0004B47FF /* BedInformation.sqlite */; };
 		6C7F4293156BAB940035E059 /* BedStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7F4291156BAB940035E059 /* BedStatusView.m */; };
 		6C7F4294156BAB940035E059 /* BedStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C7F4292156BAB940035E059 /* BedStatusView.xib */; };
+		6C804C9D156E4D0C00BB9125 /* MaintStaffDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C804C9B156E4D0C00BB9125 /* MaintStaffDetailView.m */; };
+		6C804C9E156E4D0C00BB9125 /* MaintStaffDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C804C9C156E4D0C00BB9125 /* MaintStaffDetailView.xib */; };
 		6CB6776B156BA03A0014CAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776A156BA03A0014CAA0 /* UIKit.framework */; };
 		6CB6776D156BA03A0014CAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776C156BA03A0014CAA0 /* Foundation.framework */; };
 		6CB6776F156BA03A0014CAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776E156BA03A0014CAA0 /* CoreGraphics.framework */; };
@@ -59,6 +61,9 @@
 		6C7F4290156BAB940035E059 /* BedStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BedStatusView.h; sourceTree = "<group>"; };
 		6C7F4291156BAB940035E059 /* BedStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BedStatusView.m; sourceTree = "<group>"; };
 		6C7F4292156BAB940035E059 /* BedStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BedStatusView.xib; sourceTree = "<group>"; };
+		6C804C9A156E4D0C00BB9125 /* MaintStaffDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintStaffDetailView.h; sourceTree = "<group>"; };
+		6C804C9B156E4D0C00BB9125 /* MaintStaffDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintStaffDetailView.m; sourceTree = "<group>"; };
+		6C804C9C156E4D0C00BB9125 /* MaintStaffDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintStaffDetailView.xib; sourceTree = "<group>"; };
 		6CB67766156BA03A0014CAA0 /* HospitalBedManagementSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalBedManagementSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB6776A156BA03A0014CAA0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6CB6776C156BA03A0014CAA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -128,6 +133,9 @@
 		6CB6775B156BA0390014CAA0 = {
 			isa = PBXGroup;
 			children = (
+				6C804C9A156E4D0C00BB9125 /* MaintStaffDetailView.h */,
+				6C804C9B156E4D0C00BB9125 /* MaintStaffDetailView.m */,
+				6C804C9C156E4D0C00BB9125 /* MaintStaffDetailView.xib */,
 				6C7E89BF156CE0D0004B47FF /* BedInformation.sqlite */,
 				6C7F4290156BAB940035E059 /* BedStatusView.h */,
 				6C7F4291156BAB940035E059 /* BedStatusView.m */,
@@ -321,6 +329,7 @@
 				6CB677D8156BA73B0014CAA0 /* MaintLoginTable.sqlite in Resources */,
 				6C7F4294156BAB940035E059 /* BedStatusView.xib in Resources */,
 				6C7E89C0156CE0D0004B47FF /* BedInformation.sqlite in Resources */,
+				6C804C9E156E4D0C00BB9125 /* MaintStaffDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +369,7 @@
 				6CB6777E156BA03A0014CAA0 /* ViewController.m in Sources */,
 				6CB677A6156BA0E60014CAA0 /* MaintStaffLogin.m in Sources */,
 				6C7F4293156BAB940035E059 /* BedStatusView.m in Sources */,
+				6C804C9D156E4D0C00BB9125 /* MaintStaffDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

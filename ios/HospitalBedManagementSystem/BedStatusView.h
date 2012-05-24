@@ -10,7 +10,7 @@
 
 @interface BedStatusView : UIViewController
 {
-    UIButton *gridViewButton,*listViewButton;
+    UIButton *gridViewButton,*listViewButton,*signOutButton;
     
     UIView *maintBedView;
     
@@ -23,11 +23,11 @@
         IMGWIDTH =200,
         IMGHEIGHT= 136
     };
-    enum label_size {
-        LABEL_X = 0,
-        LABEL_Y = 0,
-        LABEL_WIDTH =50,
-        LABEL_HEIGHT= 50
+    enum button_size {
+        BUTTON_X = 0,
+        BUTTON_Y = 0,
+        BUTTON_WIDTH =50,
+        BUTTON_HEIGHT= 50
     };
     
     
@@ -35,7 +35,7 @@
 
 @property(nonatomic,retain)IBOutlet UIView *maintBedView;
 
-@property(nonatomic,retain)IBOutlet UIButton *gridViewButton,*listViewButton;
+@property(nonatomic,retain)IBOutlet UIButton *gridViewButton,*listViewButton,*signOutButton;
 
 
 
@@ -46,10 +46,15 @@
                    bedId : (NSString*) _bedId ;
 
 
-//-(IBAction)gridView:(id)sender;
+-(IBAction)gridView:(id)sender;
 
 //-(IBAction)listView:(id)sender;
 
+-(IBAction)maintStaffDetilView:(id)sender;
+
+-(IBAction)signOut:(id)sender;
+
+-(void)clickSignOut;
 -(void)getMaintBedNumber;
 
 -(NSString *)getDBPath1;
