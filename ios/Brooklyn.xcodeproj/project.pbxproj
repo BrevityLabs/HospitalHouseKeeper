@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6CB6776B156BA03A0014CAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776A156BA03A0014CAA0 /* UIKit.framework */; };
+		6CB6776D156BA03A0014CAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776C156BA03A0014CAA0 /* Foundation.framework */; };
+		6CB6776F156BA03A0014CAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776E156BA03A0014CAA0 /* CoreGraphics.framework */; };
+		6CB67775156BA03A0014CAA0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CB67773156BA03A0014CAA0 /* InfoPlist.strings */; };
+		6CB67777156BA03A0014CAA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB67776156BA03A0014CAA0 /* main.m */; };
+		6CB6777B156BA03A0014CAA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6777A156BA03A0014CAA0 /* AppDelegate.m */; };
+		6CB6777E156BA03A0014CAA0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6777D156BA03A0014CAA0 /* ViewController.m */; };
+		6CB67781156BA03A0014CAA0 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB6777F156BA03A0014CAA0 /* ViewController.xib */; };
+		6CB67789156BA03A0014CAA0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB67788156BA03A0014CAA0 /* SenTestingKit.framework */; };
+		6CB6778A156BA03A0014CAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776A156BA03A0014CAA0 /* UIKit.framework */; };
+		6CB6778B156BA03A0014CAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6776C156BA03A0014CAA0 /* Foundation.framework */; };
+		6CB677D1156BA61F0014CAA0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB677D0156BA61F0014CAA0 /* libsqlite3.0.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6CB6778C156BA03A0014CAA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CB6775D156BA0390014CAA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CB67765156BA03A0014CAA0;
+			remoteInfo = HospitalBedManagementSystem;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6CB67766156BA03A0014CAA0 /* HospitalBedManagementSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalBedManagementSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CB6776A156BA03A0014CAA0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6CB6776C156BA03A0014CAA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6CB6776E156BA03A0014CAA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6CB67772156BA03A0014CAA0 /* HospitalBedManagementSystem-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HospitalBedManagementSystem-Info.plist"; sourceTree = "<group>"; };
+		6CB67774156BA03A0014CAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6CB67776156BA03A0014CAA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6CB67778156BA03A0014CAA0 /* HospitalBedManagementSystem-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HospitalBedManagementSystem-Prefix.pch"; sourceTree = "<group>"; };
+		6CB67779156BA03A0014CAA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6CB6777A156BA03A0014CAA0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6CB6777C156BA03A0014CAA0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6CB6777D156BA03A0014CAA0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6CB67780156BA03A0014CAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		6CB67787156BA03A0014CAA0 /* HospitalBedManagementSystemTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HospitalBedManagementSystemTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CB67788156BA03A0014CAA0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6CB677D0156BA61F0014CAA0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6CB67763156BA03A0014CAA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB677D1156BA61F0014CAA0 /* libsqlite3.0.dylib in Frameworks */,
+				6CB6776B156BA03A0014CAA0 /* UIKit.framework in Frameworks */,
+				6CB6776D156BA03A0014CAA0 /* Foundation.framework in Frameworks */,
+				6CB6776F156BA03A0014CAA0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CB67783156BA03A0014CAA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB67789156BA03A0014CAA0 /* SenTestingKit.framework in Frameworks */,
+				6CB6778A156BA03A0014CAA0 /* UIKit.framework in Frameworks */,
+				6CB6778B156BA03A0014CAA0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6CB6775B156BA0390014CAA0 = {
+			isa = PBXGroup;
+			children = (
+				6CB67770156BA03A0014CAA0 /* Brooklyn */,
+				6CB67769156BA03A0014CAA0 /* Frameworks */,
+				6CB67767156BA03A0014CAA0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6CB67767156BA03A0014CAA0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6CB67766156BA03A0014CAA0 /* HospitalBedManagementSystem.app */,
+				6CB67787156BA03A0014CAA0 /* HospitalBedManagementSystemTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6CB67769156BA03A0014CAA0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CB677D0156BA61F0014CAA0 /* libsqlite3.0.dylib */,
+				6CB6776A156BA03A0014CAA0 /* UIKit.framework */,
+				6CB6776C156BA03A0014CAA0 /* Foundation.framework */,
+				6CB6776E156BA03A0014CAA0 /* CoreGraphics.framework */,
+				6CB67788156BA03A0014CAA0 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6CB67770156BA03A0014CAA0 /* Brooklyn */ = {
+			isa = PBXGroup;
+			children = (
+				6CB67779156BA03A0014CAA0 /* AppDelegate.h */,
+				6CB6777A156BA03A0014CAA0 /* AppDelegate.m */,
+				6CB6777C156BA03A0014CAA0 /* ViewController.h */,
+				6CB6777D156BA03A0014CAA0 /* ViewController.m */,
+				6CB6777F156BA03A0014CAA0 /* ViewController.xib */,
+				6CB67771156BA03A0014CAA0 /* Supporting Files */,
+			);
+			name = Brooklyn;
+			path = HospitalBedManagementSystem;
+			sourceTree = "<group>";
+		};
+		6CB67771156BA03A0014CAA0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6CB67772156BA03A0014CAA0 /* HospitalBedManagementSystem-Info.plist */,
+				6CB67773156BA03A0014CAA0 /* InfoPlist.strings */,
+				6CB67776156BA03A0014CAA0 /* main.m */,
+				6CB67778156BA03A0014CAA0 /* HospitalBedManagementSystem-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6CB67765156BA03A0014CAA0 /* HospitalBedManagementSystem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CB67799156BA03A0014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagementSystem" */;
+			buildPhases = (
+				6CB67762156BA03A0014CAA0 /* Sources */,
+				6CB67763156BA03A0014CAA0 /* Frameworks */,
+				6CB67764156BA03A0014CAA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HospitalBedManagementSystem;
+			productName = HospitalBedManagementSystem;
+			productReference = 6CB67766156BA03A0014CAA0 /* HospitalBedManagementSystem.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6CB67786156BA03A0014CAA0 /* HospitalBedManagementSystemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CB6779C156BA03A0014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagementSystemTests" */;
+			buildPhases = (
+				6CB67782156BA03A0014CAA0 /* Sources */,
+				6CB67783156BA03A0014CAA0 /* Frameworks */,
+				6CB67784156BA03A0014CAA0 /* Resources */,
+				6CB67785156BA03A0014CAA0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6CB6778D156BA03A0014CAA0 /* PBXTargetDependency */,
+			);
+			name = HospitalBedManagementSystemTests;
+			productName = HospitalBedManagementSystemTests;
+			productReference = 6CB67787156BA03A0014CAA0 /* HospitalBedManagementSystemTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6CB6775D156BA0390014CAA0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 6CB67760156BA03A0014CAA0 /* Build configuration list for PBXProject "HospitalBedManagementSystem" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6CB6775B156BA0390014CAA0;
+			productRefGroup = 6CB67767156BA03A0014CAA0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6CB67765156BA03A0014CAA0 /* HospitalBedManagementSystem */,
+				6CB67786156BA03A0014CAA0 /* HospitalBedManagementSystemTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6CB67764156BA03A0014CAA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB67775156BA03A0014CAA0 /* InfoPlist.strings in Resources */,
+				6CB67781156BA03A0014CAA0 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CB67784156BA03A0014CAA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6CB67785156BA03A0014CAA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6CB67762156BA03A0014CAA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB67777156BA03A0014CAA0 /* main.m in Sources */,
+				6CB6777B156BA03A0014CAA0 /* AppDelegate.m in Sources */,
+				6CB6777E156BA03A0014CAA0 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CB67782156BA03A0014CAA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6CB6778D156BA03A0014CAA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CB67765156BA03A0014CAA0 /* HospitalBedManagementSystem */;
+			targetProxy = 6CB6778C156BA03A0014CAA0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6CB67773156BA03A0014CAA0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6CB67774156BA03A0014CAA0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6CB6777F156BA03A0014CAA0 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6CB67780156BA03A0014CAA0 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6CB67797156BA03A0014CAA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		6CB67798156BA03A0014CAA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6CB6779A156BA03A0014CAA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HospitalBedManagementSystem/HospitalBedManagementSystem-Prefix.pch";
+				INFOPLIST_FILE = "HospitalBedManagementSystem/HospitalBedManagementSystem-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6CB6779B156BA03A0014CAA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HospitalBedManagementSystem/HospitalBedManagementSystem-Prefix.pch";
+				INFOPLIST_FILE = "HospitalBedManagementSystem/HospitalBedManagementSystem-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6CB6779D156BA03A0014CAA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HospitalBedManagementSystem.app/HospitalBedManagementSystem";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HospitalBedManagementSystem/HospitalBedManagementSystem-Prefix.pch";
+				INFOPLIST_FILE = "HospitalBedManagementSystemTests/HospitalBedManagementSystemTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6CB6779E156BA03A0014CAA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HospitalBedManagementSystem.app/HospitalBedManagementSystem";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HospitalBedManagementSystem/HospitalBedManagementSystem-Prefix.pch";
+				INFOPLIST_FILE = "HospitalBedManagementSystemTests/HospitalBedManagementSystemTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6CB67760156BA03A0014CAA0 /* Build configuration list for PBXProject "HospitalBedManagementSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CB67797156BA03A0014CAA0 /* Debug */,
+				6CB67798156BA03A0014CAA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CB67799156BA03A0014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagementSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CB6779A156BA03A0014CAA0 /* Debug */,
+				6CB6779B156BA03A0014CAA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CB6779C156BA03A0014CAA0 /* Build configuration list for PBXNativeTarget "HospitalBedManagementSystemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CB6779D156BA03A0014CAA0 /* Debug */,
+				6CB6779E156BA03A0014CAA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6CB6775D156BA0390014CAA0 /* Project object */;
+}
