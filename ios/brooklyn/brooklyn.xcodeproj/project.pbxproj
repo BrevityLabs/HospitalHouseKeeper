@@ -43,11 +43,12 @@
 		6CCB893015749FAC002456B0 /* BedListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCB890F15749FAC002456B0 /* BedListView.xib */; };
 		6CCB893115749FAC002456B0 /* MaintStaffLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCB891215749FAC002456B0 /* MaintStaffLogin.m */; };
 		6CCB893215749FAC002456B0 /* MaintStaffLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCB891315749FAC002456B0 /* MaintStaffLogin.xib */; };
-		6CCB893315749FAC002456B0 /* BedInformation.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6CCB891615749FAC002456B0 /* BedInformation.sqlite */; };
-		6CCB893415749FAC002456B0 /* MaintLoginTable.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6CCB891715749FAC002456B0 /* MaintLoginTable.sqlite */; };
 		6CCB893515749FAC002456B0 /* MaintStaffDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCB891A15749FAC002456B0 /* MaintStaffDetailView.m */; };
 		6CCB893615749FAC002456B0 /* MaintStaffDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCB891B15749FAC002456B0 /* MaintStaffDetailView.xib */; };
 		6CCB893815749FFC002456B0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB893715749FFC002456B0 /* libsqlite3.0.dylib */; };
+		6CDE61EA1574C1F300511255 /* BedInformation.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6CDE61E91574C1F300511255 /* BedInformation.sqlite */; };
+		6CDE62511574ED7F00511255 /* MaintList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE62501574ED7F00511255 /* MaintList.m */; };
+		6CDE62551574EDB500511255 /* MaintDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE62541574EDB500511255 /* MaintDB.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,12 +107,15 @@
 		6CCB891115749FAC002456B0 /* MaintStaffLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintStaffLogin.h; sourceTree = "<group>"; };
 		6CCB891215749FAC002456B0 /* MaintStaffLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintStaffLogin.m; sourceTree = "<group>"; };
 		6CCB891315749FAC002456B0 /* MaintStaffLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintStaffLogin.xib; sourceTree = "<group>"; };
-		6CCB891615749FAC002456B0 /* BedInformation.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BedInformation.sqlite; sourceTree = "<group>"; };
-		6CCB891715749FAC002456B0 /* MaintLoginTable.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaintLoginTable.sqlite; sourceTree = "<group>"; };
 		6CCB891915749FAC002456B0 /* MaintStaffDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintStaffDetailView.h; sourceTree = "<group>"; };
 		6CCB891A15749FAC002456B0 /* MaintStaffDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintStaffDetailView.m; sourceTree = "<group>"; };
 		6CCB891B15749FAC002456B0 /* MaintStaffDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintStaffDetailView.xib; sourceTree = "<group>"; };
 		6CCB893715749FFC002456B0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		6CDE61E91574C1F300511255 /* BedInformation.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BedInformation.sqlite; sourceTree = "<group>"; };
+		6CDE624F1574ED7F00511255 /* MaintList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintList.h; sourceTree = "<group>"; };
+		6CDE62501574ED7F00511255 /* MaintList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintList.m; sourceTree = "<group>"; };
+		6CDE62531574EDB500511255 /* MaintDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaintDB.h; path = ../../MaintDB.h; sourceTree = "<group>"; };
+		6CDE62541574EDB500511255 /* MaintDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaintDB.m; path = ../../MaintDB.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +146,7 @@
 		6CCB88AE15749ED5002456B0 = {
 			isa = PBXGroup;
 			children = (
-				6CCB893715749FFC002456B0 /* libsqlite3.0.dylib */,
+				6CDE61E81574C1F300511255 /* sqlite */,
 				6CCB88C315749ED6002456B0 /* brooklyn */,
 				6CCB88E115749ED6002456B0 /* brooklynTests */,
 				6CCB88BC15749ED6002456B0 /* Frameworks */,
@@ -180,7 +184,6 @@
 				6CCB890C15749FAC002456B0 /* listView */,
 				6CCB891015749FAC002456B0 /* loginView */,
 				6CCB891415749FAC002456B0 /* patientClass */,
-				6CCB891515749FAC002456B0 /* sqlite */,
 				6CCB891815749FAC002456B0 /* staffDetails */,
 				6CCB88CC15749ED6002456B0 /* AppDelegate.h */,
 				6CCB88CD15749ED6002456B0 /* AppDelegate.m */,
@@ -273,6 +276,10 @@
 		6CCB890C15749FAC002456B0 /* listView */ = {
 			isa = PBXGroup;
 			children = (
+				6CDE62531574EDB500511255 /* MaintDB.h */,
+				6CDE62541574EDB500511255 /* MaintDB.m */,
+				6CDE624F1574ED7F00511255 /* MaintList.h */,
+				6CDE62501574ED7F00511255 /* MaintList.m */,
 				6CCB890D15749FAC002456B0 /* BedListView.h */,
 				6CCB890E15749FAC002456B0 /* BedListView.m */,
 				6CCB890F15749FAC002456B0 /* BedListView.xib */,
@@ -297,15 +304,6 @@
 			path = patientClass;
 			sourceTree = "<group>";
 		};
-		6CCB891515749FAC002456B0 /* sqlite */ = {
-			isa = PBXGroup;
-			children = (
-				6CCB891615749FAC002456B0 /* BedInformation.sqlite */,
-				6CCB891715749FAC002456B0 /* MaintLoginTable.sqlite */,
-			);
-			path = sqlite;
-			sourceTree = "<group>";
-		};
 		6CCB891815749FAC002456B0 /* staffDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +312,16 @@
 				6CCB891B15749FAC002456B0 /* MaintStaffDetailView.xib */,
 			);
 			path = staffDetails;
+			sourceTree = "<group>";
+		};
+		6CDE61E81574C1F300511255 /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				6CCB893715749FFC002456B0 /* libsqlite3.0.dylib */,
+				6CDE61E91574C1F300511255 /* BedInformation.sqlite */,
+			);
+			name = sqlite;
+			path = brooklyn/sqlite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,9 +416,8 @@
 				6CCB892E15749FAC002456B0 /* view1.png in Resources */,
 				6CCB893015749FAC002456B0 /* BedListView.xib in Resources */,
 				6CCB893215749FAC002456B0 /* MaintStaffLogin.xib in Resources */,
-				6CCB893315749FAC002456B0 /* BedInformation.sqlite in Resources */,
-				6CCB893415749FAC002456B0 /* MaintLoginTable.sqlite in Resources */,
 				6CCB893615749FAC002456B0 /* MaintStaffDetailView.xib in Resources */,
+				6CDE61EA1574C1F300511255 /* BedInformation.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +459,8 @@
 				6CCB892F15749FAC002456B0 /* BedListView.m in Sources */,
 				6CCB893115749FAC002456B0 /* MaintStaffLogin.m in Sources */,
 				6CCB893515749FAC002456B0 /* MaintStaffDetailView.m in Sources */,
+				6CDE62511574ED7F00511255 /* MaintList.m in Sources */,
+				6CDE62551574EDB500511255 /* MaintDB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +648,7 @@
 				6CCB88EE15749ED6002456B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6CCB88EF15749ED6002456B0 /* Build configuration list for PBXNativeTarget "brooklynTests" */ = {
 			isa = XCConfigurationList;
@@ -647,6 +657,7 @@
 				6CCB88F115749ED6002456B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

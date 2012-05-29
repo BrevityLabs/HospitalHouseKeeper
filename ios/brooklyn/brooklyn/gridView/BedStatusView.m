@@ -3,7 +3,7 @@
 //  HospitalBedManagementSystem
 //
 //  Created by Maya on 22/05/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Trendwise Analytics. All rights reserved.
 //
 
 #import "BedStatusView.h"
@@ -67,7 +67,7 @@ static sqlite3 *database = nil;
     // e.g. self.myOutlet = nil;
 }
 
--(IBAction)gridView:(id)sender
+/*-(IBAction)gridView:(id)sender
 {
     if (self.view ==nil)
     {
@@ -85,7 +85,7 @@ static sqlite3 *database = nil;
         
     }
 }
-
+*/
 
 -(IBAction)signOut:(id)sender
 {
@@ -180,7 +180,7 @@ static sqlite3 *database = nil;
        // const char * sql1 = "select  BedNo from BedStaus where Status ='2'";
         sqlite3_stmt *selectStmt;
         
-     const char *sql1 = "SELECT BedNo FROM BedStatus WHERE Status ='2' ";
+     const char *sql1 = "SELECT bedno FROM bedinformation WHERE status ='2' ";
      
         if (sqlite3_prepare_v2(database, sql1, -1, &selectStmt, NULL)==SQLITE_OK) 
         {

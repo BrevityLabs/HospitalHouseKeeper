@@ -3,7 +3,7 @@
 //  HospitalBedManagementSystem
 //
 //  Created by Maya on 22/05/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Trendwise Analytics. All rights reserved.
 //
 
 #import "MaintStaffLogin.h"
@@ -71,13 +71,13 @@ static sqlite3_stmt *addStmt = nil;
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentdir=[paths objectAtIndex:0];
-    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"MaintLoginTable.sqlite"];
+    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"BedInformation.sqlite"];
     NSFileManager *fileManager=[NSFileManager defaultManager];
     NSError *error;
     BOOL success=[fileManager fileExistsAtPath:dbpath];
     if (!success)
     {
-        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"MaintLoginTable.sqlite"];
+        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"BedInformation.sqlite"];
         success=[fileManager copyItemAtPath:defaultpath toPath:dbpath error:&error];
         
         if (!success)
@@ -107,7 +107,7 @@ static sqlite3_stmt *addStmt = nil;
     {
         if (addStmt == nil)
         {
-            const char *sql="insert into MaintLogin(UserName,Password)values(?,?)";
+            const char *sql="insert into user (loginid,password) values(?,?)";
             
             if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) !=SQLITE_OK)
             {
