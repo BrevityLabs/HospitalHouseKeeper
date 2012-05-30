@@ -12,6 +12,10 @@
 		6C846B641575E9CE0069EBFB /* PatientBedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C846B621575E9CE0069EBFB /* PatientBedView.m */; };
 		6C846B651575E9CE0069EBFB /* PatientBedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C846B631575E9CE0069EBFB /* PatientBedView.xib */; };
 		6C846B671575EBF90069EBFB /* trendwise_logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6C846B661575EBF90069EBFB /* trendwise_logo.jpeg */; };
+		6C846B701575FAEA0069EBFB /* brookelyn.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6C846B6F1575FAEA0069EBFB /* brookelyn.sqlite */; };
+		6C846B731575FB300069EBFB /* employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C846B721575FB300069EBFB /* employee.m */; };
+		6C846B761575FE990069EBFB /* bed.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C846B751575FE990069EBFB /* bed.m */; };
+		6C846B791575FFED0069EBFB /* patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C846B781575FFED0069EBFB /* patient.m */; };
 		6CCB88BE15749ED6002456B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88BD15749ED6002456B0 /* UIKit.framework */; };
 		6CCB88C015749ED6002456B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88BF15749ED6002456B0 /* Foundation.framework */; };
 		6CCB88C215749ED6002456B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88C115749ED6002456B0 /* CoreGraphics.framework */; };
@@ -51,7 +55,6 @@
 		6CCB893515749FAC002456B0 /* MaintStaffDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCB891A15749FAC002456B0 /* MaintStaffDetailView.m */; };
 		6CCB893615749FAC002456B0 /* MaintStaffDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCB891B15749FAC002456B0 /* MaintStaffDetailView.xib */; };
 		6CCB893815749FFC002456B0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB893715749FFC002456B0 /* libsqlite3.0.dylib */; };
-		6CDE61EA1574C1F300511255 /* BedInformation.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6CDE61E91574C1F300511255 /* BedInformation.sqlite */; };
 		6CDE62511574ED7F00511255 /* MaintList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE62501574ED7F00511255 /* MaintList.m */; };
 		6CDE62551574EDB500511255 /* MaintDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE62541574EDB500511255 /* MaintDB.m */; };
 /* End PBXBuildFile section */
@@ -74,6 +77,13 @@
 		6C846B621575E9CE0069EBFB /* PatientBedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatientBedView.m; path = ../PatientBedView.m; sourceTree = "<group>"; };
 		6C846B631575E9CE0069EBFB /* PatientBedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PatientBedView.xib; path = ../PatientBedView.xib; sourceTree = "<group>"; };
 		6C846B661575EBF90069EBFB /* trendwise_logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = trendwise_logo.jpeg; path = ../../trendwise_logo.jpeg; sourceTree = "<group>"; };
+		6C846B6F1575FAEA0069EBFB /* brookelyn.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = brookelyn.sqlite; sourceTree = "<group>"; };
+		6C846B711575FB300069EBFB /* employee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = employee.h; path = employeeClass/employee.h; sourceTree = "<group>"; };
+		6C846B721575FB300069EBFB /* employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = employee.m; path = employeeClass/employee.m; sourceTree = "<group>"; };
+		6C846B741575FE990069EBFB /* bed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bed.h; sourceTree = "<group>"; };
+		6C846B751575FE990069EBFB /* bed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bed.m; sourceTree = "<group>"; };
+		6C846B771575FFED0069EBFB /* patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = patient.h; sourceTree = "<group>"; };
+		6C846B781575FFED0069EBFB /* patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = patient.m; sourceTree = "<group>"; };
 		6CCB88B915749ED6002456B0 /* brooklyn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brooklyn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CCB88BD15749ED6002456B0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6CCB88BF15749ED6002456B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,7 +133,6 @@
 		6CCB891A15749FAC002456B0 /* MaintStaffDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintStaffDetailView.m; sourceTree = "<group>"; };
 		6CCB891B15749FAC002456B0 /* MaintStaffDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintStaffDetailView.xib; sourceTree = "<group>"; };
 		6CCB893715749FFC002456B0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		6CDE61E91574C1F300511255 /* BedInformation.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BedInformation.sqlite; sourceTree = "<group>"; };
 		6CDE624F1574ED7F00511255 /* MaintList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintList.h; sourceTree = "<group>"; };
 		6CDE62501574ED7F00511255 /* MaintList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintList.m; sourceTree = "<group>"; };
 		6CDE62531574EDB500511255 /* MaintDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaintDB.h; path = ../../MaintDB.h; sourceTree = "<group>"; };
@@ -158,6 +167,8 @@
 		6C846B5C1575E81C0069EBFB /* employeeClass */ = {
 			isa = PBXGroup;
 			children = (
+				6C846B711575FB300069EBFB /* employee.h */,
+				6C846B721575FB300069EBFB /* employee.m */,
 			);
 			name = employeeClass;
 			sourceTree = "<group>";
@@ -263,6 +274,8 @@
 		6CCB88F215749FAC002456B0 /* bedClass */ = {
 			isa = PBXGroup;
 			children = (
+				6C846B741575FE990069EBFB /* bed.h */,
+				6C846B751575FE990069EBFB /* bed.m */,
 			);
 			path = bedClass;
 			sourceTree = "<group>";
@@ -336,6 +349,8 @@
 		6CCB891415749FAC002456B0 /* patientClass */ = {
 			isa = PBXGroup;
 			children = (
+				6C846B771575FFED0069EBFB /* patient.h */,
+				6C846B781575FFED0069EBFB /* patient.m */,
 			);
 			path = patientClass;
 			sourceTree = "<group>";
@@ -353,8 +368,8 @@
 		6CDE61E81574C1F300511255 /* sqlite */ = {
 			isa = PBXGroup;
 			children = (
+				6C846B6F1575FAEA0069EBFB /* brookelyn.sqlite */,
 				6CCB893715749FFC002456B0 /* libsqlite3.0.dylib */,
-				6CDE61E91574C1F300511255 /* BedInformation.sqlite */,
 			);
 			name = sqlite;
 			path = brooklyn/sqlite;
@@ -453,10 +468,10 @@
 				6CCB893015749FAC002456B0 /* BedListView.xib in Resources */,
 				6CCB893215749FAC002456B0 /* MaintStaffLogin.xib in Resources */,
 				6CCB893615749FAC002456B0 /* MaintStaffDetailView.xib in Resources */,
-				6CDE61EA1574C1F300511255 /* BedInformation.sqlite in Resources */,
 				6C846B551575E5350069EBFB /* NurseStaffLogin.xib in Resources */,
 				6C846B651575E9CE0069EBFB /* PatientBedView.xib in Resources */,
 				6C846B671575EBF90069EBFB /* trendwise_logo.jpeg in Resources */,
+				6C846B701575FAEA0069EBFB /* brookelyn.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +517,9 @@
 				6CDE62551574EDB500511255 /* MaintDB.m in Sources */,
 				6C846B541575E5350069EBFB /* NurseStaffLogin.m in Sources */,
 				6C846B641575E9CE0069EBFB /* PatientBedView.m in Sources */,
+				6C846B731575FB300069EBFB /* employee.m in Sources */,
+				6C846B761575FE990069EBFB /* bed.m in Sources */,
+				6C846B791575FFED0069EBFB /* patient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

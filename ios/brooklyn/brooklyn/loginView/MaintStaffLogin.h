@@ -25,7 +25,7 @@
 
 -(IBAction)loginClicked:(id)sender;
 
--(void)clickLogin;
+-(BOOL)clickLogin;
 
 -(void)goNextView;
 

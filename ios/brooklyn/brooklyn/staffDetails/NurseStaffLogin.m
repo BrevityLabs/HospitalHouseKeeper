@@ -67,13 +67,13 @@ static sqlite3_stmt *addStmt = nil;
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentdir=[paths objectAtIndex:0];
-    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"BedInformation.sqlite"];
+    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"brooklyn.sqlite"];
     NSFileManager *fileManager=[NSFileManager defaultManager];
     NSError *error;
     BOOL success=[fileManager fileExistsAtPath:dbpath];
     if (!success)
     {
-        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"BedInformation.sqlite"];
+        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brooklyn.sqlite"];
         success=[fileManager copyItemAtPath:defaultpath toPath:dbpath error:&error];
         
         if (!success)

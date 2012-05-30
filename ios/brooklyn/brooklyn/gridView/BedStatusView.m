@@ -140,13 +140,13 @@ static sqlite3 *database = nil;
 {
     NSArray *paths1 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentdir1 = [paths1 objectAtIndex:0];
-    NSString *dbpath1 =[documentdir1 stringByAppendingPathComponent:@"BedInformation.sqlite"];
+    NSString *dbpath1 =[documentdir1 stringByAppendingPathComponent:@"brooklyn.sqlite"];
     NSFileManager *fileManager1=[NSFileManager defaultManager];
     NSError *error;
     BOOL success=[fileManager1 fileExistsAtPath:dbpath1];
     if (!success)
     {
-        NSString *defaultpath1 = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"BedInformation.sqlite"];
+        NSString *defaultpath1 = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brooklyn.sqlite"];
         success=[fileManager1 copyItemAtPath:defaultpath1 toPath:dbpath1 error:&error];
         
         if (!success)
@@ -173,7 +173,7 @@ static sqlite3 *database = nil;
        // const char * sql1 = "select  BedNo from BedStaus where Status ='2'";
         sqlite3_stmt *selectStmt;
         
-     const char *sql1 = "SELECT bedno FROM bedinformation WHERE status ='2' ";
+     const char *sql1 = "SELECT bedno FROM bed WHERE status ='2' ";
      
         if (sqlite3_prepare_v2(database, sql1, -1, &selectStmt, NULL)==SQLITE_OK) 
         {

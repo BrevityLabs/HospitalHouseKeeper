@@ -1,12 +1,13 @@
 //
-//  PatientBedView.h
+//  patient.m
 //  brooklyn
 //
 //  Created by Maya on 30/05/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "patient.h"
 
-@interface PatientBedView : UIViewController 
+@implementation patient
+
 @end

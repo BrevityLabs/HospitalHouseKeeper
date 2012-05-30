@@ -59,22 +59,22 @@ static sqlite3_stmt *addStmt = nil;
 {
     //[self passwordValidation];
     
-    [self clickLogin];
-    
-    [self goNextView];
+    if ([self clickLogin]) {
+        [self goNextView];
+    }
 }
 
 -(NSString *)getDBPath
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentdir=[paths objectAtIndex:0];
-    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"BedInformation.sqlite"];
+    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"brooklyn.sqlite"];
     NSFileManager *fileManager=[NSFileManager defaultManager];
     NSError *error;
     BOOL success=[fileManager fileExistsAtPath:dbpath];
     if (!success)
     {
-        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"BedInformation.sqlite"];
+        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brooklyn.sqlite"];
         success=[fileManager copyItemAtPath:defaultpath toPath:dbpath error:&error];
         
         if (!success)
@@ -89,7 +89,7 @@ static sqlite3_stmt *addStmt = nil;
     
 }
 
--(void)clickLogin
+-(BOOL)clickLogin
 {
     
     NSMutableArray *values1 = [[NSMutableArray alloc]init];
@@ -103,17 +103,15 @@ static sqlite3_stmt *addStmt = nil;
     if (sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
     {
         if (addStmt == nil)
-        {
-            const char *sql="insert into user (loginid,password) values(?,?)";
+        {   NSString* sql_statement = [NSString stringWithFormat: @"select loginID, password from User where loginID=%@ and password=%@", txtUserName.text, txtPassword.text] ;
+            const char *sql= [sql_statement UTF8String];
             
             if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) !=SQLITE_OK)
             {
-                
-                NSAssert(0, @"error while creating sataement '%s'",sqlite3_errmsg(database));
+                NSAssert(0, @"error while querying: '%s'",sqlite3_errmsg(database));
             }
         }
-        sqlite3_bind_text(addStmt, 1, [[values1 objectAtIndex:0]UTF8String], -1, SQLITE_TRANSIENT);
-        
+        sqlite3_bind_text(addStmt, 1, [[values1 objectAtIndex:0]UTF8String], -1, SQLITE_TRANSIENT);        
         sqlite3_bind_text(addStmt, 2, [[values1 objectAtIndex:1]UTF8String], -1, SQLITE_TRANSIENT);
         
                 
@@ -121,6 +119,10 @@ static sqlite3_stmt *addStmt = nil;
             
             NSAssert1(0, @"error '%s'", sqlite3_errmsg(database));
         sqlite3_reset(addStmt);
+        
+        //TO DO: Check if there one record in the output
+        // if yes, return true
+        // else return false
         
     }
 }
