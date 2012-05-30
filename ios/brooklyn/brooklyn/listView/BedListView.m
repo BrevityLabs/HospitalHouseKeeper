@@ -32,6 +32,7 @@
 
 #pragma mark - View lifecycle
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,9 +66,25 @@
     return [Array count];
 }
 
+-(IBAction)getGridView:(id)sender
+{
+    BedStatusView *grid = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
+    
+    grid.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentModalViewController:grid animated:YES];
+    
+}
 
 
-
+-(IBAction)signOut:(id)sender
+{
+    MaintStaffLogin *login = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
+    
+    login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentModalViewController:login animated:YES];
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];

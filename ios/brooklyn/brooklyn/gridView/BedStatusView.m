@@ -8,13 +8,6 @@
 
 #import "BedStatusView.h"
 
-#import <sqlite3.h>
-
-#import "MaintStaffDetailView.h"
-
-#import "MaintStaffLogin.h"
-
-#import "BedListView.h"
 
 static sqlite3 *database = nil;
 

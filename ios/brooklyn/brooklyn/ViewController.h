@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "MaintStaffLogin.h"
+
+#import "NurseStaffLogin.h"
 
 @interface ViewController : UIViewController
 {
@@ -17,4 +20,5 @@
 
 -(IBAction)maintStaffButton:(id)sender;
 
+-(IBAction)nurseStaffButton:(id)sender;
 @end

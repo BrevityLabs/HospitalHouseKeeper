@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import <sqlite3.h>
+
+#import "MaintStaffDetailView.h"
+
+#import "MaintStaffLogin.h"
+
+#import "BedListView.h"
+
 @interface BedStatusView : UIViewController
 {
     UIButton *gridViewButton,*listViewButton,*signOutButton;

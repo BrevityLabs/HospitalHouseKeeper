@@ -10,6 +10,10 @@
 
 #import "MaintList.h"
 
+#import "BedStatusView.h"
+
+#import "MaintStaffLogin.h"
+
 @interface BedListView : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     IBOutlet UITableView *listView;    
@@ -20,4 +24,9 @@
 
 @property(nonatomic,retain)IBOutlet UITableView *listView;
 
+
+-(IBAction)getGridView:(id)sender;
+
+
+-(IBAction)signOut:(id)sender;
 @end

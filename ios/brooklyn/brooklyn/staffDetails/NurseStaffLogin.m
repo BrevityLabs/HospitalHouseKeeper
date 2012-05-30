@@ -1,21 +1,21 @@
 //
-//  MaintStaffLogin.m
-//  HospitalBedManagementSystem
+//  NurseStaffLogin.m
+//  brooklyn
 //
-//  Created by Maya on 22/05/12.
-//  Copyright (c) 2012 Trendwise Analytics. All rights reserved.
+//  Created by Maya on 30/05/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MaintStaffLogin.h"
-
+#import "NurseStaffLogin.h"
 
 static sqlite3 *database=nil;
 
 static sqlite3_stmt *addStmt = nil;
 
-@implementation MaintStaffLogin
 
-@synthesize txtPassword,txtUserName,loginButton;
+@implementation NurseStaffLogin
+
+@synthesize txtNurPassword,txtNurUserName,loginNurButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,7 +54,6 @@ static sqlite3_stmt *addStmt = nil;
     // Return YES for supported orientations
 	return YES;
 }
-
 -(IBAction)loginClicked:(id)sender
 {
     //[self passwordValidation];
@@ -85,7 +84,7 @@ static sqlite3_stmt *addStmt = nil;
     
     NSLog(@"%@",dbpath);
     return dbpath;
-
+    
     
 }
 
@@ -94,10 +93,10 @@ static sqlite3_stmt *addStmt = nil;
     
     NSMutableArray *values1 = [[NSMutableArray alloc]init];
     
-    [values1 addObject:txtUserName.text];
+    [values1 addObject:txtNurUserName.text];
     
-    [values1 addObject:txtPassword.text];
-
+    [values1 addObject:txtNurPassword.text];
+    
     NSString *dbpath=[self getDBPath];
     
     if (sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
@@ -116,7 +115,7 @@ static sqlite3_stmt *addStmt = nil;
         
         sqlite3_bind_text(addStmt, 2, [[values1 objectAtIndex:1]UTF8String], -1, SQLITE_TRANSIENT);
         
-                
+        
         if (SQLITE_DONE !=sqlite3_step(addStmt)) 
             
             NSAssert1(0, @"error '%s'", sqlite3_errmsg(database));
@@ -127,34 +126,34 @@ static sqlite3_stmt *addStmt = nil;
 
 
 /*-(void)passwordValidation
-{
-    NSString *pwd=[NSString stringWithString:txtPassword.text];
-    int lngth=[pwd length]; 
-    int minlength=6;
-    
-    NSString *regex = @"\\b([a-zA-Z0-9]+)\\b"; 
-    
-    NSPredicate * regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    
-    BOOL x= [regextest evaluateWithObject:pwd];
-    
-    if (lngth>=minlength) {
-        NSLog(@"passoword length is enough");
-        if (x==FALSE) {
-            NSLog(@"Special charector check enabled");
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"No Special Charectors" message:@"please don't use special charectors" delegate:self cancelButtonTitle:@"Wanna Correct" otherButtonTitles:nil];
-            [alert show];
-            [txtPassword becomeFirstResponder];
-            [self.view addSubview:txtPassword];
-        }
-    }
-    else {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Poor length" message:@"Password length must not be less than 8.." delegate:self cancelButtonTitle:@"Wanna Correct" otherButtonTitles:nil];
-        [alert show];
-        [txtPassword becomeFirstResponder];
-    }
-
-}*/
+ {
+ NSString *pwd=[NSString stringWithString:txtPassword.text];
+ int lngth=[pwd length]; 
+ int minlength=6;
+ 
+ NSString *regex = @"\\b([a-zA-Z0-9]+)\\b"; 
+ 
+ NSPredicate * regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+ 
+ BOOL x= [regextest evaluateWithObject:pwd];
+ 
+ if (lngth>=minlength) {
+ NSLog(@"passoword length is enough");
+ if (x==FALSE) {
+ NSLog(@"Special charector check enabled");
+ UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"No Special Charectors" message:@"please don't use special charectors" delegate:self cancelButtonTitle:@"Wanna Correct" otherButtonTitles:nil];
+ [alert show];
+ [txtPassword becomeFirstResponder];
+ [self.view addSubview:txtPassword];
+ }
+ }
+ else {
+ UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Poor length" message:@"Password length must not be less than 8.." delegate:self cancelButtonTitle:@"Wanna Correct" otherButtonTitles:nil];
+ [alert show];
+ [txtPassword becomeFirstResponder];
+ }
+ 
+ }*/
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -163,11 +162,11 @@ static sqlite3_stmt *addStmt = nil;
 }
 -(void)goNextView
 {
-    BedStatusView *status = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
+    PatientBedView *bedView = [[PatientBedView alloc]initWithNibName:@"PatientBedView" bundle:nil];
     
-    status.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    bedView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
-    [self presentModalViewController:status animated:YES];
+    [self presentModalViewController:bedView animated:YES];
 }
 
 

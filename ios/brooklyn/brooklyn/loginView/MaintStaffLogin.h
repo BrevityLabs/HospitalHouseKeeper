@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BedStatusView.h"
+
+#import <sqlite3.h>
+
 @interface MaintStaffLogin : UIViewController <UITextFieldDelegate>
 {
     UITextField *txtUserName,*txtPassword;

@@ -22,6 +22,15 @@
     
 }
 
+-(IBAction)nurseStaffButton:(id)sender
+{
+    NurseStaffLogin *nurseStaff = [[NurseStaffLogin alloc]initWithNibName:@"NurseStaffLogin" bundle:nil];
+    
+    nurseStaff.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentModalViewController:nurseStaff animated:YES];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
