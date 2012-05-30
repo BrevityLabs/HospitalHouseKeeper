@@ -21,7 +21,7 @@ static sqlite3_stmt *selectStmt = nil;
     
     NSString *documentsdir=[paths objectAtIndex:0];
     NSString *dbpath=[documentsdir
-                      stringByAppendingPathComponent:@"brooklyn.sqlite"];
+                      stringByAppendingPathComponent:@"brookelyn.sqlite"];
     
     NSFileManager *fileManager=[NSFileManager defaultManager];
     
@@ -32,7 +32,7 @@ static sqlite3_stmt *selectStmt = nil;
     if(!success)
     {
         NSString *defaultpath=[[[NSBundle
-                                 mainBundle]resourcePath]stringByAppendingPathComponent:@"brooklyn.sqlite"];
+                                 mainBundle]resourcePath]stringByAppendingPathComponent:@"brookelyn.sqlite"];
         
         success=[fileManager copyItemAtPath:defaultpath toPath:dbpath
                                       error:&error];

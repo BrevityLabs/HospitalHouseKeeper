@@ -140,13 +140,13 @@ static sqlite3 *database = nil;
 {
     NSArray *paths1 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentdir1 = [paths1 objectAtIndex:0];
-    NSString *dbpath1 =[documentdir1 stringByAppendingPathComponent:@"brooklyn.sqlite"];
+    NSString *dbpath1 =[documentdir1 stringByAppendingPathComponent:@"brookelyn.sqlite"];
     NSFileManager *fileManager1=[NSFileManager defaultManager];
     NSError *error;
     BOOL success=[fileManager1 fileExistsAtPath:dbpath1];
     if (!success)
     {
-        NSString *defaultpath1 = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brooklyn.sqlite"];
+        NSString *defaultpath1 = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brookelyn.sqlite"];
         success=[fileManager1 copyItemAtPath:defaultpath1 toPath:dbpath1 error:&error];
         
         if (!success)

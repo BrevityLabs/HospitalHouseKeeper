@@ -17,6 +17,7 @@
     UITextField *txtUserName,*txtPassword;
     
     UIButton *loginButton;
+    NSMutableArray *values;
 }
 
 @property(nonatomic,retain)IBOutlet UITextField *txtUserName,*txtPassword;
@@ -27,7 +28,7 @@
 
 -(BOOL)clickLogin;
 
--(void)goNextView;
+//-(void)goNextView;
 
 -(NSString *)getDBPath;
 

@@ -176,9 +176,9 @@
 		6C846B601575E95C0069EBFB /* PatientBedview */ = {
 			isa = PBXGroup;
 			children = (
-				6C846B631575E9CE0069EBFB /* PatientBedView.xib */,
-				6C846B621575E9CE0069EBFB /* PatientBedView.m */,
 				6C846B611575E9CE0069EBFB /* PatientBedView.h */,
+				6C846B621575E9CE0069EBFB /* PatientBedView.m */,
+				6C846B631575E9CE0069EBFB /* PatientBedView.xib */,
 			);
 			name = PatientBedview;
 			path = brooklyn/NurseLoginview;

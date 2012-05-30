@@ -39,6 +39,7 @@ static sqlite3_stmt *addStmt = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self clickLogin];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -57,24 +58,59 @@ static sqlite3_stmt *addStmt = nil;
 
 -(IBAction)loginClicked:(id)sender
 {
-    //[self passwordValidation];
+    //[self clickLogin];
     
-    if ([self clickLogin]) {
-        [self goNextView];
+    for (int i=0;i<[values count];i++) 
+    {
+        NSLog(@"values ff %@",values);
+        
+        if ([[values objectAtIndex:i] isEqualToString:txtUserName.text]) 
+        {
+            NSLog(@"values ii %@",values);
+            BedStatusView *status = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
+            
+            status.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            
+            [self presentModalViewController:status animated:YES];
+            
+        }
+        else{
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Usename password doent match"
+                                                            message:@"please enter correct username or password" delegate:nil 
+                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        }
+        
     }
+    
+                        
+//            return NO;  
+    
+
+    //[self passwordValidation];
+   // [self clickLogin];
+//    if ([self clickLogin])
+//    {
+//        BedStatusView *status = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
+//        
+//        status.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//        
+//        [self presentModalViewController:status animated:YES];
+//
+//    }
 }
 
 -(NSString *)getDBPath
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentdir=[paths objectAtIndex:0];
-    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"brooklyn.sqlite"];
+    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"brookelyn.sqlite"];
     NSFileManager *fileManager=[NSFileManager defaultManager];
     NSError *error;
     BOOL success=[fileManager fileExistsAtPath:dbpath];
     if (!success)
     {
-        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brooklyn.sqlite"];
+        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brookelyn.sqlite"];
         success=[fileManager copyItemAtPath:defaultpath toPath:dbpath error:&error];
         
         if (!success)
@@ -91,40 +127,49 @@ static sqlite3_stmt *addStmt = nil;
 
 -(BOOL)clickLogin
 {
+   values  = [[NSMutableArray alloc]init];
+
+   // NSMutableArray *values1 = [[NSMutableArray alloc]init];
+
+    //NSString *values1 ;
+  //  NSString *str2 ;  
+    //values1 =txtUserName.text;
     
-    NSMutableArray *values1 = [[NSMutableArray alloc]init];
-    
-    [values1 addObject:txtUserName.text];
-    
-    [values1 addObject:txtPassword.text];
+  //  [values1 addObject:txtUserName.text];
 
     NSString *dbpath=[self getDBPath];
     
     if (sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
     {
         if (addStmt == nil)
-        {   NSString* sql_statement = [NSString stringWithFormat: @"select loginID, password from User where loginID=%@ and password=%@", txtUserName.text, txtPassword.text] ;
+        {   NSString* sql_statement = [NSString stringWithFormat: @"select loginID from User "] ;
             const char *sql= [sql_statement UTF8String];
             
-            if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) !=SQLITE_OK)
+            if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) ==SQLITE_OK)
             {
-                NSAssert(0, @"error while querying: '%s'",sqlite3_errmsg(database));
+                while (sqlite3_step(addStmt)==SQLITE_ROW) 
+                {
+                    [values addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(addStmt, 0)]];
+                     
+                    NSLog(@"values in database%@",values);
+                     //[values addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(addStmt, 1)]];
+                   // str2  =[NSString stringWithFormat:values];
+                    [values copy];                 
+                       
+                }
             }
-        }
-        sqlite3_bind_text(addStmt, 1, [[values1 objectAtIndex:0]UTF8String], -1, SQLITE_TRANSIENT);        
-        sqlite3_bind_text(addStmt, 2, [[values1 objectAtIndex:1]UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_finalize(addStmt);
         
-                
-        if (SQLITE_DONE !=sqlite3_step(addStmt)) 
-            
-            NSAssert1(0, @"error '%s'", sqlite3_errmsg(database));
-        sqlite3_reset(addStmt);
+        }
+    }
         
         //TO DO: Check if there one record in the output
         // if yes, return true
         // else return false
-        
-    }
+ 
+    
+  
+          return YES;
 }
 
 
@@ -158,19 +203,7 @@ static sqlite3_stmt *addStmt = nil;
 
 }*/
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
--(void)goNextView
-{
-    BedStatusView *status = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
-    
-    status.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    [self presentModalViewController:status animated:YES];
-}
+
 
 
 @end
