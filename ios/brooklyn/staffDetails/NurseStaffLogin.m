@@ -56,11 +56,15 @@ static sqlite3_stmt *addStmt = nil;
 }
 -(IBAction)loginClicked:(id)sender
 {
-    //[self passwordValidation];
-    
-    [self clickLogin];
-    
-    [self goNextView];
+    if ([self clickLogin])
+    {
+        PatientBedView *status = [[PatientBedView alloc]initWithNibName:@"PatientBedView" bundle:nil];
+        
+        status.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        
+        [self presentModalViewController:status animated:YES];
+        
+    }
 }
 
 -(NSString *)getDBPath
@@ -88,40 +92,69 @@ static sqlite3_stmt *addStmt = nil;
     
 }
 
--(void)clickLogin
+-(BOOL)clickLogin
 {
+    usernameArray = [[NSMutableArray alloc]init];
     
-    NSMutableArray *values1 = [[NSMutableArray alloc]init];
-    
-    [values1 addObject:txtNurUserName.text];
-    
-    [values1 addObject:txtNurPassword.text];
-    
+    passwordArray = [[NSMutableArray alloc]init];
     NSString *dbpath=[self getDBPath];
-    
     if (sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
     {
         if (addStmt == nil)
-        {
-            const char *sql="insert into user (loginid,password) values(?,?)";
+        {   NSString* sql_statement = [NSString stringWithFormat: @"select loginID,password from User "] ;
+            const char *sql= [sql_statement UTF8String];
             
-            if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) !=SQLITE_OK)
+            if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) ==SQLITE_OK)
             {
-                
-                NSAssert(0, @"error while creating sataement '%s'",sqlite3_errmsg(database));
+                while (sqlite3_step(addStmt)==SQLITE_ROW) 
+                {
+                    [usernameArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(addStmt, 0)]];
+                    [passwordArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(addStmt, 1)]];
+                    
+                    NSLog(@"values in database%@",usernameArray);
+                    NSLog(@"values in database%@",passwordArray);
+                }
             }
-        }
-        sqlite3_bind_text(addStmt, 1, [[values1 objectAtIndex:0]UTF8String], -1, SQLITE_TRANSIENT);
-        
-        sqlite3_bind_text(addStmt, 2, [[values1 objectAtIndex:1]UTF8String], -1, SQLITE_TRANSIENT);
-        
-        
-        if (SQLITE_DONE !=sqlite3_step(addStmt)) 
-            
-            NSAssert1(0, @"error '%s'", sqlite3_errmsg(database));
-        sqlite3_reset(addStmt);
-        
+            sqlite3_finalize(addStmt);
+        } 
     }
+    
+    
+    //TO DO: Check if there one record in the output
+    // if yes, return true
+    // else return false
+    
+    flg=0;
+    
+    if ([usernameArray count]==0) 
+        flg=0; 
+    else
+    {
+        for (int i=0;i<[usernameArray count];i++) 
+        {
+            NSString *usrName =[usernameArray objectAtIndex:i];
+            NSString *pswd =[passwordArray objectAtIndex:i];
+            if ([ txtNurUserName.text isEqualToString: usrName]) 
+            {
+                if ( [txtNurPassword.text isEqualToString:pswd]) 
+                {
+                    flg=1;
+                    break;
+                }
+            }
+            
+        }
+    }   
+    
+    if (flg==1)
+        return YES; 
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Usename or password doesn't match " message:@"please enter correct username or password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        return NO; 
+    }
+    
 }
 
 
@@ -155,19 +188,6 @@ static sqlite3_stmt *addStmt = nil;
  
  }*/
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
--(void)goNextView
-{
-    PatientBedView *bedView = [[PatientBedView alloc]initWithNibName:@"PatientBedView" bundle:nil];
-    
-    bedView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    [self presentModalViewController:bedView animated:YES];
-}
 
 
 @end

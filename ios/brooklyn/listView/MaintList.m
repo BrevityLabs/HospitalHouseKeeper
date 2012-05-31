@@ -56,7 +56,7 @@ static sqlite3_stmt *selectStmt = nil;
     if(sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
     {
         
-        NSString *nsatt=[NSString stringWithFormat:@"select bedID, bedno from bed where status = '2'"];
+        NSString *nsatt=[NSString stringWithFormat:@"select bid, bedno from bed where status = '2'"];
         
         const char *stmch=[nsatt UTF8String];
         

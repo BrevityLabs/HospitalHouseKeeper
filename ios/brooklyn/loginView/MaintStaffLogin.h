@@ -16,8 +16,10 @@
 {
     UITextField *txtUserName,*txtPassword;
     
+    NSMutableArray *passwordArray;
     UIButton *loginButton;
-    NSMutableArray *values;
+    NSMutableArray *usernameArray;
+    int flg;
 }
 
 @property(nonatomic,retain)IBOutlet UITextField *txtUserName,*txtPassword;
