@@ -166,10 +166,16 @@ static sqlite3_stmt *addStmt = nil;
         //TO DO: Check if there one record in the output
         // if yes, return true
         // else return false
+<<<<<<< HEAD
  
     
   
           return YES;
+=======
+        
+    }
+    return  YES;
+>>>>>>> ttt
 }
 
 
