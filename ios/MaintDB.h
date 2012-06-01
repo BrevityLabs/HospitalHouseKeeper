@@ -10,8 +10,8 @@
 
 @interface MaintDB : NSObject
 {
-    NSString *Eid,*Bedno;
+    NSString *Eid,*Bedno,*Ename;
 }
 
-@property(nonatomic,retain)NSString *Eid,*Bedno;
+@property(nonatomic,retain)NSString *Eid,*Bedno,*Ename;
 @end

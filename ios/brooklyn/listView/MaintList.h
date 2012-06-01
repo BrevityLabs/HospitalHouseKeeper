@@ -19,6 +19,6 @@
 
 +(NSString *)createDB;
 
-+(NSMutableArray *)getAllData;
 
++(NSMutableArray *)getAllData;
 @end

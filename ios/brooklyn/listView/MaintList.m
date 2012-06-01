@@ -13,6 +13,7 @@ static sqlite3 *database =nil;
 static sqlite3_stmt *selectStmt = nil;
 
 @implementation MaintList
+
 +(NSString *)createDB
 {
     NSArray
@@ -46,17 +47,23 @@ static sqlite3_stmt *selectStmt = nil;
     return dbpath;
 }
 
+
+/* Select distinct tablename.field from <table1>
+Inner join <table2> on table1.field1 = table2.field1.
+Inner join <table3> on table2.field = table3.field1.*/
+
+
+//"select bedstaff.empID from Employee Inner join bedstaff on Employee.empID=bedstaff.empID Inner join bed on bedstaff.bedID=bed.bid"
 +(NSMutableArray *)getAllData
 {
-    
-    NSMutableArray *array=[[NSMutableArray alloc]init];
+    NSMutableArray *Bedarray=[[NSMutableArray alloc]init];
     
     NSString *dbpath=[self createDB];
     
     if(sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
     {
         
-        NSString *nsatt=[NSString stringWithFormat:@"select bid, bedno from bed where status = '2'"];
+        NSString *nsatt=[NSString stringWithFormat:@"select Bed.bid,Bed.bedno, Employee.name from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID=Bed.bid"];
         
         const char *stmch=[nsatt UTF8String];
         
@@ -66,18 +73,26 @@ static sqlite3_stmt *selectStmt = nil;
             while (sqlite3_step(selectStmt)==SQLITE_ROW)
             {
                 NSString *eno = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
-                NSString *ename = [NSString stringWithUTF8String:(char*)sqlite3_column_text(selectStmt, 1)];
-                
+                NSLog(@"%@",eno);
+                NSString *ebedno = [NSString stringWithUTF8String:(char*)sqlite3_column_text(selectStmt, 1)];
+                NSLog(@"%@",ebedno);
+                NSString *ename = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 2)];
+                NSLog(@"%@",ename);
                 MaintDB  *maint =[[MaintDB alloc]init];
                 maint.Eid = eno;
-                maint.Bedno = ename;
+                maint.Bedno = ebedno;
+                maint.Ename =ename;
                 
-                [array addObject:maint];
-            }
+                [Bedarray addObject:maint];
+                
+           }
         }
         sqlite3_finalize(selectStmt);
     }
-    return array;
+    return Bedarray;
+    
 }
+
+
 
 @end

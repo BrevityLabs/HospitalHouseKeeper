@@ -9,5 +9,5 @@
 #import "MaintDB.h"
 
 @implementation MaintDB
-@synthesize Eid,Bedno;
+@synthesize Eid,Bedno,Ename;
 @end
