@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Staff : NSObject
+{
+    NSString *Bedno,*Ename;
+}
 
+@property(nonatomic,retain)NSString *Bedno,*Ename;
 @end

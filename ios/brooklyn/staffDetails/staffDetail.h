@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#import <sqlite3.h>
+
+#import "Staff.h"
+
 @interface staffDetail : NSObject
+{
+   
+}
+
++(NSString *)createDB;
+
+
++(NSMutableArray *)getAllData;
 
 @end

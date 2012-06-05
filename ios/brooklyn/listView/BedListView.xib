@@ -41,7 +41,7 @@
 					<object class="IBUITableView" id="171303930">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{112, 260}, {800, 197}}</string>
+						<string key="NSFrame">{{112, 260}, {850, 197}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="209295724">
@@ -321,7 +321,7 @@
 					<object class="IBUILabel" id="219035674">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{751, 231}, {165, 27}}</string>
+						<string key="NSFrame">{{751, 231}, {161, 27}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="IBUIBackgroundColor" ref="868113489"/>
@@ -483,14 +483,14 @@
 							<reference ref="78521064"/>
 							<reference ref="410011317"/>
 							<reference ref="327486045"/>
-							<reference ref="138717752"/>
 							<reference ref="903492349"/>
 							<reference ref="219035674"/>
 							<reference ref="714012586"/>
 							<reference ref="526844613"/>
-							<reference ref="315456287"/>
 							<reference ref="357399117"/>
 							<reference ref="171303930"/>
+							<reference ref="138717752"/>
+							<reference ref="315456287"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -598,7 +598,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">27</int>
+			<int key="maxID">32</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

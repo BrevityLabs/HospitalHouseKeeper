@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface bed : NSObject {
-    
-}
+#import <sqlite3.h>
+
+#import "BedVar.h"
+@interface bed : NSObject
+
++(NSString *)createDB;
+
++(NSMutableArray *)getAllData;
 
 @end

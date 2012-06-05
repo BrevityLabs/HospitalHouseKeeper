@@ -12,7 +12,7 @@
 
 #import <sqlite3.h>
 
-@interface MaintStaffLogin : UIViewController <UITextFieldDelegate>
+@interface MaintStaffLogin : UIViewController 
 {
     UITextField *txtUserName,*txtPassword;
     
@@ -30,9 +30,6 @@
 
 -(BOOL)clickLogin;
 
-//-(void)goNextView;
-
 -(NSString *)getDBPath;
 
-//-(void)passwordValidation;
 @end

@@ -50,7 +50,7 @@ static sqlite3 *database = nil;
         }
     }
     
-        // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -60,25 +60,24 @@ static sqlite3 *database = nil;
     // e.g. self.myOutlet = nil;
 }
 
-/*-(IBAction)gridView:(id)sender
+-(IBAction)gridView:(id)sender
 {
     if (self.view ==nil)
     {
         
- 
-    [self getMaintBedNumber];
-    for(int i = 1; i< [bedNoArray count] ; i++) 
-    {
-        for (int j = 0; j <=i; j++) 
+        [self getMaintBedNumber];
+        for(int i = 1; i< [bedNoArray count] ; i++) 
         {
-            NSString *str=[bedNoArray objectAtIndex:j];
-            [self drawBedAvailable:(204.8 * j) y: (i*150.0) width:204.8 height:150.0 bedId:str]   ;
+            for (int j = 0; j <=i; j++) 
+            {
+                NSString *str=[bedNoArray objectAtIndex:j];
+                [self drawBedAvailable:(204.8 * j) y: (i*150.0) width:204.8 height:150.0 bedId:str]   ;
+            }
         }
-    }
         
     }
 }
-*/
+
 
 -(IBAction)signOut:(id)sender
 {
@@ -99,7 +98,7 @@ static sqlite3 *database = nil;
     
     CGRect myRect = CGRectMake(x_pos, y_pos, _width, _height);
     
-   maintBedView = [[UIView alloc]initWithFrame:myRect];
+    maintBedView = [[UIView alloc]initWithFrame:myRect];
     
     maintBedView.backgroundColor = [UIColor yellowColor];
     
@@ -116,7 +115,7 @@ static sqlite3 *database = nil;
     [button addTarget:self action:@selector(maintStaffDetilView:) forControlEvents:UIControlEventTouchUpInside];
     
     button.frame=CGRectMake(BUTTON_X, BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
-      [button setTitle:_bedId forState:UIControlStateNormal]; 
+    [button setTitle:_bedId forState:UIControlStateNormal]; 
     
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
     
@@ -165,22 +164,22 @@ static sqlite3 *database = nil;
 -(void )getMaintBedNumber
 {
     bedNoArray = [[NSMutableArray alloc]init];
-
+    
     NSString *dbPath=[self getDBPath1];
     
     if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK)
     {
-       // const char * sql1 = "select  BedNo from BedStaus where Status ='2'";
+        // const char * sql1 = "select  BedNo from BedStaus where Status ='2'";
         sqlite3_stmt *selectStmt;
         
-     const char *sql1 = "SELECT bedno FROM bed WHERE status ='2' ";
-     
+        const char *sql1 = "SELECT bedno FROM bed WHERE status ='2' ";
+        
         if (sqlite3_prepare_v2(database, sql1, -1, &selectStmt, NULL)==SQLITE_OK) 
         {
             while (sqlite3_step(selectStmt) == SQLITE_ROW)
             {
                 [bedNoArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)]];
-                               
+                
                 NSLog(@"%@",bedNoArray);
             }
         }
@@ -188,11 +187,11 @@ static sqlite3 *database = nil;
         
     }
     
-     
+    
     else
         
         sqlite3_close(database);
-  
+    
 }
 
 -(IBAction)listView:(id)sender

@@ -10,12 +10,11 @@
 
 static sqlite3 *database=nil;
 
-static sqlite3_stmt *addStmt = nil;
-
+static sqlite3_stmt *selectStmt = nil;
 
 @implementation NurseStaffLogin
 
-@synthesize txtNurPassword,txtNurUserName,loginNurButton;
+@synthesize txtNurUserName,txtNurPassword,loginNurButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,20 +53,21 @@ static sqlite3_stmt *addStmt = nil;
     // Return YES for supported orientations
 	return YES;
 }
--(IBAction)loginClicked:(id)sender
+
+-(IBAction)nurLoginClicked:(id)sender
 {
     if ([self clickLogin])
     {
-        PatientBedView *status = [[PatientBedView alloc]initWithNibName:@"PatientBedView" bundle:nil];
+        BedView *bedstatus = [[BedView alloc]initWithNibName:@"BedView" bundle:nil];
         
-        status.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        bedstatus.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         
-        [self presentModalViewController:status animated:YES];
+        [self presentModalViewController:bedstatus animated:YES];
         
     }
 }
 
--(NSString *)getDBPath
+-(NSString *)getDbPath
 {
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentdir=[paths objectAtIndex:0];
@@ -94,28 +94,28 @@ static sqlite3_stmt *addStmt = nil;
 
 -(BOOL)clickLogin
 {
-    usernameArray = [[NSMutableArray alloc]init];
+    nurUsernameArray = [[NSMutableArray alloc]init];
     
-    passwordArray = [[NSMutableArray alloc]init];
-    NSString *dbpath=[self getDBPath];
+    nurPasswordArray = [[NSMutableArray alloc]init];
+    NSString *dbpath=[self getDbPath];
     if (sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
     {
-        if (addStmt == nil)
+        if (selectStmt == nil)
         {   NSString* sql_statement = [NSString stringWithFormat: @"select loginID,password from User "] ;
             const char *sql= [sql_statement UTF8String];
             
-            if (sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) ==SQLITE_OK)
+            if (sqlite3_prepare_v2(database, sql, -1, &selectStmt, NULL) ==SQLITE_OK)
             {
-                while (sqlite3_step(addStmt)==SQLITE_ROW) 
+                while (sqlite3_step(selectStmt)==SQLITE_ROW) 
                 {
-                    [usernameArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(addStmt, 0)]];
-                    [passwordArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(addStmt, 1)]];
+                    [nurUsernameArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)]];
+                    [nurPasswordArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 1)]];
                     
-                    NSLog(@"values in database%@",usernameArray);
-                    NSLog(@"values in database%@",passwordArray);
+                    NSLog(@"values in database%@",nurUsernameArray);
+                    NSLog(@"values in database%@",nurPasswordArray);
                 }
             }
-            sqlite3_finalize(addStmt);
+            sqlite3_finalize(selectStmt);
         } 
     }
     
@@ -126,14 +126,14 @@ static sqlite3_stmt *addStmt = nil;
     
     flg=0;
     
-    if ([usernameArray count]==0) 
+    if ([nurUsernameArray count]==0) 
         flg=0; 
     else
     {
-        for (int i=0;i<[usernameArray count];i++) 
+        for (int i=0;i<[nurUsernameArray count];i++) 
         {
-            NSString *usrName =[usernameArray objectAtIndex:i];
-            NSString *pswd =[passwordArray objectAtIndex:i];
+            NSString *usrName =[nurUsernameArray objectAtIndex:i];
+            NSString *pswd =[nurPasswordArray objectAtIndex:i];
             if ([ txtNurUserName.text isEqualToString: usrName]) 
             {
                 if ( [txtNurPassword.text isEqualToString:pswd]) 
@@ -156,38 +156,6 @@ static sqlite3_stmt *addStmt = nil;
     }
     
 }
-
-
-/*-(void)passwordValidation
- {
- NSString *pwd=[NSString stringWithString:txtPassword.text];
- int lngth=[pwd length]; 
- int minlength=6;
- 
- NSString *regex = @"\\b([a-zA-Z0-9]+)\\b"; 
- 
- NSPredicate * regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
- 
- BOOL x= [regextest evaluateWithObject:pwd];
- 
- if (lngth>=minlength) {
- NSLog(@"passoword length is enough");
- if (x==FALSE) {
- NSLog(@"Special charector check enabled");
- UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"No Special Charectors" message:@"please don't use special charectors" delegate:self cancelButtonTitle:@"Wanna Correct" otherButtonTitles:nil];
- [alert show];
- [txtPassword becomeFirstResponder];
- [self.view addSubview:txtPassword];
- }
- }
- else {
- UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Poor length" message:@"Password length must not be less than 8.." delegate:self cancelButtonTitle:@"Wanna Correct" otherButtonTitles:nil];
- [alert show];
- [txtPassword becomeFirstResponder];
- }
- 
- }*/
-
 
 
 @end

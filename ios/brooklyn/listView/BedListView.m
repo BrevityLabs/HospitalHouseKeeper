@@ -39,53 +39,15 @@
     // Do any additional setup after loading the view from its nib.
     
     Array =[MaintList getAllData];
-    
-  }
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-      
+    
     // Configure the cell...
     //MaintDB *emp = [Array objectAtIndex:indexPath.row];
 	//cell.textLabel.text= [NSString stringWithFormat:@"%@           %@    %@", emp.Eid,emp.Bedno,emp.Ename];
-//    UILabel *Label1 = [[UILabel alloc]initWithFrame:CGRectMake(112,260, 58, 44)];
-//    Label1.text = emp.Eid;
-//    Label1.textAlignment = UITextAlignmentCenter;
-//    [cell.contentView addSubview:Label1];
-//
-//    UILabel *Label2 = [[UILabel alloc]initWithFrame:CGRectMake(172,260, 74, 44)];
-//    Label2.text = emp.Bedno;
-//    Label2.textAlignment = UITextAlignmentCenter;
-//    [cell.contentView addSubview:Label2];
-//
-//    UILabel *Label3= [[UILabel alloc]initWithFrame:CGRectMake(249,260, 170, 44)];
-//    Label3.text = @"Under maintenance";
-//    Label3.textAlignment = UITextAlignmentCenter;
-//    [cell.contentView addSubview:Label3];
-//
-//    
-//UIButton *actionBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    actionBtn.frame = CGRectMake(422, 260, 170, 30);
-//   [actionBtn setTitle:@"cleaning done" forState:UIControlStateNormal];
-//   [cell.contentView addSubview:actionBtn];
-////    
-//    
-//    UILabel *typeLabel = [[UILabel alloc]initWithFrame:CGRectMake(594, 260, 99, 44)];
-//    typeLabel.text = @"Standard";
-//    typeLabel.textAlignment = UITextAlignmentCenter;
-//    [cell.contentView addSubview:typeLabel];
-//    
-//    UIButton *colorBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    colorBtn.frame = CGRectMake(696, 260, 52, 44);
-//    [colorBtn setBackgroundColor:[UIColor redColor]];
-//    [cell.contentView addSubview:colorBtn];
-////   
-//    
-//    UILabel *statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(751,260, 165, 27)];
-//    statusLabel.text = @"Under maintenance";
-//    statusLabel.textAlignment = UITextAlignmentCenter;
-//    [cell.contentView addSubview:statusLabel];
-
+    
     static NSString *identifier =@"My Cell";
     
     UITableViewCell *cell =[self.listView dequeueReusableCellWithIdentifier:identifier];
@@ -97,70 +59,83 @@
     
     UILabel *bedIdLabel=(UILabel *)[cell viewWithTag:BEDID_TAG];
     bedIdLabel.text = emp.Eid;
+    bedIdLabel.textAlignment = UITextAlignmentCenter;
     
     UILabel *bedNoLabel=(UILabel *)[cell viewWithTag:BEDNO_TAG];
     bedNoLabel.text = emp.Bedno;
-
+    bedNoLabel.textAlignment = UITextAlignmentCenter;
+    
     UILabel *patientLabel=(UILabel *)[cell viewWithTag:PATIENT_TAG];
     patientLabel.text = emp.Ename;
+    patientLabel.textAlignment = UITextAlignmentCenter;
     
     UIButton *actionBtn =(UIButton *)[cell viewWithTag:ACTION_TAG];
-   [actionBtn setTitle:@"cleaning done" forState:UIControlStateNormal];
- 
-        return cell;
-
+    NSString *actionStr = @" cleaning done" ;
+    [actionBtn setTitle:actionStr forState:UIControlStateHighlighted];
+    
+    
+    UILabel *bedTypeLabel=(UILabel *)[cell viewWithTag:BEDTYPE_TAG];
+    bedTypeLabel.text = @"Standard";
+    
+    
+    UILabel *colorLabel = (UILabel *)[cell viewWithTag:COLOR_TAG];
+    colorLabel.backgroundColor = [UIColor redColor];
+    
+    UILabel *statusLabel=(UILabel *)[cell viewWithTag:STATUS_TAG];
+    statusLabel.text = @"Under maintenance";                    
+    
+    return cell;
     
 }
 
 -(UITableViewCell *)reuseTableViewCellWithIdentifier:(NSString *)identifier
 {
+    
     CGRect cellRectangle;
     
-    cellRectangle = CGRectMake(112.0,260.0,800.0,197.0);
-    
+    cellRectangle = CGRectMake(0,0,850,44);    
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier: identifier];
     cell.frame =cellRectangle;
     
- 
     UILabel *bedIdLabel;
     
-   CGRect rect1 = CGRectMake(112.0,260, 58, 44);
+    CGRect rect1 = CGRectMake(0,0, 58, 44);
     bedIdLabel= [[UILabel alloc]initWithFrame:rect1];
     bedIdLabel.tag =BEDID_TAG; 
     [cell.contentView addSubview:bedIdLabel];
     
     
-    CGRect rect2 = CGRectMake(172,260, 74, 44);
+    CGRect rect2 = CGRectMake(60,0, 74, 44);
     UILabel *bedNoLabel= [[UILabel alloc]initWithFrame:rect2];
-    bedNoLabel.tag =BEDID_TAG; 
+    bedNoLabel.tag =BEDNO_TAG; 
     [cell.contentView addSubview:bedNoLabel];
     
-    CGRect rect3 = CGRectMake(249,260, 170, 44);
+    CGRect rect3 = CGRectMake(140,0, 170, 44);
     UILabel *patientLabel= [[UILabel alloc]initWithFrame:rect3];
-    patientLabel.tag =BEDID_TAG; 
+    patientLabel.tag =PATIENT_TAG; 
     [cell.contentView addSubview:patientLabel];
     
-    CGRect rect4 = CGRectMake(594, 260, 99, 44);
+    UIButton *actionBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    actionBtn.frame = CGRectMake(315, 0, 160, 40);
+    [cell.contentView addSubview:actionBtn];
+    
+    CGRect rect4 = CGRectMake(490, 0, 99, 44);
     UILabel *bedTypeLabel= [[UILabel alloc]initWithFrame:rect4];
-    bedTypeLabel.tag =BEDID_TAG; 
+    bedTypeLabel.tag =BEDTYPE_TAG; 
     [cell.contentView addSubview:bedTypeLabel];
-
-    CGRect rect5 = CGRectMake(751,260, 165, 27);
-    UILabel *statusLabel= [[UILabel alloc]initWithFrame:rect5];
-    statusLabel.tag =BEDID_TAG; 
+    
+    CGRect rect5 = CGRectMake(600, 0,40, 30);
+    UILabel *colorLabel = [[UILabel alloc]initWithFrame:rect5];
+    colorLabel.tag =COLOR_TAG;
+    [cell.contentView   addSubview:colorLabel];
+    
+    
+    CGRect rect6 = CGRectMake(645,0, 170, 27);
+    UILabel *statusLabel= [[UILabel alloc]initWithFrame:rect6];
+    statusLabel.tag =STATUS_TAG; 
     [cell.contentView addSubview:statusLabel];
     return cell;
     
-    UIButton *actionBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    actionBtn.frame = CGRectMake(422, 260, 170, 30);
-    [cell.contentView addSubview:actionBtn];
-    
-    UIButton *colorBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    colorBtn.frame = CGRectMake(696, 260, 52, 44);
-    [colorBtn setBackgroundColor:[UIColor redColor]];
-    [cell.contentView addSubview:colorBtn];
-
-
 }
 
 -(NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    
@@ -168,15 +143,20 @@
     return [Array count];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    
-     MaintStaffDetailView *detailViewController = [[MaintStaffDetailView alloc] initWithNibName:@"MaintStaffDetailView" bundle:nil];
-  
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // Navigation logic may go here. Create and push another view controller.
+//    
+//    if (indexPath.row !=0) 
+//    {
+//   // [listView deselectRowAtIndexPath:indexPath animated:NO];
+//    
+//    MaintStaffDetailView *detailViewController = [[MaintStaffDetailView alloc] initWithNibName:@"MaintStaffDetailView" bundle:nil];
+//    
+//    [[self navigationController ] pushViewController:detailViewController animated:YES];
+//    }
+//    
+//}
 -(IBAction)getGridView:(id)sender
 {
     BedStatusView *grid = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];

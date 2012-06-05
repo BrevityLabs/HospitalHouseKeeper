@@ -9,5 +9,5 @@
 #import "Staff.h"
 
 @implementation Staff
-
+@synthesize Bedno,Ename;
 @end

@@ -9,5 +9,5 @@
 #import "BedVar.h"
 
 @implementation BedVar
-
+@synthesize bedNumber,bedStatus;
 @end

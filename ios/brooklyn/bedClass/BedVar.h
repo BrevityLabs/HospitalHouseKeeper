@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface BedVar : NSObject
-
+{
+    NSString *bedNumber;
+     NSString *bedStatus;
+}
+@property(nonatomic,retain)NSString *bedNumber,*bedStatus;
 @end

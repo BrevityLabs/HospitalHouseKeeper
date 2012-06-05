@@ -16,6 +16,8 @@
 
 #import "MaintStaffDetailView.h"
 
+#import "MaintDB.h"
+
 #define ROW_HEIGHT 44
 #define CELL_WIDTH 800
 #define LABEL_HEIGHT 44

@@ -165,37 +165,6 @@ static sqlite3_stmt *addStmt = nil;
 
 
 
-/*-(void)passwordValidation
- {
- NSString *pwd=[NSString stringWithString:txtPassword.text];
- int lngth=[pwd length]; 
- int minlength=6;
- 
- NSString *regex = @"\\b([a-zA-Z0-9]+)\\b"; 
- 
- NSPredicate * regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
- 
- BOOL x= [regextest evaluateWithObject:pwd];
- 
- if (lngth>=minlength) {
- NSLog(@"passoword length is enough");
- if (x==FALSE) {
- NSLog(@"Special charector check enabled");
- UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"No Special Charectors" message:@"please don't use special charectors" delegate:self cancelButtonTitle:@"Wanna Correct" otherButtonTitles:nil];
- [alert show];
- [txtPassword becomeFirstResponder];
- [self.view addSubview:txtPassword];
- }
- }
- else {
- UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Poor length" message:@"Password length must not be less than 8.." delegate:self cancelButtonTitle:@"Wanna Correct" otherButtonTitles:nil];
- [alert show];
- [txtPassword becomeFirstResponder];
- }
- 
- }*/
-
-
 
 
 @end

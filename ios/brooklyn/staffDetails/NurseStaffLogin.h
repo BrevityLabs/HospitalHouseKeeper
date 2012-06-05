@@ -10,31 +10,26 @@
 
 #import <sqlite3.h>
 
-#import "PatientBedView.h"
+#import "BedView.h"
 
-@interface NurseStaffLogin : UIViewController <UITextFieldDelegate>
-{
+@interface NurseStaffLogin : UIViewController {
     UITextField *txtNurUserName,*txtNurPassword;
     
+    NSMutableArray *nurPasswordArray;
     UIButton *loginNurButton;
-    
-    NSMutableArray *passwordArray;
-    
-    NSMutableArray *usernameArray;
-      int flg;
+    NSMutableArray *nurUsernameArray;
+    int flg;
 }
 
 @property(nonatomic,retain)IBOutlet UITextField *txtNurUserName,*txtNurPassword;
 
 @property(nonatomic,retain)IBOutlet UIButton *loginNurButton;
 
--(IBAction)loginClicked:(id)sender;
+-(IBAction)nurLoginClicked:(id)sender;
 
 -(BOOL)clickLogin;
 
-//-(void)goNextView;
-
--(NSString *)getDBPath;
+-(NSString *)getDbPath;
 
 
 @end

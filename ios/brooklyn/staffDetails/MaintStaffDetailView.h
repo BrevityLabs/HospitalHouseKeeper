@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "staffDetail.h"
+
+#import "Staff.h"
+
 @interface MaintStaffDetailView : UIViewController
 {
     UITextField  *txt_BedNo,*txt_BedAssign,*txt_WorkStatus,*txt_Pedding;
     
     UIButton *backButton,*cleaningDoneButton;
+    
+    NSMutableArray *staffArray;
 }
 
 @property(nonatomic,retain)IBOutlet UITextField  *txt_BedNo,*txt_BedAssign,*txt_WorkStatus,*txt_Pedding;
