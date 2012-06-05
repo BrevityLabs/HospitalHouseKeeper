@@ -1,14 +1,14 @@
 //
-//  PatientBedView.m
+//  BedView.m
 //  brooklyn
 //
-//  Created by Maya on 30/05/12.
+//  Created by Maya on 04/06/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "PatientBedView.h"
+#import "BedView.h"
 
-@implementation PatientBedView
+@implementation BedView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
