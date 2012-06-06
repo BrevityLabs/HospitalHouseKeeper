@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import <sqlite3.h>
+
+#import "patientVar.h"
+
 @interface patient : NSObject
++(NSString *)createDB;
+
++(NSMutableArray *)getPatientData;
+
 
 @end

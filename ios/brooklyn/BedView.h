@@ -12,28 +12,30 @@
 
 #import "PatientDetailView.h"
 
+#import "PatientRegnView.h"
+
+#import "MaintenanceView.h"
 @interface BedView : UIViewController
 {
     UIButton *nurGridViewButton,*nurListViewButton;//*signOutButton;
     
     UIView *nurseBedView;
-    UIImageView *img;
-    UIButton *button;
-//    UILabel *label;
+    UIButton *bedImgButton;
+    UIButton *bedNoButton;
     
-    NSMutableArray *nurBedNoArray;
+    NSMutableArray *nurseBedNoArray;
     
-    enum bedImg_size {
-        BIMGXOFFSET = 30,
-        BIMGYOFFSET = 30,
-        BIMGIMGWIDTH =200,
-        BIMGIMGHEIGHT= 136
+    enum bedImgButton_size {
+        BEDIMGXOFFSET = 30,
+        BEDIMGYOFFSET = 30,
+        BEDIMGWIDTH =200,
+        BEDIMGHEIGHT= 136
     };
     enum bedButton_size {
-        BEDBUTTON_X = 0,
-        BEDBUTTON_Y = 0,
-        BEDBUTTON_WIDTH =50,
-        BEDBUTTON_HEIGHT= 50
+        BEDNOBUTTON_X = 0,
+        BEDNOBUTTON_Y = 0,
+        BEDNOBUTTON_WIDTH =50,
+        BEDNOBUTTON_HEIGHT= 50
     };
     
     
@@ -41,13 +43,17 @@
 
 @property(nonatomic,retain)IBOutlet UIView *nurseBedView;
 
-@property(nonatomic,retain)IBOutlet UIImageView *img;
-//
-@property(nonatomic,retain)IBOutlet UIButton *button ;
+@property(nonatomic,retain)IBOutlet UIButton *bedImgButton;
+
+@property(nonatomic,retain)IBOutlet UIButton *bedNoButton;
 
 @property(nonatomic,retain)IBOutlet UIButton *nurListViewButton,*nurGridViewButton;//*signOutButton;
 
 -(IBAction)patientDetailview:(id)sender;
+
+-(IBAction)patientRegView:(id)sender;
+
+-(IBAction)messageView:(id)sender;
 
 -(void) drawnurBedAvailable : (float) x_pos 
                    y : (float) y_pos  

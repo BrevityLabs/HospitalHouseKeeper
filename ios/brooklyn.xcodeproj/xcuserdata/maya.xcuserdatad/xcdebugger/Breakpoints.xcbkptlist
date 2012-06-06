@@ -8,13 +8,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "brooklyn/bedClass/bed.m"
-         timestampString = "360590703.75607"
+         filePath = "brooklyn/patientClass/patient.m"
+         timestampString = "360666543.894225"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
-         landmarkName = "+getAllData"
+         startingLineNumber = "57"
+         endingLineNumber = "57"
+         landmarkName = "+getPatientData"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

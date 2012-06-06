@@ -55,7 +55,7 @@ static sqlite3_stmt *selectStmt = nil;
 
 
 //"select bedstaff.empID from Employee Inner join bedstaff on Employee.empID=bedstaff.empID Inner join bed on bedstaff.bedID=bed.bid"
-+(NSMutableArray *)getAllData
++(NSMutableArray *)getAllValues
 {
     NSMutableArray *Bedarray=[[NSMutableArray alloc]init];
     

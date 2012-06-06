@@ -1,17 +1,18 @@
 //
-//  PatientDetailView.m
+//  PatientRegnView.m
 //  brooklyn
 //
-//  Created by Maya on 04/06/12.
+//  Created by Maya on 06/06/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "PatientDetailView.h"
+#import "PatientRegnView.h"
 
-@implementation PatientDetailView
+@implementation PatientRegnView
 
-@synthesize txt_PatAdmitted,txt_PatBedNo,txt_PatDoctorName,txt_PatientAddress,txt_PatientID,txt_PatientName;
-@synthesize  backButton,saveButton,dischargeButton;
+@synthesize reg_PatBedNo,reg_PatAdmitted,reg_PatDoctorName,reg_PatientID,reg_PatientName,reg_PatientAddress;
+
+@synthesize reEnterButton,regbackButton,regsaveButton;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,9 +36,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    patientArray =[patient getPatientData];
-    
 }
 
 - (void)viewDidUnload
