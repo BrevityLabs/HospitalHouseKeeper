@@ -3,7 +3,7 @@
 //  brooklyn
 //
 //  Created by Maya on 04/06/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Trendwise Analytics. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

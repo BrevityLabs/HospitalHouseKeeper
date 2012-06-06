@@ -43,6 +43,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self initializeDBConnection] ;
 }
 
 - (void)viewDidUnload
@@ -76,6 +77,12 @@
 {
     // Return YES for supported orientations
     return YES;
+}
+
+
+-(void) initializeDBConnection {
+    dbconn = [[DBConnection alloc] init] ;
+    
 }
 
 @end

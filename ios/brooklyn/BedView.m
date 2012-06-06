@@ -3,7 +3,7 @@
 //  brooklyn
 //
 //  Created by Maya on 04/06/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Trendwise Analytics. All rights reserved.
 //
 
 #import "BedView.h"
@@ -34,18 +34,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    nurseBedNoArray =[bed getAllValues];
+//    bed * objbed = [[bed alloc] init] ;
+    bedArray = [bed getBedList];
     NSString *str1 = @"1";
     NSString *str2 = @"2";
     NSString *str3 = @"3";
     
     int i=1;
-    int j=0;
-    while (i<[nurseBedNoArray count])
-    {
-        for (; j<[nurseBedNoArray count]; j++)
-        {
-                   BedVar *b3 =[nurseBedNoArray objectAtIndex:j];
+    while (i<[bedArray count]) {
+        for (int j=0; j<[bedArray count]; j++) {
+                bed *b3 =[bedArray objectAtIndex:j];
                 
                 NSLog(@"bed %@",b3.bedNumber);
                 

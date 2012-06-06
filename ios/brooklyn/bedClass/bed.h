@@ -3,18 +3,22 @@
 //  brooklyn
 //
 //  Created by Maya on 30/05/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Trendwise Analytics. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "DBConnection.h"
 
 #import <sqlite3.h>
 
-#import "BedVar.h"
-@interface bed : NSObject
+@interface bed : NSObject {
+    DBConnection* dbconn ;
+    NSString *bedNumber;
+    NSString *bedStatus;
+}
+@property(nonatomic,retain)NSString *bedNumber,*bedStatus;
 
-+(NSString *)createDB;
-
-+(NSMutableArray *)getAllValues;
++(NSMutableArray *) getBedList ;
+-(id) initWithBedId: (NSString*) _bedID ;
 
 @end
