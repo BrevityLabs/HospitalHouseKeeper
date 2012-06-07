@@ -10,93 +10,95 @@
 
 static sqlite3 *database =nil;
 
-static sqlite3_stmt *selectStmt = nil;
+@implementation Patient
+@synthesize patientId;
+@synthesize name;
+@synthesize address;
+@synthesize cell;
+@synthesize bedNo ;
 
-@implementation patient
-+(NSString *)createDB
-{
-    NSArray
-    *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,
-                                               YES);
-    
-    NSString *documentsdir=[paths objectAtIndex:0];
-    NSString *dbpath=[documentsdir
-                      stringByAppendingPathComponent:@"brookelyn.sqlite"];
-    
-    NSFileManager *fileManager=[NSFileManager defaultManager];
-    
-    NSError *error;
-    
-    BOOL success=[fileManager fileExistsAtPath:dbpath];
-    
-    if(!success)
-    {
-        NSString *defaultpath=[[[NSBundle
-                                 mainBundle]resourcePath]stringByAppendingPathComponent:@"brookelyn.sqlite"];
+/*
+ *  Constructor with the patient identifier as the argument. It gets all the information 
+ *  from the DB table and builds the object.
+ */
+-(id) initWithPatientId: (NSString*) _patientId {
+    if (self = [super init]) {
         
-        success=[fileManager copyItemAtPath:defaultpath toPath:dbpath
-                                      error:&error];
+        sqlite3 * database = [DBConnection connectionFactory ] ;
+        static sqlite3_stmt* _selectStmt = nil;
+        NSString* _bedId ;
         
-        if(!success)
-            NSAssert1(0,@"failed to create writable database.'%@'",
-                      [error localizedDescription]);
-        
-    }
-    NSLog(@"%@",dbpath);
-    return dbpath;
-}
-
-
-/* Select distinct tablename.field from <table1>
- Inner join <table2> on table1.field1 = table2.field1.
- Inner join <table3> on table2.field = table3.field1.*/
-
-
-//@"select Bed.bid,Bed.bedno, Employee.name from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID=Bed.bid"
-
-+(NSMutableArray *)getPatientData
-{
-    NSMutableArray *Bedarray=[[NSMutableArray alloc]init];
-    
-    NSString *dbpath=[self createDB];
-    
-    if(sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
-    {
-        
-        NSString *nsatt=[NSString stringWithFormat:@"SELECT Patient.PatientID,Patient.name,Patient.Address,Bed.bedno from Patient Inner join BedPatient on Patient.patientID = BedPatient.patientID Inner join Bed on BedPatient.patientID = Bed.bid"];
-        
+        NSString *nsatt = 
+            [NSString stringWithFormat:@"SELECT name, address, cellNo FROM Patient WHERE patientID = '%@'",_patientId] ;
         const char *stmch=[nsatt UTF8String];
         
-        if(sqlite3_prepare_v2(database, stmch, -1, &selectStmt,NULL)==SQLITE_OK)
-        {
-            
-            while (sqlite3_step(selectStmt)==SQLITE_ROW)
-            {
-                NSString *pid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
-                NSLog(@"%@",pid);
-                
-                NSString *pname = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 1)];
-                NSLog(@"%@",pname);
-                
-                NSString *pAddr = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 2)];
-                NSLog(@"%@",pAddr);
-                
-                NSString *pBedNo = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 3)];
-                NSLog(@"%@",pname);
-              patientVar *p1 =[[patientVar alloc]init];
-                p1.patId =pid;
-                p1.patName =pname;
-                p1.patAddrs =pAddr;
-                p1.patBedNo =pBedNo;
-                
-                [Bedarray addObject:p1];
+        if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
+            while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
+                patientId   = _patientId ;
+                name        = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+                address     = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
+                cell        = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 2)];
+                [self getAllocatedBedNo: _patientId ];
                 
             }
+        } else {
+            NSLog(@"Class bed: Method initWithBedId::Query on Bed table failed.") ;
         }
-        sqlite3_finalize(selectStmt);
+        
     }
-    return Bedarray;
+    return self ;
     
+}
+
+/*
+ *  This class method returns the entire list of patients currently admitted. The patients in the Patient 
+ *  Master who are not currently occupying any bed would not be shown.
+ */
+
++(NSMutableArray *) getPatientList {
+    
+    sqlite3 * database = [DBConnection connectionFactory ] ;
+    sqlite3_stmt* _selectStmt ;
+
+    NSMutableArray * patientArray=[[NSMutableArray alloc]init];
+    
+    NSString *nsatt = [NSString stringWithFormat:@"SELECT A.patientID FROM Patient A, BedPatient B where A.PatientID = B.PatientID"];
+    const char *stmch=[nsatt UTF8String];
+    
+    if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
+        
+        while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
+            NSString * patientId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+            Patient * temp =[[Patient alloc] initWithPatientId: patientId];
+            
+            [patientArray addObject: temp];
+            
+        }
+    }
+    sqlite3_finalize(_selectStmt);
+    return patientArray;  //an array of all the beds 
+    
+}
+
+/*
+ *  Method to retrieve Bed No from Bed Master if Bed ID is passed as an argument.
+ *  This method also modifies the object property bedId.
+ */
+-(NSString*) getAllocatedBedNo: (NSString*) _patientId {
+    sqlite3_stmt* _selectStmt ;
+    
+    if (bedNo == NULL) {
+        NSString *nsatt = [NSString stringWithFormat:@"SELECT A.bedNo FROM Bed A, BedPatient B where A.bedID = B.bedID AND B.patientID = %@", _patientId];
+        const char *stmch=[nsatt UTF8String];
+        if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
+            while (sqlite3_step(_selectStmt) == SQLITE_ROW) { 
+                //...
+                 bedNo = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+            }
+        }        
+    }
+    sqlite3_finalize(_selectStmt);
+    return bedNo ;
 }
 
 

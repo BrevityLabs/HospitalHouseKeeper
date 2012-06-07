@@ -24,7 +24,6 @@
 		6C8DEDD2157F363C000975C7 /* PatientRegnView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8DEDD0157F363C000975C7 /* PatientRegnView.xib */; };
 		6C8DEDD7157F39B2000975C7 /* MaintenanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8DEDD5157F39B2000975C7 /* MaintenanceView.m */; };
 		6C8DEDD8157F39B2000975C7 /* MaintenanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8DEDD6157F39B2000975C7 /* MaintenanceView.xib */; };
-		6C8F20AC157F53B500468F63 /* patientVar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F20AB157F53B500468F63 /* patientVar.m */; };
 		6CCB88BE15749ED6002456B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88BD15749ED6002456B0 /* UIKit.framework */; };
 		6CCB88C015749ED6002456B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88BF15749ED6002456B0 /* Foundation.framework */; };
 		6CCB88C215749ED6002456B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88C115749ED6002456B0 /* CoreGraphics.framework */; };
@@ -107,8 +106,6 @@
 		6C8DEDD4157F39B2000975C7 /* MaintenanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintenanceView.h; sourceTree = "<group>"; };
 		6C8DEDD5157F39B2000975C7 /* MaintenanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintenanceView.m; sourceTree = "<group>"; };
 		6C8DEDD6157F39B2000975C7 /* MaintenanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintenanceView.xib; sourceTree = "<group>"; };
-		6C8F20AA157F53B500468F63 /* patientVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = patientVar.h; sourceTree = "<group>"; };
-		6C8F20AB157F53B500468F63 /* patientVar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = patientVar.m; sourceTree = "<group>"; };
 		6CCB88B915749ED6002456B0 /* brooklyn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brooklyn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CCB88BD15749ED6002456B0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6CCB88BF15749ED6002456B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -214,8 +211,6 @@
 			children = (
 				6C7420D81577633300AB7386 /* patient.h */,
 				6C7420D91577633300AB7386 /* patient.m */,
-				6C8F20AA157F53B500468F63 /* patientVar.h */,
-				6C8F20AB157F53B500468F63 /* patientVar.m */,
 			);
 			path = patientClass;
 			sourceTree = "<group>";
@@ -579,7 +574,6 @@
 				6C875D88157CDB79002BD723 /* NurseStaffLogin.m in Sources */,
 				6C8DEDD1157F363C000975C7 /* PatientRegnView.m in Sources */,
 				6C8DEDD7157F39B2000975C7 /* MaintenanceView.m in Sources */,
-				6C8F20AC157F53B500468F63 /* patientVar.m in Sources */,
 				D29FD808157F60B30004B0DC /* DBConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,14 +11,24 @@
 
 #import <sqlite3.h>
 
-@interface bed : NSObject {
-    DBConnection* dbconn ;
-    NSString *bedNumber;
-    NSString *bedStatus;
+@interface Bed : NSObject {
+    DBConnection* dbconn;
+    
+    NSString*   bedId;
+    NSString*   number;
+    NSString*   status;
+    NSString*   type;
 }
-@property(nonatomic,retain)NSString *bedNumber,*bedStatus;
 
-+(NSMutableArray *) getBedList ;
--(id) initWithBedId: (NSString*) _bedID ;
+@property(nonatomic,retain) NSString* bedId;
+@property(nonatomic,retain) NSString* number;
+@property(nonatomic,retain) NSString* status;
+@property(nonatomic,retain) NSString* type;
+
++(NSMutableArray *) getBedList ;        //gets the list of beds in the hospital
+
+-(id) initWithBedId: (NSString*) _bedId ; //creating a Bed object using bedID
+
++(NSMutableArray *) getBedIdList ;
 
 @end

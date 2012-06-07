@@ -8,7 +8,7 @@
 
 #import "employee.h"
 
-@implementation employee
+@implementation Employee
 
 -(id) initWithEmployeeID : (int) empID {
     //Get handled to DB connection

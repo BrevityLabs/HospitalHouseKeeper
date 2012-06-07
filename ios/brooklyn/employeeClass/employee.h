@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface employee : NSObject{
+@interface Employee : NSObject{
     
     int         employeeID ;
     NSString*   name ;
@@ -29,5 +29,6 @@
 
 -(NSString*) getLoginID ;
 
++(NSMutableArray*) getEmployeeList ; // static method to get employee object list
 
 @end

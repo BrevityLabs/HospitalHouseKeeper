@@ -7,15 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <sqlite3.h>
+#import "DBConnection.h"
 
-#import "patientVar.h"
+@interface Patient : NSObject {
 
-@interface patient : NSObject
-+(NSString *)createDB;
+    NSString*       patientId; 
+    NSString*       name;
+    NSString*       address;
+    NSString*       cell;
+    NSString*       bedNo; //comes from the link table BedPatient
+}
 
-+(NSMutableArray *)getPatientData;
+@property (nonatomic,retain) NSString* patientId; 
+@property (nonatomic,retain) NSString* name;
+@property (nonatomic,retain) NSString* address; 
+@property (nonatomic,retain) NSString* cell;
+@property (nonatomic,retain) NSString* bedNo;
+
+
++(NSMutableArray*) getPatientList ;
+
+-(id) initWithPatientId: (NSString*) _patientId ;
+
+-(NSString*) getAllocatedBedNo: (NSString*) _bedId ;
 
 
 @end

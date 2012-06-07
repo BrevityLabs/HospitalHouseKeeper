@@ -9,23 +9,27 @@
 #import "bed.h"
 
 
-static sqlite3_stmt *selectStmt = nil;
-static sqlite3_stmt *selectStmt1 = nil;
+@implementation Bed
+@synthesize bedId;
+@synthesize number;
+@synthesize status;
+@synthesize type;
 
-@implementation bed
-@synthesize bedNumber,bedStatus;
-
-
--(id) initWithBedId: (NSString*) _bedID {
+-(id) initWithBedId: (NSString*) _bedId {
     if (self = [super init]) {
+        
+        sqlite3_stmt * _selectStmt ;
+        
         sqlite3 * database = [DBConnection connectionFactory ] ;
-        NSString *nsatt = [NSString stringWithFormat:@"SELECT bedNo, status FROM Bed WHERE bid = '%@'",_bedID] ;
+        NSString *nsatt = [NSString stringWithFormat:@"SELECT bedNo, status, type FROM Bed WHERE bedID = '%@'", _bedId] ;
         const char *stmch=[nsatt UTF8String];
         
-        if(sqlite3_prepare_v2(database, stmch, -1, &selectStmt1,NULL)==SQLITE_OK) {
-            while (sqlite3_step(selectStmt1)==SQLITE_ROW) {
-               bedNumber = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt1, 0)];
-               bedStatus = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt1, 1)];
+        if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
+            while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
+                bedId   = _bedId ;
+                number  = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+                status  = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
+                type    = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 2)];
             }
         } else {
             NSLog(@"Class bed: Method initWithBedId::Query on Bed table failed.") ;
@@ -35,33 +39,65 @@ static sqlite3_stmt *selectStmt1 = nil;
     return self ;
 }
 
-/* Select distinct tablename.field from <table1>
- Inner join <table2> on table1.field1 = table2.field1.
- Inner join <table3> on table2.field = table3.field1.*/
-//"select bedstaff.empID from Employee Inner join bedstaff on Employee.empID=bedstaff.empID Inner join bed on bedstaff.bedID=bed.bid"
+
+/*
+ *  Static (class) method to get the list of bed available in the hospital. By traversing, one can get hold
+ *  of various bed objects.
+ */
+
 +(NSMutableArray *) getBedList {
+    sqlite3_stmt * _selectStmt ;
     
     sqlite3 * database = [DBConnection connectionFactory ] ;
     
-    NSMutableArray * bedArray=[[NSMutableArray alloc]init];
+    NSMutableArray * _bedArray=[[NSMutableArray alloc]init];
     
-    NSString *nsatt = [NSString stringWithFormat:@"SELECT bid FROM Bed"];
+    NSString *nsatt = [NSString stringWithFormat:@"SELECT bedID FROM Bed"];
     const char *stmch=[nsatt UTF8String];
     
-    if(sqlite3_prepare_v2(database, stmch, -1, &selectStmt, NULL) == SQLITE_OK) {
+    if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
         
-        while (sqlite3_step(selectStmt)==SQLITE_ROW) {
-            NSString *bedID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
-            bed * temp =[[bed alloc]initWithBedId:bedID];
-
-            [bedArray addObject:temp];
+        while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
+            NSString * _bedId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+            Bed * _bed = [[Bed alloc] initWithBedId: _bedId];
+            
+            [_bedArray addObject: _bed];
             
         }
     }
-    sqlite3_finalize(selectStmt);
-    return bedArray;  //an array of all the beds 
+    sqlite3_finalize(_selectStmt);
+    return _bedArray;  //an array of all the beds 
     
 }
+
+
+/*
+ *  Static (class) method to get the list Ids of the beds available in the hospital. By traversing, one can get hold
+ *  of various bed objects.
+ */
++(NSMutableArray *) getBedIdList {
+    sqlite3_stmt * _selectStmt ;
+    
+    sqlite3 * database = [DBConnection connectionFactory ] ;
+    
+    NSMutableArray * _bedIdArray=[[NSMutableArray alloc]init];
+    
+    NSString *nsatt = [NSString stringWithFormat:@"SELECT bedID FROM Bed"];
+    const char *stmch=[nsatt UTF8String];
+    
+    if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
+        
+        while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
+            NSString * _bedId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+            [_bedIdArray addObject: _bedId];
+            
+        }
+    }
+    sqlite3_finalize(_selectStmt);
+    return _bedIdArray;  //an array of all the bed Id
+    
+}
+
 
 
 @end
