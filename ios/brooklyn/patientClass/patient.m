@@ -26,7 +26,7 @@ static sqlite3 *database =nil;
         
         sqlite3 * database = [DBConnection connectionFactory ] ;
         static sqlite3_stmt* _selectStmt = nil;
-        NSString* _bedId ;
+    //    NSString* _bedId ;
         
         NSString *nsatt = 
             [NSString stringWithFormat:@"SELECT name, address, cellNo FROM Patient WHERE patientID = '%@'",_patientId] ;
