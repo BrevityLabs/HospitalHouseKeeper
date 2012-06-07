@@ -139,7 +139,8 @@ static sqlite3 *database =nil;
     sqlite3_stmt*  _updateStmt;
     if (_updateStmt == nil)
     {
-        const char*  sql = "UPDATE Employee set name = ?,dept =? WHERE empID = ?";
+        NSString* nsatt = [NSString stringWithFormat:@"UPDATE Employee set name = %@ ,dept =%@ WHERE empID = %@",name,dept,employeeID];
+        const char*  sql = [nsatt UTF8String];
         if (sqlite3_prepare_v2(database, sql, -1, &_updateStmt, NULL)==SQLITE_OK) 
             NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database));      
     }
@@ -159,7 +160,8 @@ static sqlite3 *database =nil;
     sqlite3_stmt* _deleteStmt;
     if (_deleteStmt ==nil)
     {
-        const char *sql = "DELETE FROM Employee where empID = ?";
+        NSString* nsatt = [NSString stringWithFormat:@"DELETE FROM Employee where empID = %@",employeeID];
+        const char *sql = [nsatt UTF8String];
 		if(sqlite3_prepare_v2(database, sql, -1, &_deleteStmt, NULL) != SQLITE_OK)
 			NSAssert1(0, @"Error while creating delete statement. '%s'", sqlite3_errmsg(database));
     }
