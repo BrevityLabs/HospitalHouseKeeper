@@ -9,7 +9,7 @@
 #import "BedStatusView.h"
 
 
-static sqlite3 *database = nil;
+
 
 //static sqlite3_stmt *selectStmt = nil;
 
@@ -39,18 +39,20 @@ static sqlite3 *database = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self getMaintBedNumber];
-    for(int i = 1; i< [bedNoArray count] ; i++) 
-    {
-        for (int j = 0; j<= i; j++) 
-        {
-            NSString *str=[bedNoArray objectAtIndex:j];
-            [self drawBedAvailable:(258 * j) y: (i*250.0) width:204.8 height:150.0 bedId:str]   ;
-        }
+     // Do any additional setup after loading the view from its nib.
+    int j=0;
+    bedNoArray = [Bed getCleanBedNoList];
+    int i=1;
+    while (i>j) {
+        for (; j<[bedNoArray count]; j++) {
+              NSString *str=[bedNoArray objectAtIndex:j];            
+             [self drawBedAvailable:(204.8 * j) y: (i*150.0) width:204.8 height:150.0 bedId:str] ;
+                   }
+        i++;
     }
+
     
-    // Do any additional setup after loading the view from its nib.
+   
 }
 
 - (void)viewDidUnload
@@ -62,20 +64,20 @@ static sqlite3 *database = nil;
 
 -(IBAction)gridView:(id)sender
 {
-    if (self.view ==nil)
-    {
-        
-        [self getMaintBedNumber];
-        for(int i = 1; i< [bedNoArray count] ; i++) 
-        {
-            for (int j = 0; j <=i; j++) 
-            {
-                NSString *str=[bedNoArray objectAtIndex:j];
-                [self drawBedAvailable:(204.8 * j) y: (i*150.0) width:204.8 height:150.0 bedId:str]   ;
-            }
-        }
-        
-    }
+   if (self.view ==nil)
+   {
+       int j=0;
+       bedNoArray = [Bed getCleanBedNoList];
+       int i=1;
+       while (i>j) {
+           for (; j<[bedNoArray count]; j++) {
+               NSString *str=[bedNoArray objectAtIndex:j];            
+               [self drawBedAvailable:(204.8 * j) y: (i*150.0) width:204.8 height:150.0 bedId:str] ;
+           }
+           i++;
+       }
+   }
+
 }
 
 
@@ -135,64 +137,40 @@ static sqlite3 *database = nil;
     
     [self presentModalViewController:maintStaff animated:YES];
 }
--(NSString *)getDBPath1
-{
-    NSArray *paths1 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentdir1 = [paths1 objectAtIndex:0];
-    NSString *dbpath1 =[documentdir1 stringByAppendingPathComponent:@"brookelyn.sqlite"];
-    NSFileManager *fileManager1=[NSFileManager defaultManager];
-    NSError *error;
-    BOOL success=[fileManager1 fileExistsAtPath:dbpath1];
-    if (!success)
-    {
-        NSString *defaultpath1 = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brookelyn.sqlite"];
-        success=[fileManager1 copyItemAtPath:defaultpath1 toPath:dbpath1 error:&error];
-        
-        if (!success)
-        {
-            NSAssert1(0, @"failed to create writable database '%@'", [error localizedDescription]);
-        }
-    }
-    
-    NSLog(@"%@",dbpath1);
-    return dbpath1;
-    
-    
-}
 
 
--(void )getMaintBedNumber
-{
-    bedNoArray = [[NSMutableArray alloc]init];
+//-(void )getMaintBedNumber
+//{
+//    bedNoArray = [[NSMutableArray alloc]init];
+//    
+//    NSString *dbPath=[self getDBPath1];
+//    
+//    if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK)
+//    {
+//        // const char * sql1 = "select  BedNo from BedStaus where Status ='2'";
+//        sqlite3_stmt *selectStmt;
+//        
+//        const char *sql1 = "SELECT bedno FROM bed WHERE status ='2' ";
+//        
+//        if (sqlite3_prepare_v2(database, sql1, -1, &selectStmt, NULL)==SQLITE_OK) 
+//        {
+//            while (sqlite3_step(selectStmt) == SQLITE_ROW)
+//            {
+//                [bedNoArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)]];
+//                
+//                NSLog(@"%@",bedNoArray);
+//            }
+//        }
+//        
+//        
+//    }
+//    
     
-    NSString *dbPath=[self getDBPath1];
-    
-    if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK)
-    {
-        // const char * sql1 = "select  BedNo from BedStaus where Status ='2'";
-        sqlite3_stmt *selectStmt;
-        
-        const char *sql1 = "SELECT bedno FROM bed WHERE status ='2' ";
-        
-        if (sqlite3_prepare_v2(database, sql1, -1, &selectStmt, NULL)==SQLITE_OK) 
-        {
-            while (sqlite3_step(selectStmt) == SQLITE_ROW)
-            {
-                [bedNoArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)]];
-                
-                NSLog(@"%@",bedNoArray);
-            }
-        }
-        
-        
-    }
-    
-    
-    else
-        
-        sqlite3_close(database);
-    
-}
+//    else
+//        
+//        sqlite3_close(database);
+//    
+//}
 
 -(IBAction)listView:(id)sender
 {

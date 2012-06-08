@@ -16,6 +16,8 @@
 
 #import "BedListView.h"
 
+#import "bed.h"
+
 @interface BedStatusView : UIViewController
 {
     UIButton *gridViewButton,*listViewButton,*signOutButton;
@@ -63,8 +65,8 @@
 -(IBAction)signOut:(id)sender;
 
 -(void)clickSignOut;
--(void)getMaintBedNumber;
 
--(NSString *)getDBPath1;
+
+
 
 @end

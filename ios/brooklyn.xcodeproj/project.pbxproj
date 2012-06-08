@@ -20,10 +20,6 @@
 		6C875D80157CD1D2002BD723 /* BedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C875D7E157CD1D2002BD723 /* BedView.xib */; };
 		6C875D88157CDB79002BD723 /* NurseStaffLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C875D86157CDB79002BD723 /* NurseStaffLogin.m */; };
 		6C875D89157CDB79002BD723 /* NurseStaffLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C875D87157CDB79002BD723 /* NurseStaffLogin.xib */; };
-		6C8DEDD1157F363C000975C7 /* PatientRegnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8DEDCF157F363C000975C7 /* PatientRegnView.m */; };
-		6C8DEDD2157F363C000975C7 /* PatientRegnView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8DEDD0157F363C000975C7 /* PatientRegnView.xib */; };
-		6C8DEDD7157F39B2000975C7 /* MaintenanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8DEDD5157F39B2000975C7 /* MaintenanceView.m */; };
-		6C8DEDD8157F39B2000975C7 /* MaintenanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8DEDD6157F39B2000975C7 /* MaintenanceView.xib */; };
 		6CCB88BE15749ED6002456B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88BD15749ED6002456B0 /* UIKit.framework */; };
 		6CCB88C015749ED6002456B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88BF15749ED6002456B0 /* Foundation.framework */; };
 		6CCB88C215749ED6002456B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88C115749ED6002456B0 /* CoreGraphics.framework */; };
@@ -100,12 +96,6 @@
 		6C875D85157CDB79002BD723 /* NurseStaffLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NurseStaffLogin.h; path = brooklyn/staffDetails/NurseStaffLogin.h; sourceTree = SOURCE_ROOT; };
 		6C875D86157CDB79002BD723 /* NurseStaffLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NurseStaffLogin.m; path = brooklyn/staffDetails/NurseStaffLogin.m; sourceTree = SOURCE_ROOT; };
 		6C875D87157CDB79002BD723 /* NurseStaffLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NurseStaffLogin.xib; path = brooklyn/staffDetails/NurseStaffLogin.xib; sourceTree = SOURCE_ROOT; };
-		6C8DEDCE157F363C000975C7 /* PatientRegnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientRegnView.h; sourceTree = "<group>"; };
-		6C8DEDCF157F363C000975C7 /* PatientRegnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientRegnView.m; sourceTree = "<group>"; };
-		6C8DEDD0157F363C000975C7 /* PatientRegnView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientRegnView.xib; sourceTree = "<group>"; };
-		6C8DEDD4157F39B2000975C7 /* MaintenanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintenanceView.h; sourceTree = "<group>"; };
-		6C8DEDD5157F39B2000975C7 /* MaintenanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintenanceView.m; sourceTree = "<group>"; };
-		6C8DEDD6157F39B2000975C7 /* MaintenanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintenanceView.xib; sourceTree = "<group>"; };
 		6CCB88B915749ED6002456B0 /* brooklyn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brooklyn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CCB88BD15749ED6002456B0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6CCB88BF15749ED6002456B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -221,12 +211,6 @@
 				6C875D73157CCFD7002BD723 /* PatientDetailView.h */,
 				6C875D74157CCFD7002BD723 /* PatientDetailView.m */,
 				6C875D75157CCFD7002BD723 /* PatientDetailView.xib */,
-				6C8DEDCE157F363C000975C7 /* PatientRegnView.h */,
-				6C8DEDCF157F363C000975C7 /* PatientRegnView.m */,
-				6C8DEDD0157F363C000975C7 /* PatientRegnView.xib */,
-				6C8DEDD4157F39B2000975C7 /* MaintenanceView.h */,
-				6C8DEDD5157F39B2000975C7 /* MaintenanceView.m */,
-				6C8DEDD6157F39B2000975C7 /* MaintenanceView.xib */,
 			);
 			name = PatientDetailView;
 			sourceTree = "<group>";
@@ -271,7 +255,7 @@
 				6CCB88F315749FAC002456B0 /* en.lproj */,
 				6C875D72157CCF91002BD723 /* PatientDetailView */,
 				6CFFB6721578B80A000ED728 /* PatientBedView */,
-				6CCB88F815749FAC002456B0 /* gridView */,
+				6CCB88F815749FAC002456B0 /* MaintGridView */,
 				6CCB88FC15749FAC002456B0 /* images */,
 				6CCB890C15749FAC002456B0 /* listView */,
 				6CCB891015749FAC002456B0 /* loginView */,
@@ -327,13 +311,14 @@
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
-		6CCB88F815749FAC002456B0 /* gridView */ = {
+		6CCB88F815749FAC002456B0 /* MaintGridView */ = {
 			isa = PBXGroup;
 			children = (
 				6CCB88F915749FAC002456B0 /* BedStatusView.h */,
 				6CCB88FA15749FAC002456B0 /* BedStatusView.m */,
 				6CCB88FB15749FAC002456B0 /* BedStatusView.xib */,
 			);
+			name = MaintGridView;
 			path = gridView;
 			sourceTree = "<group>";
 		};
@@ -377,6 +362,9 @@
 		6CCB891015749FAC002456B0 /* loginView */ = {
 			isa = PBXGroup;
 			children = (
+				6C875D85157CDB79002BD723 /* NurseStaffLogin.h */,
+				6C875D86157CDB79002BD723 /* NurseStaffLogin.m */,
+				6C875D87157CDB79002BD723 /* NurseStaffLogin.xib */,
 				6CCB891115749FAC002456B0 /* MaintStaffLogin.h */,
 				6CCB891215749FAC002456B0 /* MaintStaffLogin.m */,
 				6CCB891315749FAC002456B0 /* MaintStaffLogin.xib */,
@@ -411,9 +399,6 @@
 		6CFFB6721578B80A000ED728 /* PatientBedView */ = {
 			isa = PBXGroup;
 			children = (
-				6C875D85157CDB79002BD723 /* NurseStaffLogin.h */,
-				6C875D86157CDB79002BD723 /* NurseStaffLogin.m */,
-				6C875D87157CDB79002BD723 /* NurseStaffLogin.xib */,
 				6C875D7C157CD1D1002BD723 /* BedView.h */,
 				6C875D7D157CD1D1002BD723 /* BedView.m */,
 				6C875D7E157CD1D2002BD723 /* BedView.xib */,
@@ -519,8 +504,6 @@
 				6C875D77157CCFD7002BD723 /* PatientDetailView.xib in Resources */,
 				6C875D80157CD1D2002BD723 /* BedView.xib in Resources */,
 				6C875D89157CDB79002BD723 /* NurseStaffLogin.xib in Resources */,
-				6C8DEDD2157F363C000975C7 /* PatientRegnView.xib in Resources */,
-				6C8DEDD8157F39B2000975C7 /* MaintenanceView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,8 +555,6 @@
 				6C875D76157CCFD7002BD723 /* PatientDetailView.m in Sources */,
 				6C875D7F157CD1D2002BD723 /* BedView.m in Sources */,
 				6C875D88157CDB79002BD723 /* NurseStaffLogin.m in Sources */,
-				6C8DEDD1157F363C000975C7 /* PatientRegnView.m in Sources */,
-				6C8DEDD7157F39B2000975C7 /* MaintenanceView.m in Sources */,
 				D29FD808157F60B30004B0DC /* DBConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

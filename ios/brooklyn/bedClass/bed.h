@@ -29,6 +29,7 @@
 
 -(id) initWithBedId: (NSString*) _bedId ; //creating a Bed object using bedID
 
-+(NSMutableArray *) getBedIdList ;
++(NSMutableArray *) getCleanBedNoList ;
+
 
 @end

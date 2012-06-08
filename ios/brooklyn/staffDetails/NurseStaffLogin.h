@@ -12,24 +12,26 @@
 
 #import "BedView.h"
 
+#import "Employee.h"
+
 @interface NurseStaffLogin : UIViewController {
-    UITextField *txtNurUserName,*txtNurPassword;
+    UITextField *txtNurUserName;//,*txtNurPassword;
     
     NSMutableArray *nurPasswordArray;
     UIButton *loginNurButton;
     NSMutableArray *nurUsernameArray;
-    int flg;
+   // int flg;
 }
 
-@property(nonatomic,retain)IBOutlet UITextField *txtNurUserName,*txtNurPassword;
+@property(nonatomic,retain)IBOutlet UITextField *txtNurUserName;//,*txtNurPassword;
 
 @property(nonatomic,retain)IBOutlet UIButton *loginNurButton;
 
 -(IBAction)nurLoginClicked:(id)sender;
 
--(BOOL)clickLogin;
 
--(NSString *)getDbPath;
+
+
 
 
 @end

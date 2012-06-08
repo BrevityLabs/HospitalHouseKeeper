@@ -18,6 +18,7 @@
     NSString*   dept ;
     NSString*   loginID ;
     NSString*   post;
+   
 }
 @property (nonatomic,retain) NSString* employeeID ; 
 @property (nonatomic,retain) NSString* name;
@@ -35,7 +36,7 @@
 
 -(BOOL) deleteEmployee ;
 
--(NSString*) getLoginID ;
+-(NSString*) getLoginID :(NSString*) _loginid ;
 
 +(NSMutableArray*) getEmployeeList ; // static method to get employee object list
 

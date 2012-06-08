@@ -75,26 +75,26 @@
  *  Static (class) method to get the list Ids of the beds available in the hospital. By traversing, one can get hold
  *  of various bed objects.
  */
-+(NSMutableArray *) getBedIdList {
++(NSMutableArray *) getCleanBedNoList {
     sqlite3_stmt * _selectStmt ;
     
     sqlite3 * database = [DBConnection connectionFactory ] ;
     
-    NSMutableArray * _bedIdArray=[[NSMutableArray alloc]init];
+    NSMutableArray * _bedNoArray=[[NSMutableArray alloc]init];
     
-    NSString *nsatt = [NSString stringWithFormat:@"SELECT bedID FROM Bed"];
+    NSString *nsatt = [NSString stringWithFormat:@"SELECT bedNo FROM Bed where status ='2'"];//for getting the bedid of beds which are ready for claning.
     const char *stmch=[nsatt UTF8String];
     
     if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
         
         while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
-            NSString * _bedId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
-            [_bedIdArray addObject: _bedId];
+            NSString * _bedno = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+            [_bedNoArray addObject: _bedno];
             
         }
     }
     sqlite3_finalize(_selectStmt);
-    return _bedIdArray;  //an array of all the bed Id
+    return _bedNoArray;  //an array of all the bed Id
     
 }
 

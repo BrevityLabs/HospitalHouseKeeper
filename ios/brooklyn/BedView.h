@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "bed.h"
+#import "Bed.h"
 
 #import "PatientDetailView.h"
 
-#import "PatientRegnView.h"
-
-#import "MaintenanceView.h"
 @interface BedView : UIViewController
 {
     UIButton *nurGridViewButton,*nurListViewButton;//*signOutButton;
@@ -50,8 +47,6 @@
 @property(nonatomic,retain)IBOutlet UIButton *nurListViewButton,*nurGridViewButton;//*signOutButton;
 
 -(IBAction)patientDetailview:(id)sender;
-
--(IBAction)patientRegView:(id)sender;
 
 -(IBAction)messageView:(id)sender;
 

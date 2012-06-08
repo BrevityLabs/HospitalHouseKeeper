@@ -8,13 +8,10 @@
 
 #import "NurseStaffLogin.h"
 
-static sqlite3 *database=nil;
-
-static sqlite3_stmt *selectStmt = nil;
 
 @implementation NurseStaffLogin
 
-@synthesize txtNurUserName,txtNurPassword,loginNurButton;
+@synthesize txtNurUserName,loginNurButton;//txtNurPassword,
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,106 +53,115 @@ static sqlite3_stmt *selectStmt = nil;
 
 -(IBAction)nurLoginClicked:(id)sender
 {
-    if ([self clickLogin])
+    
+    NSString* post2 =@"nursing";
+    Employee* emply =[[Employee alloc]init];
+     [emply getLoginID:txtNurUserName.text];
+    //emp.loginID =txtUserName.text;
+    NSLog(@"emp.dept  :%@",emply.post);
+    if ([post2 isEqualToString: emply.post]) 
     {
-        BedView *bedstatus = [[BedView alloc]initWithNibName:@"BedView" bundle:nil];
-        
-        bedstatus.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        
-        [self presentModalViewController:bedstatus animated:YES];
-        
+        BedView *bedview = [[BedView alloc]initWithNibName:@"BedView" bundle:nil];
+        bedview.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentModalViewController:bedview animated:YES];
     }
-}
-
--(NSString *)getDbPath
-{
-    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentdir=[paths objectAtIndex:0];
-    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"brookelyn.sqlite"];
-    NSFileManager *fileManager=[NSFileManager defaultManager];
-    NSError *error;
-    BOOL success=[fileManager fileExistsAtPath:dbpath];
-    if (!success)
+     else
     {
-        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brookelyn.sqlite"];
-        success=[fileManager copyItemAtPath:defaultpath toPath:dbpath error:&error];
-        
-        if (!success)
-        {
-            NSAssert1(0, @"failed to create writable database '%@'", [error localizedDescription]);
-        }
-    }
-    
-    NSLog(@"%@",dbpath);
-    return dbpath;
-    
-    
-}
-
--(BOOL)clickLogin
-{
-    nurUsernameArray = [[NSMutableArray alloc]init];
-    
-    nurPasswordArray = [[NSMutableArray alloc]init];
-    NSString *dbpath=[self getDbPath];
-    if (sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
-    {
-        if (selectStmt == nil)
-        {   NSString* sql_statement = [NSString stringWithFormat: @"select loginID,password from User "] ;
-            const char *sql= [sql_statement UTF8String];
-            
-            if (sqlite3_prepare_v2(database, sql, -1, &selectStmt, NULL) ==SQLITE_OK)
-            {
-                while (sqlite3_step(selectStmt)==SQLITE_ROW) 
-                {
-                    [nurUsernameArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)]];
-                    [nurPasswordArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 1)]];
-                    
-                    NSLog(@"values in database%@",nurUsernameArray);
-                    NSLog(@"values in database%@",nurPasswordArray);
-                }
-            }
-            sqlite3_finalize(selectStmt);
-        } 
-    }
-    
-    
-    //TO DO: Check if there one record in the output
-    // if yes, return true
-    // else return false
-    
-    flg=0;
-    
-    if ([nurUsernameArray count]==0) 
-        flg=0; 
-    else
-    {
-        for (int i=0;i<[nurUsernameArray count];i++) 
-        {
-            NSString *usrName =[nurUsernameArray objectAtIndex:i];
-            NSString *pswd =[nurPasswordArray objectAtIndex:i];
-            if ([ txtNurUserName.text isEqualToString: usrName]) 
-            {
-                if ( [txtNurPassword.text isEqualToString:pswd]) 
-                {
-                    flg=1;
-                    break;
-                }
-            }
-            
-        }
-    }   
-    
-    if (flg==1)
-        return YES; 
-    else
-    {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Usename or password doesn't match " message:@"please enter correct username or password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect Department " message:@"please login in correct department " delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
-        return NO; 
     }
-    
+
 }
+
+//-(NSString *)getDbPath
+//{
+//    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentdir=[paths objectAtIndex:0];
+//    NSString *dbpath=[documentdir stringByAppendingPathComponent:@"brookelyn.sqlite"];
+//    NSFileManager *fileManager=[NSFileManager defaultManager];
+//    NSError *error;
+//    BOOL success=[fileManager fileExistsAtPath:dbpath];
+//    if (!success)
+//    {
+//        NSString *defaultpath = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"brookelyn.sqlite"];
+//        success=[fileManager copyItemAtPath:defaultpath toPath:dbpath error:&error];
+//        
+//        if (!success)
+//        {
+//            NSAssert1(0, @"failed to create writable database '%@'", [error localizedDescription]);
+//        }
+//    }
+//    
+//    NSLog(@"%@",dbpath);
+//    return dbpath;
+//    
+//    
+//}
+//
+//-(BOOL)clickLogin
+//{
+//    nurUsernameArray = [[NSMutableArray alloc]init];
+//    
+//    nurPasswordArray = [[NSMutableArray alloc]init];
+//    NSString *dbpath=[self getDbPath];
+//    if (sqlite3_open([dbpath UTF8String], &database)==SQLITE_OK)
+//    {
+//        if (selectStmt == nil)
+//        {   NSString* sql_statement = [NSString stringWithFormat: @"select loginID,password from User "] ;
+//            const char *sql= [sql_statement UTF8String];
+//            
+//            if (sqlite3_prepare_v2(database, sql, -1, &selectStmt, NULL) ==SQLITE_OK)
+//            {
+//                while (sqlite3_step(selectStmt)==SQLITE_ROW) 
+//                {
+//                    [nurUsernameArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)]];
+//                    [nurPasswordArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 1)]];
+//                    
+//                    NSLog(@"values in database%@",nurUsernameArray);
+//                    NSLog(@"values in database%@",nurPasswordArray);
+//                }
+//            }
+//            sqlite3_finalize(selectStmt);
+//        } 
+//    }
+//    
+//    
+//    //TO DO: Check if there one record in the output
+//    // if yes, return true
+//    // else return false
+//    
+//    flg=0;
+//    
+//    if ([nurUsernameArray count]==0) 
+//        flg=0; 
+//    else
+//    {
+//        for (int i=0;i<[nurUsernameArray count];i++) 
+//        {
+//            NSString *usrName =[nurUsernameArray objectAtIndex:i];
+//            NSString *pswd =[nurPasswordArray objectAtIndex:i];
+//            if ([ txtNurUserName.text isEqualToString: usrName]) 
+//            {
+//                if ( [txtNurPassword.text isEqualToString:pswd]) 
+//                {
+//                    flg=1;
+//                    break;
+//                }
+//            }
+//            
+//        }
+//    }   
+//    
+//    if (flg==1)
+//        return YES; 
+//    else
+//    {
+//        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Usename or password doesn't match " message:@"please enter correct username or password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alertView show];
+//        return NO; 
+//    }
+//    
+//}
 
 
 @end

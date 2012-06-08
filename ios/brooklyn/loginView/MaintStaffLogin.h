@@ -10,6 +10,8 @@
 
 #import "BedStatusView.h"
 
+#import "Employee.h"
+
 #import <sqlite3.h>
 
 @interface MaintStaffLogin : UIViewController 
@@ -28,8 +30,5 @@
 
 -(IBAction)loginClicked:(id)sender;
 
--(BOOL)clickLogin;
-
--(NSString *)getDBPath;
 
 @end

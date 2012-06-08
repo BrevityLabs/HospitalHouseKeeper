@@ -8,7 +8,7 @@
 
 #import "employee.h"
 
-static sqlite3 *database =nil;
+//static sqlite3 *database =nil;
 
 @implementation Employee
 
@@ -77,7 +77,8 @@ static sqlite3 *database =nil;
 
 -(NSString*) getEmployeeID: (NSString*) _employeeId {
     sqlite3_stmt* _selectStmt ;
-    
+    sqlite3* database = [DBConnection connectionFactory ] ;
+
     if (employeeID == NULL) {
         NSString* nsatt = [NSString stringWithFormat:@"SELECT A.empID FROM PatientStaff A, BedPatient B where A.patientID = B.patientID AND A.empID = %@", _employeeId];
         const char* stmch=[nsatt UTF8String];
@@ -127,6 +128,7 @@ static sqlite3 *database =nil;
 }
 
 
+
 /*
  * When the employee details are change then it has to be updated in the DB
  */
@@ -173,13 +175,37 @@ static sqlite3 *database =nil;
 		NSAssert1(0, @"Error while deleting. '%s'", sqlite3_errmsg(database));
 	
 	sqlite3_reset(_deleteStmt);
-
-
+    
+    
     return false ;
 }
 
--(NSString*) getLoginID 
+//SELECT A.empID FROM PatientStaff A, BedPatient B where A.patientID = B.patientID AND A.empID = %@", _employeeId
+-(NSString*) getLoginID :(NSString*) _loginid 
 {
+    sqlite3* database = [DBConnection connectionFactory ] ;
+  
+    sqlite3_stmt* _selectStmt ;
+  
+    NSString* empid;
+    if (employeeID == NULL) {
+        NSString* nsatt = [NSString stringWithFormat:@" SELECT E.dept, E.empid FROM Employee E, User U WHERE E.empID = U.empID AND U.loginID = '%@'",_loginid]; ;
+        const char* stmch=[nsatt UTF8String];
+        if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
+            while (sqlite3_step(_selectStmt) == SQLITE_ROW) { 
+                //...
+                //NSString* username = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+               post = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+                NSLog(@"d  :%@",post);
+                empid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
+                NSLog(@"e  :%@",empid);
+            }
+        }        
+    }
+    sqlite3_finalize(_selectStmt);
+    
+    return post;
+    
     
 }
 @end

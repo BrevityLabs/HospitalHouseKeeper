@@ -35,20 +35,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 //    bed * objbed = [[bed alloc] init] ;
-    bedArray = [bed getBedList];
+    bedArray = [Bed getBedList];
     NSString *str1 = @"1";
     NSString *str2 = @"2";
     NSString *str3 = @"3";
-    
+    int j=0;
     int i=1;
-    while (i<[bedArray count]) {
-        for (int j=0; j<[bedArray count]; j++) {
-                bed *b3 =[bedArray objectAtIndex:j];
+    while (i>j) {
+        for (; j<[bedArray count]; j++) {
+                Bed* b3 =[bedArray objectAtIndex:j];
                 
-                NSLog(@"bed %@",b3.bedNumber);
+                NSLog(@"bed %@",b3.number);
                 
-                [self drawnurBedAvailable:(208*j) y:(i*168.0) width:205 height:145 bedId:b3.bedNumber];
-                if ([b3.bedStatus isEqualToString:str1]) 
+                [self drawnurBedAvailable:(208*j) y:(i*168.0) width:205 height:145 bedId:b3.number];
+                if ([b3.status isEqualToString:str1]) 
                 {
                     bedImgButton = [UIButton buttonWithType:UIButtonTypeCustom ];
                      CGRect rect = CGRectMake(BEDIMGXOFFSET,BEDIMGYOFFSET,BEDIMGWIDTH,BEDIMGHEIGHT);
@@ -58,18 +58,18 @@
                     [nurseBedView addSubview:bedImgButton];
                                         
                 }
-                else if([b3.bedStatus isEqualToString:str2])
+                else if([b3.status isEqualToString:str2])
                 {
                     bedImgButton = [UIButton buttonWithType:UIButtonTypeCustom ];
                     CGRect rect = CGRectMake(BEDIMGXOFFSET,BEDIMGYOFFSET,BEDIMGWIDTH,BEDIMGHEIGHT);
                     bedImgButton.frame = rect;
                     [bedImgButton setBackgroundImage:[UIImage imageNamed: @"bed_status2.png"] forState:UIControlStateNormal];
-                    [bedImgButton addTarget:self action:@selector(patientRegView:) forControlEvents:UIControlEventTouchUpInside];
+                    [bedImgButton addTarget:self action:@selector(patientDetailview:) forControlEvents:UIControlEventTouchUpInside];
                     [nurseBedView addSubview:bedImgButton];
                      
                 }
                 
-                else if([b3.bedStatus isEqualToString:str3]) 
+                else if([b3.status isEqualToString:str3]) 
                 {
                     
                     bedImgButton = [UIButton buttonWithType:UIButtonTypeCustom ];
@@ -86,10 +86,7 @@
     }
          
 
-       
-            
-            //drawnurBedAvailable:(258 * j) y: (i*166.0) width:204.8 height:140.0 bedId:b1.bedNumber]   ;
-
+        
 }
 - (void)viewDidUnload
 {
@@ -142,17 +139,15 @@
     [self presentModalViewController:patient animated:YES];
 }
 
--(IBAction)patientRegView:(id)sender
-{
-    PatientRegnView *regn = [[PatientRegnView alloc]initWithNibName:@"PatientRegnView" bundle:nil];
-    regn.modalTransitionStyle =UIModalTransitionStyleCrossDissolve;
-    [self presentModalViewController:regn animated:YES];
-}
+
 
 -(IBAction)messageView:(id)sender
 {
-    MaintenanceView *maintV = [[MaintenanceView alloc]initWithNibName:@"MaintenanceView" bundle:nil];
-    maintV.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentModalViewController:maintV animated:YES];
-}
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"The bed no 004 is under maintenance. "
+                                                        message:@"The status will update automatically when it is ready." 
+                                                       delegate:self 
+                                              cancelButtonTitle:@"OK" 
+                                              otherButtonTitles:nil];
+    [alertView show];
+   }
 @end

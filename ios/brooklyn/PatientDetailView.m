@@ -36,7 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    patientArray =[patient getPatientData];
+    patientArray =[Patient getPatientList];
     
 }
 
@@ -52,5 +52,10 @@
     // Return YES for supported orientations
 	return YES;
 }
-
+-(IBAction)backButtonClicked:(id)sender;
+{
+    BedView *bedvw = [[BedView alloc]initWithNibName:@"BedView" bundle:nil];
+    bedvw.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:bedvw animated:YES];
+}
 @end
