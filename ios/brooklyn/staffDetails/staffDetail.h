@@ -10,16 +10,18 @@
 
 #import <sqlite3.h>
 
-#import "Staff.h"
+#import "DBConnection.h"
 
 @interface staffDetail : NSObject
 {
-   
+    NSString* Bedno;
+    NSString* Empname;
+    NSString* StatusTime;
 }
 
-+(NSString *)createDB;
-
-
+@property(nonatomic,retain)NSString* Bedno;
+@property(nonatomic,retain)NSString* Empname;
+@property(nonatomic,retain)NSString* StatusTime;
 +(NSMutableArray *)getAllData;
 
 @end

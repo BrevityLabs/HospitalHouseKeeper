@@ -10,8 +10,6 @@
 
 #import "staffDetail.h"
 
-#import "Staff.h"
-
 @interface MaintStaffDetailView : UIViewController
 {
     UITextField  *txt_BedNo,*txt_BedAssign,*txt_WorkStatus,*txt_Pedding;

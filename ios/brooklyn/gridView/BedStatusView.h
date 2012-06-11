@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import <QuartzCore/QuartzCore.h>
+
 #import <sqlite3.h>
 
 #import "MaintStaffDetailView.h"
@@ -18,7 +20,7 @@
 
 #import "bed.h"
 
-@interface BedStatusView : UIViewController
+@interface BedStatusView : UIViewController <UIAlertViewDelegate>
 {
     UIButton *gridViewButton,*listViewButton,*signOutButton;
     
@@ -27,17 +29,24 @@
     
     NSMutableArray *bedNoArray;
     
-    enum img_size {
-        XOFFSET = 30,
-        YOFFSET = 30,
-        IMGWIDTH =200,
-        IMGHEIGHT= 136
+    enum imgButton_size {
+        IMGBTNXOFFSET = 30,
+        IMGBTNYOFFSET = 30,
+        IMGBTNWIDTH =200,
+        IMGBTNHEIGHT= 136
     };
     enum button_size {
-        BUTTON_X = 0,
-        BUTTON_Y = 0,
-        BUTTON_WIDTH =50,
-        BUTTON_HEIGHT= 50
+        NUMBUTTON_X = 0,
+        NUMBUTTON_Y = 0,
+        NUMBUTTON_WIDTH =50,
+        NUMBUTTON_HEIGHT= 50
+    };
+    enum statusButton_size {
+        STATBUTTON_X = 0,
+        STATBUTTON_Y = 150,
+        STATBUTTON_WIDTH =120,
+        STATBUTTON_HEIGHT= 25
+        
     };
     
     
@@ -66,7 +75,7 @@
 
 -(void)clickSignOut;
 
-
+-(IBAction)message:(id)sender;
 
 
 @end

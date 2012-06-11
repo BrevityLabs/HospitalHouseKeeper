@@ -8,12 +8,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "brooklyn/BedView.m"
-         timestampString = "360845072.342641"
+         filePath = "brooklyn/staffDetails/NurseStaffLogin.m"
+         timestampString = "361092493.203052"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "33"
-         endingLineNumber = "33"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
+         landmarkName = "-nurLoginClicked:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "brooklyn/staffDetails/MaintStaffDetailView.m"
+         timestampString = "361127015.407508"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>

@@ -39,16 +39,16 @@
     NSString *str1 = @"1";
     NSString *str2 = @"2";
     NSString *str3 = @"3";
-    int j=0;
-    int i=1;
-    while (i>j) {
-        for (; j<[bedArray count]; j++) {
-                Bed* b3 =[bedArray objectAtIndex:j];
+    int j;
+    int i=0;
+    while (i>=j) {
+        for (j=0; j<=i; j++) {
+                Bed* bed =[bedArray objectAtIndex:j];
                 
-                NSLog(@"bed %@",b3.number);
+                NSLog(@"bed %@",bed.number);
                 
-                [self drawnurBedAvailable:(208*j) y:(i*168.0) width:205 height:145 bedId:b3.number];
-                if ([b3.status isEqualToString:str1]) 
+                [self drawnurBedAvailable:(208*j) y:(i*168.0) width:205 height:145 bedId:bed.number];
+                if ([bed.status isEqualToString:str1]) 
                 {
                     bedImgButton = [UIButton buttonWithType:UIButtonTypeCustom ];
                      CGRect rect = CGRectMake(BEDIMGXOFFSET,BEDIMGYOFFSET,BEDIMGWIDTH,BEDIMGHEIGHT);
@@ -58,7 +58,7 @@
                     [nurseBedView addSubview:bedImgButton];
                                         
                 }
-                else if([b3.status isEqualToString:str2])
+                else if([bed.status isEqualToString:str2])
                 {
                     bedImgButton = [UIButton buttonWithType:UIButtonTypeCustom ];
                     CGRect rect = CGRectMake(BEDIMGXOFFSET,BEDIMGYOFFSET,BEDIMGWIDTH,BEDIMGHEIGHT);
@@ -69,7 +69,7 @@
                      
                 }
                 
-                else if([b3.status isEqualToString:str3]) 
+                else if([bed.status isEqualToString:str3]) 
                 {
                     
                     bedImgButton = [UIButton buttonWithType:UIButtonTypeCustom ];

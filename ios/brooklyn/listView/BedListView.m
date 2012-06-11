@@ -55,18 +55,18 @@
         
         cell=[self reuseTableViewCellWithIdentifier:identifier];
     
-    MaintDB *emp = [Array objectAtIndex:indexPath.row];
+    MaintList *list = [Array objectAtIndex:indexPath.row];
     
     UILabel *bedIdLabel=(UILabel *)[cell viewWithTag:BEDID_TAG];
-    bedIdLabel.text = emp.Eid;
+    bedIdLabel.text = list.Empid;
     bedIdLabel.textAlignment = UITextAlignmentCenter;
     
     UILabel *bedNoLabel=(UILabel *)[cell viewWithTag:BEDNO_TAG];
-    bedNoLabel.text = emp.Bedno;
+    bedNoLabel.text = list.Bedno;
     bedNoLabel.textAlignment = UITextAlignmentCenter;
     
     UILabel *patientLabel=(UILabel *)[cell viewWithTag:PATIENT_TAG];
-    patientLabel.text = emp.Ename;
+    patientLabel.text = list.Empname;
     patientLabel.textAlignment = UITextAlignmentCenter;
     
     UIButton *actionBtn =(UIButton *)[cell viewWithTag:ACTION_TAG];
@@ -143,20 +143,18 @@
     return [Array count];
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Navigation logic may go here. Create and push another view controller.
-//    
-//    if (indexPath.row !=0) 
-//    {
-//   // [listView deselectRowAtIndexPath:indexPath animated:NO];
-//    
-//    MaintStaffDetailView *detailViewController = [[MaintStaffDetailView alloc] initWithNibName:@"MaintStaffDetailView" bundle:nil];
-//    
-//    [[self navigationController ] pushViewController:detailViewController animated:YES];
-//    }
-//    
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    
+    if (indexPath.row ==indexPath.row) 
+    {
+    MaintStaffDetailView *detailViewController = [[MaintStaffDetailView alloc] initWithNibName:@"MaintStaffDetailView" bundle:nil];
+        detailViewController.modalTransitionStyle =UIModalTransitionStyleCrossDissolve;
+        [self presentModalViewController:detailViewController animated:YES];
+    }
+    
+}
 -(IBAction)getGridView:(id)sender
 {
     BedStatusView *grid = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];

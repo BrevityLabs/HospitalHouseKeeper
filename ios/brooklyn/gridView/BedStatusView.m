@@ -46,7 +46,7 @@
     while (i>j) {
         for (; j<[bedNoArray count]; j++) {
               NSString *str=[bedNoArray objectAtIndex:j];            
-             [self drawBedAvailable:(204.8 * j) y: (i*150.0) width:204.8 height:150.0 bedId:str] ;
+             [self drawBedAvailable:(300 * j) y: (i*150.0) width:250.0 height:200.0 bedId:str] ;
                    }
         i++;
     }
@@ -72,7 +72,7 @@
        while (i>j) {
            for (; j<[bedNoArray count]; j++) {
                NSString *str=[bedNoArray objectAtIndex:j];            
-               [self drawBedAvailable:(204.8 * j) y: (i*150.0) width:204.8 height:150.0 bedId:str] ;
+               [self drawBedAvailable:(300 * j) y: (i*150.0) width:250.0 height:200.0 bedId:str] ;
            }
            i++;
        }
@@ -99,31 +99,36 @@
 {
     
     CGRect myRect = CGRectMake(x_pos, y_pos, _width, _height);
-    
     maintBedView = [[UIView alloc]initWithFrame:myRect];
+    maintBedView.layer.borderColor = [UIColor blueColor].CGColor;
+    maintBedView.layer.borderWidth = 3.0f;
+
     
-    maintBedView.backgroundColor = [UIColor yellowColor];
+    UIButton *imgButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    imgButton.frame = CGRectMake(IMGBTNXOFFSET, IMGBTNYOFFSET, IMGBTNWIDTH, IMGBTNHEIGHT);
+    [imgButton setBackgroundImage:[UIImage imageNamed:@"bed_status2.png"] forState:UIControlStateNormal];
     
+    [maintBedView addSubview:imgButton];
     
-    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(XOFFSET, YOFFSET, IMGWIDTH, IMGHEIGHT)];
-    //    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(50.0, 50.0, 200.0, 136.0)];
+    UIButton *numberbutton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    img.image=[UIImage imageNamed:@"bed_status2.png"];
+    [numberbutton addTarget:self action:@selector(maintStaffDetilView:) forControlEvents:UIControlEventTouchUpInside];
     
-    [maintBedView addSubview:img];
+    numberbutton.frame=CGRectMake(NUMBUTTON_X,NUMBUTTON_Y, NUMBUTTON_WIDTH, NUMBUTTON_HEIGHT);
+    [numberbutton setTitle:_bedId forState:UIControlStateNormal]; 
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [numberbutton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
     
-    [button addTarget:self action:@selector(maintStaffDetilView:) forControlEvents:UIControlEventTouchUpInside];
+    [numberbutton setBackgroundColor:[UIColor whiteColor]]; 
     
-    button.frame=CGRectMake(BUTTON_X, BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
-    [button setTitle:_bedId forState:UIControlStateNormal]; 
+    [maintBedView addSubview:numberbutton];
     
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
-    
-    [button setBackgroundColor:[UIColor yellowColor]]; 
-    
-    [maintBedView addSubview:button];
+    UIButton *actionButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    actionButton.frame =CGRectMake(STATBUTTON_X, STATBUTTON_Y, STATBUTTON_WIDTH, STATBUTTON_HEIGHT);
+    [actionButton addTarget:self action:@selector(maintStaffDetilView:) forControlEvents:UIControlEventTouchUpInside];
+    [actionButton setTitle:@"cleaning done" forState:UIControlStateNormal];
+    [actionButton setBackgroundColor:[UIColor whiteColor]];
+    [maintBedView addSubview:actionButton];
     
     [self.view addSubview:maintBedView];
     
@@ -139,38 +144,7 @@
 }
 
 
-//-(void )getMaintBedNumber
-//{
-//    bedNoArray = [[NSMutableArray alloc]init];
-//    
-//    NSString *dbPath=[self getDBPath1];
-//    
-//    if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK)
-//    {
-//        // const char * sql1 = "select  BedNo from BedStaus where Status ='2'";
-//        sqlite3_stmt *selectStmt;
-//        
-//        const char *sql1 = "SELECT bedno FROM bed WHERE status ='2' ";
-//        
-//        if (sqlite3_prepare_v2(database, sql1, -1, &selectStmt, NULL)==SQLITE_OK) 
-//        {
-//            while (sqlite3_step(selectStmt) == SQLITE_ROW)
-//            {
-//                [bedNoArray addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)]];
-//                
-//                NSLog(@"%@",bedNoArray);
-//            }
-//        }
-//        
-//        
-//    }
-//    
-    
-//    else
-//        
-//        sqlite3_close(database);
-//    
-//}
+
 
 -(IBAction)listView:(id)sender
 {
@@ -188,4 +162,33 @@
     
     [self presentModalViewController:maintLogin animated:YES];
 }
+
+-(IBAction)message:(id)sender
+{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Hello World!"
+                                                      message:@"Are you sure that the bed is clean and it can be set as Available?"
+                                                     delegate:nil
+                                            cancelButtonTitle:@"Ok"
+                                            otherButtonTitles:@"Cancel", nil];
+    [message show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 1(ready to occupy)
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"Ok"])
+    {
+        
+    }
+    else if([title isEqualToString:@"Button 2"])
+    {
+        NSLog(@"Button 2 was selected.");
+    }
+    else if([title isEqualToString:@"Button 3"])
+    {
+        NSLog(@"Button 3 was selected.");
+    }
+}
+
 @end

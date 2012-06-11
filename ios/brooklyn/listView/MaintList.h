@@ -8,17 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MaintDB.h"
+#import "DBConnection.h"
 
 #import <sqlite3.h>
 
 @interface MaintList : NSObject
 {
+    NSString* Empid;
+    NSString* Bedno;
+    NSString* Empname;
     
 }
-
-+(NSString *)createDB;
-
+@property(nonatomic,retain)NSString* Empid;
+@property(nonatomic,retain)NSString* Bedno;
+@property(nonatomic,retain)NSString* Empname;
 
 +(NSMutableArray *)getAllData;
 @end

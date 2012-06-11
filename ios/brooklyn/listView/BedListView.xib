@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">10K549</string>
+		<string key="IBDocument.SystemVersion">11E53</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1038.36</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.AppKitVersion">1138.47</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">933</string>
@@ -75,7 +75,7 @@
 					<object class="IBUILabel" id="118643652">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 110}, {400, 58}}</string>
+						<string key="NSFrame">{{0, 110}, {400, 48}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="376543719"/>
@@ -109,7 +109,7 @@
 					<object class="IBUILabel" id="376543719">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{400, 110}, {624, 58}}</string>
+						<string key="NSFrame">{{400, 110}, {624, 48}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="171303930"/>
@@ -140,7 +140,7 @@
 					<object class="IBUIButton" id="78521064">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{821, 121}, {63, 37}}</string>
+						<string key="NSFrame">{{757, 121}, {63, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -173,7 +173,7 @@
 					<object class="IBUIButton" id="898671539">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{902, 121}, {51, 37}}</string>
+						<string key="NSFrame">{{799, 121}, {51, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -342,7 +342,7 @@
 					<object class="IBUIButton" id="526844613">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{441, 502}, {84, 37}}</string>
+						<string key="NSFrame">{{879, 130}, {62, 23}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -354,8 +354,15 @@
 						<reference key="IBUIHighlightedTitleColor" ref="209295724"/>
 						<reference key="IBUINormalTitleColor" ref="830644518"/>
 						<reference key="IBUINormalTitleShadowColor" ref="48513461"/>
-						<reference key="IBUIFontDescription" ref="774814651"/>
-						<reference key="IBUIFont" ref="577203767"/>
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
+							<int key="type">2</int>
+							<double key="pointSize">13</double>
+						</object>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">13</double>
+							<int key="NSfFlags">16</int>
+						</object>
 					</object>
 					<object class="IBUIButton" id="357399117">
 						<reference key="NSNextResponder" ref="766721923"/>
@@ -479,18 +486,18 @@
 							<reference ref="39303339"/>
 							<reference ref="118643652"/>
 							<reference ref="376543719"/>
-							<reference ref="898671539"/>
-							<reference ref="78521064"/>
 							<reference ref="410011317"/>
 							<reference ref="327486045"/>
 							<reference ref="903492349"/>
 							<reference ref="219035674"/>
 							<reference ref="714012586"/>
-							<reference ref="526844613"/>
 							<reference ref="357399117"/>
 							<reference ref="171303930"/>
 							<reference ref="138717752"/>
 							<reference ref="315456287"/>
+							<reference ref="78521064"/>
+							<reference ref="898671539"/>
+							<reference ref="526844613"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
