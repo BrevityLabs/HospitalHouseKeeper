@@ -38,7 +38,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    Array =[MaintList getAllData];
+    Bed *beds =[[Bed alloc]init];
+    Array =[beds getCleaningStaffName];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -55,18 +56,20 @@
         
         cell=[self reuseTableViewCellWithIdentifier:identifier];
     
-    MaintList *list = [Array objectAtIndex:indexPath.row];
+    Bed* list = [Array objectAtIndex:indexPath.row];
     
+    Employee *emp = [[Employee alloc]init];
+
     UILabel *bedIdLabel=(UILabel *)[cell viewWithTag:BEDID_TAG];
-    bedIdLabel.text = list.Empid;
+    bedIdLabel.text = list.bedId;
     bedIdLabel.textAlignment = UITextAlignmentCenter;
     
     UILabel *bedNoLabel=(UILabel *)[cell viewWithTag:BEDNO_TAG];
-    bedNoLabel.text = list.Bedno;
+    bedNoLabel.text = list.bedNo;
     bedNoLabel.textAlignment = UITextAlignmentCenter;
     
     UILabel *patientLabel=(UILabel *)[cell viewWithTag:PATIENT_TAG];
-    patientLabel.text = list.Empname;
+    patientLabel.text = emp.name;
     patientLabel.textAlignment = UITextAlignmentCenter;
     
     UIButton *actionBtn =(UIButton *)[cell viewWithTag:ACTION_TAG];

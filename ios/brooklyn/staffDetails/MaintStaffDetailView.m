@@ -39,18 +39,18 @@
 {
     [super viewDidLoad];
     
-    staffArray =[staffDetail getAllData];
+    staffArray =[Employee getMintStaffDetails];
     for (int i=0; i<[staffArray count]; i++)
     {
         
-        staffDetail *emp =[staffArray objectAtIndex:i];
+        Employee *emp =[staffArray objectAtIndex:i];
         
-        txt_BedNo.text = emp.Bedno;
+        txt_BedNo.text = emp.bedNo;
         
-        txt_BedAssign.text =emp.Empname;
+        txt_BedAssign.text =emp.name;
         
         txt_WorkStatus.text = @"Not started";
-        txt_Pedding.text =emp.StatusTime;
+       // txt_Pedding.text =emp.StatusTime;
     }
     
     // Do any additional setup after loading the view from its nib.

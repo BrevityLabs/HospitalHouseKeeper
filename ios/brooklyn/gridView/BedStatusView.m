@@ -8,14 +8,15 @@
 
 #import "BedStatusView.h"
 
-
-
-
 //static sqlite3_stmt *selectStmt = nil;
 
 @implementation BedStatusView
 
-@synthesize maintBedView,listViewButton,gridViewButton,signOutButton;
+@synthesize maintBedView;
+@synthesize listViewButton;
+@synthesize gridViewButton;
+@synthesize signOutButton;
+@synthesize bednumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,14 +46,12 @@
     int i=1;
     while (i>j) {
         for (; j<[bedNoArray count]; j++) {
-              NSString *str=[bedNoArray objectAtIndex:j];            
+              NSString *str=[bedNoArray objectAtIndex:j]; 
              [self drawBedAvailable:(300 * j) y: (i*150.0) width:250.0 height:200.0 bedId:str] ;
+            
                    }
         i++;
     }
-
-    
-   
 }
 
 - (void)viewDidUnload
@@ -77,7 +76,6 @@
            i++;
        }
    }
-
 }
 
 
@@ -125,7 +123,7 @@
     
     UIButton *actionButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
     actionButton.frame =CGRectMake(STATBUTTON_X, STATBUTTON_Y, STATBUTTON_WIDTH, STATBUTTON_HEIGHT);
-    [actionButton addTarget:self action:@selector(maintStaffDetilView:) forControlEvents:UIControlEventTouchUpInside];
+    [actionButton addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
     [actionButton setTitle:@"cleaning done" forState:UIControlStateNormal];
     [actionButton setBackgroundColor:[UIColor whiteColor]];
     [maintBedView addSubview:actionButton];
@@ -134,8 +132,10 @@
     
 }
 
--(IBAction)maintStaffDetilView:(id)sender
+-(IBAction)maintStaffDetilView:(UIButton *)sender
 {
+    bednumber =sender.titleLabel.text;
+    NSLog(@"number is %@",bednumber);
     MaintStaffDetailView *maintStaff = [[MaintStaffDetailView alloc]initWithNibName:@"MaintStaffDetailView" bundle:nil];
     
     maintStaff.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -163,32 +163,33 @@
     [self presentModalViewController:maintLogin animated:YES];
 }
 
--(IBAction)message:(id)sender
-{
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Hello World!"
+-(IBAction)cleaningDone:(UIButton *)sender
+{    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
                                                       message:@"Are you sure that the bed is clean and it can be set as Available?"
-                                                     delegate:nil
+                                                     delegate:self
                                             cancelButtonTitle:@"Ok"
                                             otherButtonTitles:@"Cancel", nil];
     [message show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 1(ready to occupy)
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 3(ready to occupy)
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    
+     Bed *bed =[[Bed alloc]init];
+      NSLog(@"number is %@",bednumber);
     if([title isEqualToString:@"Ok"])
     {
-        
+        [bed updateBedStatus:self.bednumber];
+        NSLog(@"number is %@",bednumber);
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
+                                                          message:@" The bed status has been changed to Available"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"Ok"
+                                                otherButtonTitles:@"Cancel", nil];
+        [message show];
+
     }
-    else if([title isEqualToString:@"Button 2"])
-    {
-        NSLog(@"Button 2 was selected.");
-    }
-    else if([title isEqualToString:@"Button 3"])
-    {
-        NSLog(@"Button 3 was selected.");
-    }
+    
 }
 
 @end

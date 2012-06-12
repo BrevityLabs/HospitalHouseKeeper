@@ -22,10 +22,13 @@
 
 @interface BedStatusView : UIViewController <UIAlertViewDelegate>
 {
-    UIButton *gridViewButton,*listViewButton,*signOutButton;
+    UIButton* gridViewButton;
+    UIButton*  listViewButton;
+     UIButton* signOutButton;
     
-    UIView *maintBedView;
+    UIView* maintBedView;
     
+    NSString* bednumber;
     
     NSMutableArray *bedNoArray;
     
@@ -53,9 +56,10 @@
 }
 
 @property(nonatomic,retain)IBOutlet UIView *maintBedView;
-
-@property(nonatomic,retain)IBOutlet UIButton *gridViewButton,*listViewButton,*signOutButton;
-
+@property(nonatomic,retain)IBOutlet UIButton *gridViewButton;
+@property(nonatomic,retain)IBOutlet UIButton *listViewButton;
+@property(nonatomic,retain)IBOutlet UIButton *signOutButton;
+@property(nonatomic,retain)NSString* bednumber;
 
 
 -(void) drawBedAvailable : (float) x_pos 
@@ -69,13 +73,13 @@
 
 -(IBAction)listView:(id)sender;
 
--(IBAction)maintStaffDetilView:(id)sender;
+-(IBAction)maintStaffDetilView:(UIButton *)sender;
 
 -(IBAction)signOut:(id)sender;
 
 -(void)clickSignOut;
 
--(IBAction)message:(id)sender;
+-(IBAction)cleaningDone:(id)sender;
 
 
 @end

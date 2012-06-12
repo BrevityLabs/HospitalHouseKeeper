@@ -8,13 +8,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "brooklyn/staffDetails/NurseStaffLogin.m"
-         timestampString = "361092493.203052"
+         filePath = "brooklyn/bedClass/bed.m"
+         timestampString = "361193369.135853"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
-         landmarkName = "-nurLoginClicked:"
+         startingLineNumber = "142"
+         endingLineNumber = "142"
+         landmarkName = "-updateBedStatus:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -22,13 +22,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "brooklyn/staffDetails/MaintStaffDetailView.m"
-         timestampString = "361127015.407508"
+         filePath = "brooklyn/gridView/BedStatusView.m"
+         timestampString = "361196085.051921"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "175"
+         endingLineNumber = "175"
+         landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

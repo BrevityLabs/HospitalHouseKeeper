@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MaintList.h"
+#import "Bed.h"
 
 #import "BedStatusView.h"
 

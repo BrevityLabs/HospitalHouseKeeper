@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "staffDetail.h"
+#import "Employee.h"
 
 @interface MaintStaffDetailView : UIViewController
 {

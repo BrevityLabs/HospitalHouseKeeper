@@ -14,6 +14,9 @@
 @synthesize number;
 @synthesize status;
 @synthesize type;
+@synthesize empId;
+@synthesize bedNo;
+//@synthesize Empname;
 
 -(id) initWithBedId: (NSString*) _bedId {
     if (self = [super init]) {
@@ -89,6 +92,8 @@
         
         while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
             NSString * _bedno = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+            Bed * _bed = [[Bed alloc] init];
+            _bed.number =_bedno;
             [_bedNoArray addObject: _bedno];
             
         }
@@ -98,6 +103,60 @@
     
 }
 
+-(NSMutableArray *)getCleaningStaffName
+{
+    sqlite3 *database = [DBConnection connectionFactory];
+    static sqlite3_stmt *selectStmt = nil;
+    NSMutableArray *array =[[NSMutableArray alloc]init];
+    NSString *nsatt=[NSString stringWithFormat:@"select Bed.bedID,Bed.bedno, Employee.name from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID=Bed.bedID"];
+    
+    const char *stmch=[nsatt UTF8String];
+    
+    if(sqlite3_prepare_v2(database, stmch, -1, &selectStmt,NULL)==SQLITE_OK)
+    {
+        
+        while (sqlite3_step(selectStmt)==SQLITE_ROW)
+        {
+            NSString *eno = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
+            NSLog(@"%@",eno);
+            NSString *ebedno = [NSString stringWithUTF8String:(char*)sqlite3_column_text(selectStmt, 1)];
+            NSLog(@"%@",ebedno);
+            NSString *ename = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 2)];
+            NSLog(@"%@",ename);
+            Bed* maint =[[Bed alloc]init];
+            Employee *emp = [[Employee alloc]init];
+            maint.empId = eno;
+            maint.bedNo = ebedno;
+            emp.name = ename;
+            [array addObject:maint];
+            
+            
+        }
+    }
+    sqlite3_finalize(selectStmt);
+    
+    return array;
+    
+}
 
+-(NSString* )updateBedStatus:(NSString *)_bednumber
+{
+    //    _bednumber =[Bed getCleanBedNoList];
+    //    NSLog(@"bednumber =%@",_bednumber);
+    sqlite3 *database = [DBConnection connectionFactory];
+    sqlite3_stmt*  _updateStmt;
+    NSString* nsatt = [NSString stringWithFormat:@"UPDATE Bed SET status ='3' WHERE bedNo ='%@'",_bednumber];
+    NSLog(@"nsatt %@",nsatt);
+    const char*  sql = [nsatt UTF8String];
+    if (sqlite3_prepare_v2(database, sql, -1, &_updateStmt, NULL)!=SQLITE_OK) {
+        NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
+    }
+    sqlite3_bind_int(_updateStmt, 1, Status);
+    if (SQLITE_DONE != sqlite3_step(_updateStmt)){
+        NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database));
+    }
+        sqlite3_reset(_updateStmt);
+    return _bednumber;
+}
 
 @end

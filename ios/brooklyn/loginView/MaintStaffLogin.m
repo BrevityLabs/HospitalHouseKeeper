@@ -59,8 +59,8 @@
     Employee* emp =[[Employee alloc]init];
     [emp getLoginID:txtUserName.text];
     //emp.loginID =txtUserName.text;
-    NSLog(@"emp.dept  :%@",emp.post);
-    if ([post2 isEqualToString: emp.post]) 
+    NSLog(@"emp.dept  :%@",emp.role);
+    if ([post2 isEqualToString: emp.role]) 
     {
         BedStatusView *status = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
         

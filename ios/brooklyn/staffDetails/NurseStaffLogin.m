@@ -58,8 +58,8 @@
     Employee* emply =[[Employee alloc]init];
      [emply getLoginID:txtNurUserName.text];
     //emp.loginID =txtUserName.text;
-    NSLog(@"emp.dept  :%@",emply.post);
-    if ([post2 isEqualToString: emply.post]) 
+    NSLog(@"emp.dept  :%@",emply.role);
+    if ([post2 isEqualToString: emply.role]) 
     {
         BedView *bedview = [[BedView alloc]initWithNibName:@"BedView" bundle:nil];
         bedview.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
