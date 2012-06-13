@@ -25,13 +25,14 @@
     UIButton* gridViewButton;
     UIButton*  listViewButton;
      UIButton* signOutButton;
-    
+    UIButton *numberbutton;
     UIView* maintBedView;
     
     NSString* bednumber;
     
+    NSString *number;
     NSMutableArray *bedNoArray;
-    
+   // NSMutableArray *beds;
     enum imgButton_size {
         IMGBTNXOFFSET = 30,
         IMGBTNYOFFSET = 30,
@@ -59,9 +60,9 @@
 @property(nonatomic,retain)IBOutlet UIButton *gridViewButton;
 @property(nonatomic,retain)IBOutlet UIButton *listViewButton;
 @property(nonatomic,retain)IBOutlet UIButton *signOutButton;
-@property(nonatomic,retain)NSString* bednumber;
-
-
+@property(nonatomic,retain)IBOutlet UIButton *numberbutton;
+@property(nonatomic,copy)NSString* bednumber;
+@property(nonatomic,retain)NSString* number;
 -(void) drawBedAvailable : (float) x_pos 
                        y : (float) y_pos  
                    width : (float) _width 

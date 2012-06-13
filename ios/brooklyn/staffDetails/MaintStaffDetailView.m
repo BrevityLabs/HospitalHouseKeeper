@@ -34,23 +34,26 @@
 }
 
 #pragma mark - View lifecycle
-
+//[(UIButton *)sender.titleLabel.text]
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    staffArray =[Employee getMintStaffDetails];
+     BedStatusView *stsVw = [[BedStatusView alloc]init];
+    NSString *_bednumber =  [[NSString alloc] initWithFormat:@"%@",[stsVw bednumber]];
+    //[stsVw bednumber];
+    NSLog(@"bed %@",_bednumber);
+    staffArray =[Employee getBedBeingCleaned:_bednumber];
     for (int i=0; i<[staffArray count]; i++)
-    {
-        
+    {   
+       
         Employee *emp =[staffArray objectAtIndex:i];
-        
-        txt_BedNo.text = emp.bedNo;
+        NSLog(@"bed %@",stsVw.number);
+        txt_BedNo.text = _bednumber;
         
         txt_BedAssign.text =emp.name;
         
         txt_WorkStatus.text = @"Not started";
-       // txt_Pedding.text =emp.StatusTime;
+        // txt_Pedding.text =emp.StatusTime;
     }
     
     // Do any additional setup after loading the view from its nib.

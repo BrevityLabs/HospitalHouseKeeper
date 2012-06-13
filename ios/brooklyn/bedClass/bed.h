@@ -20,8 +20,7 @@
     NSString*   type;
     NSString*   empId;
     NSString*   bedNo;
-    
-    NSInteger Status;
+    NSInteger bedstatus;
 }
 
 @property(nonatomic,retain) NSString* bedId;
@@ -30,6 +29,7 @@
 @property(nonatomic,retain) NSString* type;
 @property(nonatomic,retain) NSString* empId;
 @property(nonatomic,retain) NSString* bedNo; 
+@property(nonatomic,readonly)NSInteger bedstatus;
 // change it to bedNo
 +(NSMutableArray *) getBedList ;        //gets the list of beds in the hospital
 

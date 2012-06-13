@@ -208,14 +208,14 @@
     return role;
 }
 
-+(NSMutableArray *)getMintStaffDetails
++(NSMutableArray *) getBedBeingCleaned:(NSString* )_bedNo
 {
     //To get maintenance staff name from databse
     sqlite3 *database =[DBConnection connectionFactory];
     sqlite3_stmt *selectStmt = nil;
     NSMutableArray *Bedarray=[[NSMutableArray alloc]init];
     //Bed.statusTimes
-    NSString *nsatt=[NSString stringWithFormat:@"select Bed.bedno, Employee.name  from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID=Bed.bedID"];
+    NSString *nsatt=[NSString stringWithFormat:@"select Employee.name from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID=Bed.bedID where bed.bedno ='%@'",_bedNo];
     
     const char *stmch=[nsatt UTF8String];
     
@@ -224,14 +224,14 @@
         
         while (sqlite3_step(selectStmt)==SQLITE_ROW)
         {
-            NSString *bednum = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
-            NSLog(@"%@",bednum);
-            NSString *ename = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 1)];
+//            NSString *bednum = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
+//            NSLog(@"%@",bednum);
+            NSString *ename = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
             NSLog(@"%@",ename);
             //            NSString *statustime = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 2)];
             //            NSLog(@"%@",statustime);
             Employee *maints =[[Employee alloc]init];
-            maints.bedNo = bednum;
+//            maints.bedNo = bednum;
             maints.name = ename;
             // maints.StatusTime =statustime;
             [Bedarray addObject:maints];

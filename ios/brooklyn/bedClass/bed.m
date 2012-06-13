@@ -16,7 +16,7 @@
 @synthesize type;
 @synthesize empId;
 @synthesize bedNo;
-//@synthesize Empname;
+@synthesize bedstatus;
 
 -(id) initWithBedId: (NSString*) _bedId {
     if (self = [super init]) {
@@ -151,7 +151,7 @@
     if (sqlite3_prepare_v2(database, sql, -1, &_updateStmt, NULL)!=SQLITE_OK) {
         NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
     }
-    sqlite3_bind_int(_updateStmt, 1, Status);
+    sqlite3_bind_int(_updateStmt, 1, bedstatus);
     if (SQLITE_DONE != sqlite3_step(_updateStmt)){
         NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database));
     }

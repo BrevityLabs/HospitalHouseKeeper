@@ -45,7 +45,7 @@
 
 -(NSString*) getEmployeeID: (NSString*) _employeeId;
 
-+(NSMutableArray *)getMintStaffDetails;//static method to get maintenance satff details
++(NSMutableArray *) getBedBeingCleaned:(NSString* )_bedNo;//static method to get maintenance satff details
 //  Change the name of the method to more meaningful name. Or get rid of it.
 //  getBedBeingCleaned - it should be a non-static.
 
