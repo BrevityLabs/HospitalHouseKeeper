@@ -65,7 +65,7 @@
             Bed * _bed = [[Bed alloc] initWithBedId: _bedId];
             
             [_bedArray addObject: _bed];
-            
+            NSLog(@"%@",_bedArray);
         }
     }
     sqlite3_finalize(_selectStmt);
@@ -85,17 +85,20 @@
     
     NSMutableArray * _bedNoArray=[[NSMutableArray alloc]init];
     
-    NSString *nsatt = [NSString stringWithFormat:@"SELECT bedNo FROM Bed where status ='2'"];//for getting the bedid of beds which are ready for claning.
+    NSString *nsatt = [NSString stringWithFormat:@"SELECT bedID FROM Bed where status ='2'"];//for getting the bedid of beds which are ready for claning.
     const char *stmch=[nsatt UTF8String];
     
     if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
         
         while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
-            NSString * _bedno = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
-            Bed * _bed = [[Bed alloc] init];
-            _bed.number =_bedno;
-            [_bedNoArray addObject: _bedno];
-            
+            NSString * _bedid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+    //        Bed * _bed = [[Bed alloc] init];
+//         _bed.number =_bedno;
+            [_bedNoArray addObject: _bedid];
+            NSLog(@"%@",_bedNoArray);
+            Bed * _bedID = [[Bed alloc] initWithBedId: _bedid];
+                    NSLog(@"%@",_bedID);
+                    
         }
     }
     sqlite3_finalize(_selectStmt);
@@ -156,7 +159,7 @@
         NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database));
     }
         sqlite3_reset(_updateStmt);
-    return _bednumber;
+    return bedId;
 }
 
 @end

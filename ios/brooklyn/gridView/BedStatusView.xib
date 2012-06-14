@@ -183,7 +183,6 @@
 						<string key="NSFrame">{{909, 117}, {60, 22}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -372,18 +371,28 @@
 					<string key="className">BedStatusView</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="cleaningDone:">id</string>
+						<string key="imageDetailView:">id</string>
 						<string key="listView:">id</string>
-						<string key="maintStaffDetilView:">id</string>
+						<string key="maintStaffDetilView:">UIButton</string>
 						<string key="signOut:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="cleaningDone:">
+							<string key="name">cleaningDone:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="imageDetailView:">
+							<string key="name">imageDetailView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="listView:">
 							<string key="name">listView:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="maintStaffDetilView:">
 							<string key="name">maintStaffDetilView:</string>
-							<string key="candidateClassName">id</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBActionInfo" key="signOut:">
 							<string key="name">signOut:</string>
@@ -391,15 +400,26 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="actionButton">UIButton</string>
 						<string key="gridViewButton">UIButton</string>
+						<string key="label">UILabel</string>
 						<string key="listViewButton">UIButton</string>
 						<string key="maintBedView">UIView</string>
+						<string key="numberbutton">UIButton</string>
 						<string key="signOutButton">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="actionButton">
+							<string key="name">actionButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="gridViewButton">
 							<string key="name">gridViewButton</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="label">
+							<string key="name">label</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="listViewButton">
 							<string key="name">listViewButton</string>
@@ -408,6 +428,10 @@
 						<object class="IBToOneOutletInfo" key="maintBedView">
 							<string key="name">maintBedView</string>
 							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="numberbutton">
+							<string key="name">numberbutton</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="signOutButton">
 							<string key="name">signOutButton</string>

@@ -224,8 +224,8 @@
         
         while (sqlite3_step(selectStmt)==SQLITE_ROW)
         {
-//            NSString *bednum = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
-//            NSLog(@"%@",bednum);
+            Employee *emp= [[Employee alloc]init];
+            emp.bedNo = _bedNo;    
             NSString *ename = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
             NSLog(@"%@",ename);
             //            NSString *statustime = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 2)];

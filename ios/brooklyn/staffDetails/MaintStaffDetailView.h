@@ -13,18 +13,28 @@
 #import "BedStatusView.h"
 @interface MaintStaffDetailView : UIViewController
 {
-    UITextField  *txt_BedNo,*txt_BedAssign,*txt_WorkStatus,*txt_Pedding;
+    UITextField* txt_BedNo;
+    UITextField* txt_BedAssign;
+    UITextField* txt_WorkStatus;
+    UITextField* txt_Pedding;
     
-    UIButton *backButton,*cleaningDoneButton;
+    UIButton* backButton;
+    UIButton* cleaningDoneButton;
     
     NSMutableArray *staffArray;
+    NSString *bedNoValue;
 }
 
-@property(nonatomic,retain)IBOutlet UITextField  *txt_BedNo,*txt_BedAssign,*txt_WorkStatus,*txt_Pedding;
-
-@property(nonatomic,retain)IBOutlet UIButton *backButton,*cleaningDoneButton;
-
+@property(nonatomic,retain)IBOutlet UITextField* txt_BedNo;
+@property(nonatomic,retain)IBOutlet UITextField* txt_BedAssign;
+@property(nonatomic,retain)IBOutlet UITextField* txt_WorkStatus;
+@property(nonatomic,retain)IBOutlet UITextField* txt_Pedding;
+@property(nonatomic,retain)IBOutlet UIButton* backButton;
+@property(nonatomic,retain)IBOutlet UIButton* cleaningDoneButton;
+@property(nonatomic,retain) NSString* bedNoValue;
 -(IBAction)Back:(id)sender;
 
+-(IBAction)cleaningDone:(id)sender;
 -(void)BackClicked;
+-(void)getbedtitle:(NSString *)bednumber;
 @end

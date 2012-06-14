@@ -16,9 +16,14 @@
 @synthesize listViewButton;
 @synthesize gridViewButton;
 @synthesize signOutButton;
-@synthesize bednumber;
-@synthesize number;
 @synthesize numberbutton;
+@synthesize actionButton;
+@synthesize imgButton;
+@synthesize bednumber;
+@synthesize status;
+@synthesize label;
+@synthesize bedID;
+@synthesize number;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,17 +47,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    int j=0;
-    bedNoArray = [Bed getCleanBedNoList];
-    int i=1;
-    while (i>j) {
-        for (; j<[bedNoArray count]; j++) {
-            NSString *str=[bedNoArray objectAtIndex:j];
-           
-            [self drawBedAvailable:(300 * j) y: (i*150.0) width:250.0 height:200.0 bedId:str] ;
-        }
-        i++;
-    }
+    [self getGridView];
 }
 
 - (void)viewDidUnload
@@ -64,22 +59,30 @@
 
 -(IBAction)gridView:(id)sender
 {
-    if (self.view ==nil)
-    {
-        int j=0;
-        bedNoArray = [Bed getCleanBedNoList];
-        int i=1;
-        while (i>j) {
-            for (; j<[bedNoArray count]; j++) {
-                NSString *str=[bedNoArray objectAtIndex:j];
-                [self drawBedAvailable:(300 * j) y: (i*150.0) width:250.0 height:200.0 bedId:str] ;
-            }
-            i++;
-        }
-    }
+    [self getGridView];    
 }
 
+-(void)getGridView
+{
+    int j=0;
+    bedNoArray = [Bed getCleanBedNoList];
+    int i=1;
+    while (i>j) {
+        for (; j<[bedNoArray count]; j++) {
+            NSString *str=[bedNoArray objectAtIndex:j];
+            Bed *bed =[[Bed alloc]initWithBedId:str];
+            bednumber = bed.number;
+            status =bed.status;
+            bedID =bed.bedId;
+            [self drawBedAvailable:(300 * j) y: (i*150.0) width:250.0 height:200.0 bedNumber:bednumber] ;
+     //       beds =[NSMutableArray arrayWithObject:bedID];
+            }
+        i++;
+          }
+    
 
+
+}
 -(IBAction)signOut:(id)sender
 {
     [self clickSignOut];
@@ -94,7 +97,7 @@
                        y : (float) y_pos  
                    width : (float) _width 
                   height : (float) _height 
-                   bedId : (NSString *) _bedId
+               bedNumber : (NSString *)_bedNumber
 {
     
     CGRect myRect = CGRectMake(x_pos, y_pos, _width, _height);
@@ -102,11 +105,13 @@
     maintBedView.layer.borderColor = [UIColor blueColor].CGColor;
     maintBedView.layer.borderWidth = 3.0f; 
     // bednumber=_bedId;
-    
-    UIButton *imgButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+      
+    imgButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     imgButton.frame = CGRectMake(IMGBTNXOFFSET, IMGBTNYOFFSET, IMGBTNWIDTH, IMGBTNHEIGHT);
     [imgButton setBackgroundImage:[UIImage imageNamed:@"bed_status2.png"] forState:UIControlStateNormal];
-    
+    [imgButton addTarget:self action:@selector(imageDetailView:) forControlEvents:UIControlEventTouchUpInside];
+    [imgButton setTitle:_bedNumber forState:UIControlStateNormal];
+    [imgButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [maintBedView addSubview:imgButton];
     
     numberbutton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -114,41 +119,58 @@
     [numberbutton addTarget:self action:@selector(maintStaffDetilView:) forControlEvents:UIControlEventTouchUpInside];
     
     numberbutton.frame=CGRectMake(NUMBUTTON_X,NUMBUTTON_Y, NUMBUTTON_WIDTH, NUMBUTTON_HEIGHT);
-    [numberbutton setTitle:_bedId forState:UIControlStateNormal]; 
-   
+    [numberbutton setTitle:_bedNumber forState:UIControlStateNormal]; 
+    
     [numberbutton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
     
     [numberbutton setBackgroundColor:[UIColor whiteColor]]; 
     
     [maintBedView addSubview:numberbutton];
-    UIButton *actionButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    actionButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
     actionButton.frame =CGRectMake(STATBUTTON_X, STATBUTTON_Y, STATBUTTON_WIDTH, STATBUTTON_HEIGHT);
     [actionButton addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
     
-      [actionButton setTitle:@"cleaning done"forState:UIControlStateNormal];
+   
+     NSString *str = [NSString stringWithFormat:@"cleaning done "];//for bednumber %@",number];
+    [actionButton setTitle:str forState:UIControlStateNormal];
+      
     [actionButton setBackgroundColor:[UIColor whiteColor]];
     [maintBedView addSubview:actionButton];
     
-    [self.view addSubview:maintBedView];
    
-  }        
+    [self.view addSubview:maintBedView];
+    
+}        
 
 -(IBAction)maintStaffDetilView:(UIButton *) sender
 {
     // (myInstanceVariable = [sender.titleLabel.text copy];)
-   NSString * bed =sender.titleLabel.text;
-    bednumber =[bed copy];
-      NSLog(@"bednumber %@",bednumber);
+          NSString * bed =sender.titleLabel.text;
+    number =bed;
+    NSLog(@"bednumber %@",number);
+    [self goDetailView];
+
+
+}
+-(void)goDetailView
+{
     MaintStaffDetailView *maintStaff = [[MaintStaffDetailView alloc]initWithNibName:@"MaintStaffDetailView" bundle:nil];
     
     maintStaff.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
+     [maintStaff getbedtitle:number];
     [self presentModalViewController:maintStaff animated:YES];
-    
+   
+
 }
-
-
-
+-(IBAction)imageDetailView:(UIButton *)sender
+{
+    NSString * bed =sender.titleLabel.text;
+    number =bed;
+    NSLog(@"bednumber %@",number);
+    
+    [self goDetailView];
+}
 
 -(IBAction)listView:(id)sender
 {
@@ -168,33 +190,30 @@
 }
 
 -(IBAction)cleaningDone:(id)sender
-{  
-   
-    NSMutableArray  *bedAry = [Bed getCleanBedNoList];
-
-    for (int i=0;i<[bedAry count];i++)
-    {
-                   NSLog(@"bedAry %@",[bedAry objectAtIndex:i]);
-//        bednumber =[bedAry objectAtIndex:i];
-        NSLog(@"bednumber %@",bednumber);
-
-        if ([[bedAry objectAtIndex:i] isEqualToString:bednumber])
-            {
-                UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
-                                                                  message:@"Are you sure that the bed is clean and it can be set as Available?"
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"Ok"
-                                                        otherButtonTitles:@"Cancel", nil];
-                [message show];
-            }
-        
-        
-    }
+{ 
+//     NSMutableArray *str =[Bed getCleanBedNoList];
+//    for (int i=0; i<[bedNoArray count]; i++) {
+//         NSLog(@"bedid %@",[str objectAtIndex:i]);
+//        
+//          NSLog(@"bedid %@",bednumber);
+//        if ([label.text isEqualToString:[str objectAtIndex:i]]){
+              UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
+                                                              message:@"Are you sure that the bed is clean and it can be set as Available?"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Ok"
+                                                    otherButtonTitles:@"Cancel", nil];
+            [message show];
+     
+    
+//        }
+//    }
+       
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 3(ready to occupy)
 {
-    //NSString *str =[Bed getCleanBedNoList];
+   
+ 
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     Bed *bed =[[Bed alloc]init];
     

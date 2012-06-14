@@ -23,16 +23,20 @@
 @interface BedStatusView : UIViewController <UIAlertViewDelegate>
 {
     UIButton* gridViewButton;
-    UIButton*  listViewButton;
-     UIButton* signOutButton;
-    UIButton *numberbutton;
+    UIButton* listViewButton;
+    UIButton* signOutButton;
+    UIButton* numberbutton;
+    UIButton *actionButton;
+    UIButton *imgButton;
     UIView* maintBedView;
+    UILabel *label;
     
+    NSString* bedID;
     NSString* bednumber;
-    
-    NSString *number;
-    NSMutableArray *bedNoArray;
-   // NSMutableArray *beds;
+     NSString* number;
+    NSString* status;
+    NSMutableArray* bedNoArray;
+     NSMutableArray* beds;
     enum imgButton_size {
         IMGBTNXOFFSET = 30,
         IMGBTNYOFFSET = 30,
@@ -56,18 +60,24 @@
     
 }
 
-@property(nonatomic,retain)IBOutlet UIView *maintBedView;
-@property(nonatomic,retain)IBOutlet UIButton *gridViewButton;
-@property(nonatomic,retain)IBOutlet UIButton *listViewButton;
-@property(nonatomic,retain)IBOutlet UIButton *signOutButton;
-@property(nonatomic,retain)IBOutlet UIButton *numberbutton;
-@property(nonatomic,copy)NSString* bednumber;
+@property(nonatomic,retain)IBOutlet UIView* maintBedView;
+@property(nonatomic,retain)IBOutlet UIButton* gridViewButton;
+@property(nonatomic,retain)IBOutlet UIButton* listViewButton;
+@property(nonatomic,retain)IBOutlet UIButton* signOutButton;
+@property(nonatomic,retain)IBOutlet UIButton* numberbutton;
+@property(nonatomic,retain)IBOutlet UIButton* actionButton;
+@property(nonatomic,retain)IBOutlet UIButton *imgButton;
+@property(nonatomic,retain)IBOutlet UILabel *label;
+@property(nonatomic,retain)NSString* bednumber;
 @property(nonatomic,retain)NSString* number;
+@property(nonatomic,retain)NSString* status;
+@property(nonatomic,retain)NSString* bedID;
+
 -(void) drawBedAvailable : (float) x_pos 
                        y : (float) y_pos  
                    width : (float) _width 
                   height : (float) _height 
-                   bedId : (NSString*) _bedId ;
+               bedNumber : (NSString*) _bedNumber ;
 
 
 //-(IBAction)gridView:(id)sender;
@@ -81,6 +91,8 @@
 -(void)clickSignOut;
 
 -(IBAction)cleaningDone:(id)sender;
+-(IBAction)imageDetailView:(UIButton *)sender;
 
-
+-(void)getGridView;
+-(void)goDetailView;
 @end
