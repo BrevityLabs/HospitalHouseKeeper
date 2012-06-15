@@ -26,12 +26,9 @@ static sqlite3 *database =nil;
         
         sqlite3 * database = [DBConnection connectionFactory ] ;
         static sqlite3_stmt* _selectStmt = nil;
-    //    NSString* _bedId ;
-        
         NSString *nsatt = 
             [NSString stringWithFormat:@"SELECT name, address, cellNo FROM Patient WHERE patientID = '%@'",_patientId] ;
         const char *stmch=[nsatt UTF8String];
-        
         if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
             while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
                 patientId   = _patientId ;
@@ -39,7 +36,6 @@ static sqlite3 *database =nil;
                 address     = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
                 cell        = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 2)];
                 [self getAllocatedBedNo: _patientId ];
-                
             }
         } else {
             NSLog(@"Class bed: Method initWithBedId::Query on Bed table failed.") ;
@@ -47,7 +43,6 @@ static sqlite3 *database =nil;
         
     }
     return self ;
-    
 }
 
 /*
@@ -77,7 +72,6 @@ static sqlite3 *database =nil;
     }
     sqlite3_finalize(_selectStmt);
     return patientArray;  //an array of all the beds 
-    
 }
 
 /*

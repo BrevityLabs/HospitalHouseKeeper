@@ -56,12 +56,13 @@
         
         cell=[self reuseTableViewCellWithIdentifier:identifier];
     
-    Bed* list = [Array objectAtIndex:indexPath.row];
+    list = [Array objectAtIndex:indexPath.row];
     
-    Employee *emp = [[Employee alloc]init];
+    Employee *employ = [[Employee alloc]initWithEmployeeID:list.empId];
 
     UILabel *bedIdLabel=(UILabel *)[cell viewWithTag:BEDID_TAG];
     bedIdLabel.text = list.bedId;
+    NSLog(@"bedid %@",bedIdLabel.text);
     bedIdLabel.textAlignment = UITextAlignmentCenter;
     
     UILabel *bedNoLabel=(UILabel *)[cell viewWithTag:BEDNO_TAG];
@@ -69,21 +70,20 @@
     bedNoLabel.textAlignment = UITextAlignmentCenter;
     
     UILabel *patientLabel=(UILabel *)[cell viewWithTag:PATIENT_TAG];
-    patientLabel.text = emp.name;
+    patientLabel.text = employ.name;
     patientLabel.textAlignment = UITextAlignmentCenter;
     
     UIButton *actionBtn =(UIButton *)[cell viewWithTag:ACTION_TAG];
-    NSString *actionStr = @" cleaning done" ;
-    [actionBtn setTitle:actionStr forState:UIControlStateHighlighted];
-    
+    actionBtn.backgroundColor =[UIColor whiteColor];
+   
     
     UILabel *bedTypeLabel=(UILabel *)[cell viewWithTag:BEDTYPE_TAG];
     bedTypeLabel.text = @"Standard";
     
     
-    UILabel *colorLabel = (UILabel *)[cell viewWithTag:COLOR_TAG];
-    colorLabel.backgroundColor = [UIColor redColor];
-    
+    UIImageView *colorImage = (UIImageView* )[cell viewWithTag:COLOR_TAG];
+    colorImage.image =[UIImage imageNamed:@"icon_red.png"];
+   
     UILabel *statusLabel=(UILabel *)[cell viewWithTag:STATUS_TAG];
     statusLabel.text = @"Under maintenance";                    
     
@@ -96,7 +96,7 @@
     
     CGRect cellRectangle;
     
-    cellRectangle = CGRectMake(0,0,850,44);    
+    cellRectangle = CGRectMake(0,0,CELL_WIDTH,ROW_HEIGHT);    
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier: identifier];
     cell.frame =cellRectangle;
     
@@ -119,7 +119,9 @@
     [cell.contentView addSubview:patientLabel];
     
     UIButton *actionBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    actionBtn.frame = CGRectMake(315, 0, 160, 40);
+    actionBtn.frame = CGRectMake(315, 10, 150, 30);
+     [actionBtn setTitle:@"cleaning done" forState:UIControlStateNormal];
+     [actionBtn addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
     [cell.contentView addSubview:actionBtn];
     
     CGRect rect4 = CGRectMake(490, 0, 99, 44);
@@ -127,13 +129,13 @@
     bedTypeLabel.tag =BEDTYPE_TAG; 
     [cell.contentView addSubview:bedTypeLabel];
     
-    CGRect rect5 = CGRectMake(600, 0,40, 30);
-    UILabel *colorLabel = [[UILabel alloc]initWithFrame:rect5];
-    colorLabel.tag =COLOR_TAG;
-    [cell.contentView   addSubview:colorLabel];
+    CGRect rect5 = CGRectMake(595, 0,30, 30);
+    UIImageView *colorImage = [[UIImageView alloc]initWithFrame:rect5];
+    colorImage.tag =COLOR_TAG;
+    [cell.contentView addSubview:colorImage];
     
     
-    CGRect rect6 = CGRectMake(645,0, 170, 27);
+    CGRect rect6 = CGRectMake(645,0, 170, 44);
     UILabel *statusLabel= [[UILabel alloc]initWithFrame:rect6];
     statusLabel.tag =STATUS_TAG; 
     [cell.contentView addSubview:statusLabel];
@@ -149,14 +151,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    
+   NSMutableArray *ary = [Bed getCleanBedNoList];
+    Bed *bed =[[Bed alloc]initWithBedId:[ary objectAtIndex:indexPath.row]];
     if (indexPath.row ==indexPath.row) 
     {
     MaintStaffDetailView *detailViewController = [[MaintStaffDetailView alloc] initWithNibName:@"MaintStaffDetailView" bundle:nil];
         detailViewController.modalTransitionStyle =UIModalTransitionStyleCrossDissolve;
+        [detailViewController getbedtitle:bed.number];
         [self presentModalViewController:detailViewController animated:YES];
     }
-    
 }
 -(IBAction)getGridView:(id)sender
 {
@@ -168,8 +171,6 @@
     
 }
 
-
-
 -(IBAction)signOut:(id)sender
 {
     MaintStaffLogin *login = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
@@ -178,6 +179,50 @@
     
     [self presentModalViewController:login animated:YES];
 }
+-(IBAction)cleaningDone:(id)sender
+{ 
+    //     NSMutableArray *str =[Bed getCleanBedNoList];
+    //    for (int i=0; i<[bedNoArray count]; i++) {
+    //         NSLog(@"bedid %@",[str objectAtIndex:i]);
+    //        
+    //          NSLog(@"bedid %@",bednumber);
+    //        if ([label.text isEqualToString:[str objectAtIndex:i]]){
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
+                                                      message:@"Are you sure that the bed is clean and it can be set as Available?"
+                                                     delegate:self
+                                            cancelButtonTitle:@"Ok"
+                                            otherButtonTitles:@"Cancel", nil];
+    [message show];
+    
+    
+    //        }
+    //    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 3(ready to occupy)
+{
+    
+    
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    Bed *bed =[[Bed alloc]init];
+    
+    NSLog(@"number is %@",bed.bedNo);
+    if([title isEqualToString:@"Ok"])
+    {
+        [bed updateBedStatus:bed.bedNo];
+        NSLog(@"number is %@",bed.bedNo);
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
+                                                          message:@" The bed status has been changed to Available"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"Ok"
+                                                otherButtonTitles:@"Cancel", nil];
+        [message show];
+        
+    }
+    
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

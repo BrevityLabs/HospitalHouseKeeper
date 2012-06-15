@@ -37,7 +37,7 @@
                 employeeID   = empID ;
                 name         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
                 dept         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
-                [self getEmployeeID:empID];
+               // [self getEmployeeID:empID];
                 
             }
         } else {
@@ -168,33 +168,26 @@
 		if(sqlite3_prepare_v2(database, sql, -1, &_deleteStmt, NULL) != SQLITE_OK)
 			NSAssert1(0, @"Error while creating delete statement. '%s'", sqlite3_errmsg(database));
     }
-    
     //When binding parameters, index starts from 1 and not zero.
     sqlite3_bind_text(_deleteStmt, 1, [employeeID UTF8String], -1, SQLITE_TRANSIENT);
 	
 	if (SQLITE_DONE != sqlite3_step(_deleteStmt)) 
 		NSAssert1(0, @"Error while deleting. '%s'", sqlite3_errmsg(database));
-	
 	sqlite3_reset(_deleteStmt);
-    
-    
     return false ;
 }
 
-//SELECT A.empID FROM PatientStaff A, BedPatient B where A.patientID = B.patientID AND A.empID = %@", _employeeId
+
 -(NSString*) getLoginID :(NSString*) _loginid 
 {
     sqlite3* database = [DBConnection connectionFactory ] ;
-  
-    sqlite3_stmt* _selectStmt ;
-  
+      sqlite3_stmt* _selectStmt ;
     NSString* empid;
     if (employeeID == NULL) {
         NSString* nsatt = [NSString stringWithFormat:@" SELECT E.dept, E.empid FROM Employee E, User U WHERE E.empID = U.empID AND U.loginID = '%@'",_loginid]; ;
         const char* stmch=[nsatt UTF8String];
         if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
             while (sqlite3_step(_selectStmt) == SQLITE_ROW) { 
-                //...
                 //NSString* username = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
                role = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
                 NSLog(@"d  :%@",role);
@@ -204,7 +197,6 @@
         }        
     }
     sqlite3_finalize(_selectStmt);
-    
     return role;
 }
 
@@ -216,12 +208,9 @@
     NSMutableArray *Bedarray=[[NSMutableArray alloc]init];
     //Bed.statusTimes
     NSString *nsatt=[NSString stringWithFormat:@"select Employee.name from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID=Bed.bedID where bed.bedno ='%@'",_bedNo];
-    
     const char *stmch=[nsatt UTF8String];
-    
-    if(sqlite3_prepare_v2(database, stmch, -1, &selectStmt,NULL)==SQLITE_OK)
+        if(sqlite3_prepare_v2(database, stmch, -1, &selectStmt,NULL)==SQLITE_OK)
     {
-        
         while (sqlite3_step(selectStmt)==SQLITE_ROW)
         {
             Employee *emp= [[Employee alloc]init];
@@ -231,17 +220,14 @@
             //            NSString *statustime = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 2)];
             //            NSLog(@"%@",statustime);
             Employee *maints =[[Employee alloc]init];
-//            maints.bedNo = bednum;
             maints.name = ename;
             // maints.StatusTime =statustime;
             [Bedarray addObject:maints];
-            
         }
     }
     sqlite3_finalize(selectStmt);
     
     return Bedarray;
-    
 }
 
 @end

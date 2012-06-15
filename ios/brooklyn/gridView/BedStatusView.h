@@ -37,19 +37,19 @@
     NSString* status;
     NSMutableArray* bedNoArray;
      NSMutableArray* beds;
-    enum imgButton_size {
+    enum imageButton_size {
         IMGBTNXOFFSET = 30,
         IMGBTNYOFFSET = 30,
         IMGBTNWIDTH =200,
         IMGBTNHEIGHT= 136
     };
-    enum button_size {
+    enum numberButton_size {
         NUMBUTTON_X = 0,
         NUMBUTTON_Y = 0,
         NUMBUTTON_WIDTH =50,
         NUMBUTTON_HEIGHT= 50
     };
-    enum statusButton_size {
+    enum actionButton_size {
         STATBUTTON_X = 0,
         STATBUTTON_Y = 150,
         STATBUTTON_WIDTH =120,
@@ -77,10 +77,10 @@
                        y : (float) y_pos  
                    width : (float) _width 
                   height : (float) _height 
-               bedNumber : (NSString*) _bedNumber ;
+               bedNumber : (NSString*) _bedNumber ;//for displaying the gridview of beds to be cleaned.
 
 
-//-(IBAction)gridView:(id)sender;
+-(IBAction)gridView:(id)sender;
 
 -(IBAction)listView:(id)sender;
 

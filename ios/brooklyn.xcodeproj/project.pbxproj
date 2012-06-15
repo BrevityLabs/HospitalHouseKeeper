@@ -169,31 +169,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6C7420CF157762E900AB7386 /* employeeClass */ = {
+		6C7420CF157762E900AB7386 /* Employee Class */ = {
 			isa = PBXGroup;
 			children = (
 				6C7420D0157762E900AB7386 /* employee.h */,
 				6C7420D1157762E900AB7386 /* employee.m */,
 			);
+			name = "Employee Class";
 			path = employeeClass;
 			sourceTree = "<group>";
 		};
-		6C7420D31577631200AB7386 /* bedClass */ = {
+		6C7420D31577631200AB7386 /* Bed Class */ = {
 			isa = PBXGroup;
 			children = (
 				6C7420D41577631200AB7386 /* bed.h */,
 				6C7420D51577631200AB7386 /* bed.m */,
 			);
+			name = "Bed Class";
 			path = bedClass;
 			sourceTree = "<group>";
 		};
-		6C7420D71577633300AB7386 /* patientClass */ = {
+		6C7420D71577633300AB7386 /* Patient Class */ = {
 			isa = PBXGroup;
 			children = (
 				6C7420D81577633300AB7386 /* patient.h */,
 				6C7420D91577633300AB7386 /* patient.m */,
 			);
+			name = "Patient Class";
 			path = patientClass;
+			sourceTree = "<group>";
+		};
+		6C7F5D8D158B15A200D50E79 /* Database Connection Class */ = {
+			isa = PBXGroup;
+			children = (
+				D29FD806157F60B20004B0DC /* DBConnection.h */,
+				D29FD807157F60B20004B0DC /* DBConnection.m */,
+			);
+			name = "Database Connection Class";
 			sourceTree = "<group>";
 		};
 		6C875D72157CCF91002BD723 /* PatientDetailView */ = {
@@ -241,9 +253,10 @@
 		6CCB88C315749ED6002456B0 /* brooklyn */ = {
 			isa = PBXGroup;
 			children = (
-				6C7420CF157762E900AB7386 /* employeeClass */,
-				6C7420D31577631200AB7386 /* bedClass */,
-				6C7420D71577633300AB7386 /* patientClass */,
+				6C7F5D8D158B15A200D50E79 /* Database Connection Class */,
+				6C7420CF157762E900AB7386 /* Employee Class */,
+				6C7420D31577631200AB7386 /* Bed Class */,
+				6C7420D71577633300AB7386 /* Patient Class */,
 				6CCB88F315749FAC002456B0 /* en.lproj */,
 				6C875D72157CCF91002BD723 /* PatientDetailView */,
 				6CFFB6721578B80A000ED728 /* PatientBedView */,
@@ -258,8 +271,6 @@
 				6CCB88D015749ED6002456B0 /* ViewController.m */,
 				6CCB88D215749ED6002456B0 /* ViewController.xib */,
 				6CCB88C415749ED6002456B0 /* Supporting Files */,
-				D29FD806157F60B20004B0DC /* DBConnection.h */,
-				D29FD807157F60B20004B0DC /* DBConnection.m */,
 			);
 			path = brooklyn;
 			sourceTree = "<group>";

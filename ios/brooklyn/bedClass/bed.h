@@ -20,7 +20,7 @@
     NSString*   type;
     NSString*   empId;
     NSString*   bedNo;
-    NSInteger bedstatus;
+    NSInteger   bedstatus;
 }
 
 @property(nonatomic,retain) NSString* bedId;
@@ -30,7 +30,7 @@
 @property(nonatomic,retain) NSString* empId;
 @property(nonatomic,retain) NSString* bedNo; 
 @property(nonatomic,readonly)NSInteger bedstatus;
-// change it to bedNo
+
 +(NSMutableArray *) getBedList ;        //gets the list of beds in the hospital
 
 -(id) initWithBedId: (NSString*) _bedId ; //creating a Bed object using bedID
@@ -42,4 +42,5 @@
 
 -(NSString* )updateBedStatus:(NSString *)_bednumber; // make it non-static. Add parameter which status it should change to.
 
+-(NSString* )updateRepairStatus:(NSString* )_status;
 @end

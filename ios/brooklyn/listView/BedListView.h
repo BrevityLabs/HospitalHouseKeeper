@@ -18,7 +18,7 @@
 
 
 #define ROW_HEIGHT 44
-#define CELL_WIDTH 800
+#define CELL_WIDTH 850
 #define LABEL_HEIGHT 44
 
 //Lets define the dimensions of the two columns
@@ -56,7 +56,7 @@
     IBOutlet UITableView *listView;    
     
     NSMutableArray *Array;
-    
+    Bed* list ;
 }
 
 @property(nonatomic,retain)IBOutlet UITableView *listView;
