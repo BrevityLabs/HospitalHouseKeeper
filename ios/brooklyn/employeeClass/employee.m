@@ -18,6 +18,8 @@
 @synthesize loginID;
 @synthesize role;
 @synthesize bedNo;
+@synthesize statusTime;
+@synthesize password;
 
 -(id) initWithEmployeeID :(NSString*) empID {
     //Get handled to DB connection
@@ -38,19 +40,35 @@
                 name         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
                 dept         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
                // [self getEmployeeID:empID];
-                
             }
         } else {
             NSLog(@"Class bed: Method initWithBedId::Query on Bed table failed.") ;
         }
-        
     }
     
     return self ;
-    
-    
 }
-
+//-(id) initWithLoginID
+//{
+//    if (self = [super init]) {
+//        
+//        sqlite3* database = [DBConnection connectionFactory ] ;
+//        static sqlite3_stmt* _selectStmt = nil;
+//        NSString* sql_statement = [NSString stringWithFormat: @"select loginID from User "] ;
+//        const char* stmch = [sql_statement UTF8String];
+//        
+//        if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
+//            while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
+//                 loginID  = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+//                        }
+//        } else {
+//            NSLog(@"Class bed: Method initWithBedId::Query on Bed table failed.") ;
+//        }
+//    }
+//    
+//    return self ;
+//  
+//}
 +(NSMutableArray*) getEmployeeList  {
     
     sqlite3*  database = [DBConnection connectionFactory ] ;
@@ -105,7 +123,6 @@
     [empArray addObject:_empID];
     [empArray addObject:_name];
     [empArray addObject:_dept];
-    
     sqlite3* database = [DBConnection connectionFactory ] ;
     sqlite3_stmt* _insertStmt ;
     if (_insertStmt ==nil)
@@ -116,11 +133,9 @@
             NSAssert1(0,@"error while creating statement.'%s'",sqlite3_errmsg(database));
         }
     }
-    
     sqlite3_bind_text(_insertStmt, 1, [[empArray objectAtIndex:0]UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(_insertStmt, 2, [[empArray objectAtIndex:1]UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(_insertStmt, 3, [[empArray objectAtIndex:2]UTF8String], -1, SQLITE_TRANSIENT);
-    
     if(SQLITE_DONE!=sqlite3_step(_insertStmt))
         NSAssert1(0,@"error.'%s'",sqlite3_errmsg(database));
     sqlite3_reset(_insertStmt);
@@ -150,7 +165,6 @@
     sqlite3_bind_text(_updateStmt, 1, [name UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(_updateStmt, 2, [dept UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(_updateStmt, 3, [employeeID UTF8String], -1, SQLITE_TRANSIENT);
-    
     if (SQLITE_DONE != sqlite3_step(_updateStmt))
         NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database));
     sqlite3_reset(_updateStmt);
@@ -170,7 +184,6 @@
     }
     //When binding parameters, index starts from 1 and not zero.
     sqlite3_bind_text(_deleteStmt, 1, [employeeID UTF8String], -1, SQLITE_TRANSIENT);
-	
 	if (SQLITE_DONE != sqlite3_step(_deleteStmt)) 
 		NSAssert1(0, @"Error while deleting. '%s'", sqlite3_errmsg(database));
 	sqlite3_reset(_deleteStmt);
@@ -178,7 +191,7 @@
 }
 
 
--(NSString*) getLoginID :(NSString*) _loginid 
+-(NSString*) getLoginDetails :(NSString*) _loginid 
 {
     sqlite3* database = [DBConnection connectionFactory ] ;
       sqlite3_stmt* _selectStmt ;
@@ -188,7 +201,6 @@
         const char* stmch=[nsatt UTF8String];
         if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
             while (sqlite3_step(_selectStmt) == SQLITE_ROW) { 
-                //NSString* username = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
                role = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
                 NSLog(@"d  :%@",role);
                 empid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
@@ -206,8 +218,7 @@
     sqlite3 *database =[DBConnection connectionFactory];
     sqlite3_stmt *selectStmt = nil;
     NSMutableArray *Bedarray=[[NSMutableArray alloc]init];
-    //Bed.statusTimes
-    NSString *nsatt=[NSString stringWithFormat:@"select Employee.name from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID=Bed.bedID where bed.bedno ='%@'",_bedNo];
+    NSString *nsatt=[NSString stringWithFormat:@"select E.name,B.statusTime from Employee E,Bed B,BedStaff C where E.empID=C.empID and C.bedID=B.bedID and B.bedNo ='%@'",_bedNo];
     const char *stmch=[nsatt UTF8String];
         if(sqlite3_prepare_v2(database, stmch, -1, &selectStmt,NULL)==SQLITE_OK)
     {
@@ -216,13 +227,12 @@
             Employee *emp= [[Employee alloc]init];
             emp.bedNo = _bedNo;    
             NSString *ename = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
-            NSLog(@"%@",ename);
-            //            NSString *statustime = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 2)];
-            //            NSLog(@"%@",statustime);
-            Employee *maints =[[Employee alloc]init];
-            maints.name = ename;
-            // maints.StatusTime =statustime;
-            [Bedarray addObject:maints];
+            NSString *statustime = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 1)];
+            emp.name = ename;
+            NSLog(@"%@",emp.name);
+            emp.statusTime=statustime;
+             NSLog(@"%@",emp.statusTime);
+            [Bedarray addObject:emp];
         }
     }
     sqlite3_finalize(selectStmt);

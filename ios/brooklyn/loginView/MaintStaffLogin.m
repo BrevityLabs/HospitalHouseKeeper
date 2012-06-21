@@ -12,7 +12,9 @@
 
 @implementation MaintStaffLogin
 
-@synthesize txtPassword,txtUserName,loginButton;
+@synthesize password;
+@synthesize userName;
+@synthesize loginButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,27 +55,29 @@
 	return YES;
 }
 
--(IBAction)loginClicked:(id)sender
-{
-    NSString* post2 =@"cleaning";
+-(IBAction)loginClicked:(id)sender{
+   NSString* post2 =@"cleaning";
     Employee* emp =[[Employee alloc]init];
-    [emp getLoginID:txtUserName.text];
+    [emp getLoginDetails:userName.text];
     NSLog(@"emp.dept  :%@",emp.role);
     if ([post2 isEqualToString: emp.role]) 
-    {
-        BedStatusView *status = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
-        
-        status.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        
-        [self presentModalViewController:status animated:YES];
-        
-    }
-    else
-    {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect Department " message:@"please login in correct department " delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-        
-    }
+   {
+     BedStatusView *status = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
+      
+      status.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+       
+      [self presentModalViewController:status animated:YES];
+       
+ }
+   else
+   {
+       UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect Department " message:@"please login in correct department " delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+      [alertView show];
+       
+ }
+
 }
+
+
 
 @end

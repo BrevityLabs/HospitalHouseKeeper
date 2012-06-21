@@ -18,15 +18,13 @@
 @synthesize bedNo;
 @synthesize bedstatus;
 
+
 -(id) initWithBedId: (NSString*) _bedId {
     if (self = [super init]) {
-        
         sqlite3_stmt * _selectStmt ;
-        
         sqlite3 * database = [DBConnection connectionFactory ] ;
         NSString *nsatt = [NSString stringWithFormat:@"SELECT bedNo, status, type FROM Bed WHERE bedID = '%@'", _bedId] ;
         const char *stmch=[nsatt UTF8String];
-        
         if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
             while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
                 bedId   = _bedId ;
@@ -63,7 +61,6 @@
         while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
             NSString * _bedId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
              [_bedArray addObject: _bedId];
-             NSLog(@"%@",_bedArray);
             Bed * _bed = [[Bed alloc] initWithBedId: _bedId];
               NSLog(@"%@",_bed);
             }
@@ -78,14 +75,14 @@
  *  Static (class) method to get the list Ids of the beds available in the hospital. By traversing, one can get hold
  *  of various bed objects.
  */
-+(NSMutableArray *) getCleanBedNoList {
++(NSMutableArray *) getCleanBedNoList {//for getting the bedid of beds which are ready for cleaning.
     sqlite3_stmt * _selectStmt ;
     
     sqlite3 * database = [DBConnection connectionFactory ] ;
     
     NSMutableArray * _bedNoArray=[[NSMutableArray alloc]init];
     
-    NSString *nsatt = [NSString stringWithFormat:@"SELECT bedID FROM Bed where status ='2'"];//for getting the bedid of beds which are ready for claning.
+    NSString *nsatt = [NSString stringWithFormat:@"SELECT bedID FROM Bed where status ='2'"];
     const char *stmch=[nsatt UTF8String];
     
     if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
@@ -93,16 +90,16 @@
         while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
             NSString * _bedid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
             [_bedNoArray addObject: _bedid];
-            NSLog(@"%@",_bedNoArray);
             Bed * _bedID = [[Bed alloc] initWithBedId: _bedid];
-            NSLog(@"%@",_bedID);
+            NSLog(@"BEDID %@",_bedID);
+
         }
     }
     sqlite3_finalize(_selectStmt);
     return _bedNoArray;  //an array of all the bed Id
 }
 
--(NSMutableArray *)getCleaningStaffName
+-(NSMutableArray *)getCleaningStaffName // for getting the cleaning staff name.
 {
     sqlite3 *database = [DBConnection connectionFactory];
     static sqlite3_stmt *selectStmt = nil;
@@ -135,7 +132,6 @@
     sqlite3 *database = [DBConnection connectionFactory];
     sqlite3_stmt*  _updateStmt;
     NSString* nsatt = [NSString stringWithFormat:@"UPDATE Bed SET status ='3' WHERE bedNo ='%@'",_bednumber];
-    NSLog(@"nsatt %@",nsatt);
     const char*  sql = [nsatt UTF8String];
     if (sqlite3_prepare_v2(database, sql, -1, &_updateStmt, NULL)!=SQLITE_OK) {
         NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database)); 
@@ -148,8 +144,5 @@
     return bedId;
 }
 
--(NSString* )updateRepairStatus:(NSString* )_status;
-{
-    
-}
+
 @end

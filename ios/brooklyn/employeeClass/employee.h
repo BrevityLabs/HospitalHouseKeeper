@@ -11,27 +11,31 @@
 #import <sqlite3.h>
 
 #import "DBConnection.h"
+#import "Bed.h"
 @interface Employee : NSObject{
     
     NSString*   employeeID ;
     NSString*   name ;
     NSString*   dept ;
     NSString*   loginID ;
+    NSString*   password ;
     NSString*   role;
     NSString*   bedNo;
+    NSString*   statusTime;
    
 }
 @property (nonatomic,retain) NSString* employeeID ; 
 @property (nonatomic,retain) NSString* name;
 @property (nonatomic,retain) NSString* dept;
 @property (nonatomic,retain) NSString* loginID;
-@property (nonatomic,retain) NSString* role; //change this to role
-@property (nonatomic,retain) NSString* bedNo; // change this to bedNo
-// get a property which an array of object of type Bed or just a number
-
+@property (nonatomic,retain) NSString* role; 
+@property (nonatomic,retain) NSString* bedNo;
+@property (nonatomic,retain) NSString* statusTime;
+@property (nonatomic,retain) NSString* password ;
 -(id) initWithEmployeeID : (NSString*) empID ;
+//-(id) initWithLoginID;
 
-+(BOOL) newEmployee: (NSString*)_empID 
++(BOOL) newEmployee: (NSString*) _empID 
               name : (NSString*) _name
               dept : (NSString*) _dept ;
 
@@ -39,15 +43,11 @@
 
 -(BOOL) deleteEmployee ;
 
--(NSString*) getLoginID :(NSString*) _loginid ;
+-(NSString*) getLoginDetails :(NSString*) _loginid; //incorrect :MB
 
-+(NSMutableArray*) getEmployeeList ; // static method to get employee object list
-
++(NSMutableArray*) getEmployeeList ; 
 -(NSString*) getEmployeeID: (NSString*) _employeeId;
 
-+(NSMutableArray *) getBedBeingCleaned:(NSString* )_bedNo;//static method to get maintenance satff details
-//  Change the name of the method to more meaningful name. Or get rid of it.
-//  getBedBeingCleaned - it should be a non-static.
-
++(NSMutableArray *) getBedBeingCleaned:(NSString* )_bedNo;
 
 @end

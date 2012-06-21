@@ -57,15 +57,20 @@
     
     NSMutableArray *Array;
     Bed* list ;
+    NSString* number;
+     NSString* bednumber;
 }
 
 @property(nonatomic,retain)IBOutlet UITableView *listView;
+@property(nonatomic,retain)NSString* number;
+@property(nonatomic,retain) NSString* bednumber;
 
+-(IBAction)cleaningDone:(UIButton* )sender;
 
 -(IBAction)getGridView:(id)sender;
 
 
 -(IBAction)signOut:(id)sender;
 
--(UITableViewCell *)reuseTableViewCellWithIdentifier:(NSString *)identifier;
+//-(UITableViewCell *)reuseTableViewCellWithIdentifier:(NSString *)identifier;
 @end

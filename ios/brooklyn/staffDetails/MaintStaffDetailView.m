@@ -50,11 +50,9 @@
         Employee *emp =[staffArray objectAtIndex:i];
         NSLog(@"bed %@",bedNoValue);
         txt_BedNo.text = bedNoValue;
-        
         txt_BedAssign.text =emp.name;
-        
         txt_WorkStatus.text = @"Not started";
-        // txt_Pedding.text =emp.StatusTime;
+       txt_Pedding.text =emp.statusTime;
     }
     
     // Do any additional setup after loading the view from its nib.
@@ -62,7 +60,7 @@
 
 -(void)getbedtitle:(NSString *)bednumber
 {
-    bedNoValue =bednumber;
+    bedNoValue = bednumber;
     NSLog(@"str %@",bedNoValue);
 }
 - (void)viewDidUnload
@@ -113,7 +111,6 @@
     if([title isEqualToString:@"Ok"])
     {
         [bed updateBedStatus:bedNoValue];
-        NSLog(@"number is %@",bedNoValue);
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
                                                           message:@" The bed status has been changed to Available"
                                                          delegate:nil

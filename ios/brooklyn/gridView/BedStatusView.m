@@ -47,9 +47,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self getGridView];
+    [self getGridView:4];
 }
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -59,37 +58,50 @@
 
 -(IBAction)gridView:(id)sender
 {
-    [self getGridView];    
+    [self getGridView: 5];    
 }
 
--(void)getGridView
+-(void) getGridView : (int) num_column
 {
-    int j=0;
-    bedNoArray = [Bed getCleanBedNoList];
-    int i=1;
-    while (i>j) {
-        for (; j<[bedNoArray count]; j++) {
-            NSString *str=[bedNoArray objectAtIndex:j];
-            Bed *bed =[[Bed alloc]initWithBedId:str];
-            bednumber = bed.number;
-            status =bed.status;
-            bedID =bed.bedId;
-            [self drawBedAvailable:(300 * j) y: (i*250.0) width:250.0 height:200.0 bedNumber:bednumber] ;
-            //       beds =[NSMutableArray arrayWithObject:bedID];
+    
+    bedNoArray = [Bed getCleanBedNoList]; //try getting the list of the objects instead of just their numbers :MB
+    
+    //int j=1; //initialized to 1 because this var has been used in layout design
+     NSLog(@"arraycount %d",[bedNoArray count]);
+    NSLog(@"numcol %d",num_column);
+    int num_rows = [bedNoArray count] / num_column ;
+     NSLog(@"numrow %d",num_rows);
+    int remainder = [bedNoArray count] % num_column ;
+     NSLog(@"rem %d",remainder);
+    num_rows = (remainder > 0) ? num_rows++ : num_rows ;
+    
+    
+    for (int i = 0 ; i <= num_rows; i++)    {
+        for (int j = 0; j < num_column; j++)  {
+            NSString *str   = [bedNoArray objectAtIndex:(i * num_column + j)];
+            Bed *bed        = [[Bed alloc]initWithBedId:str];
+            [self drawBedAvailable:(OFFSETX + (WIDTH * i)) y: (OFFSETY + (HEIGHT * j)) width:WIDTH height:HEIGHT bedNumber:bed.number] ;  
         }
-        i++;
+        
     }
-    
-    
-    
 }
+
+
 -(IBAction)signOut:(id)sender
 {
     [self clickSignOut];
 }
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
+    
+    if (interfaceOrientation == UIInterfaceOrientationPortrait) {
+        [self getGridView: 4] ;
+    } else if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        [self getGridView: 5] ;
+    } 
+    
 	return YES;
 }
 
@@ -104,7 +116,7 @@
     maintBedView = [[UIView alloc]initWithFrame:myRect];
     maintBedView.layer.borderColor = [UIColor blueColor].CGColor;
     maintBedView.layer.borderWidth = 3.0f; 
-    
+
     imgButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     imgButton.frame = CGRectMake(IMGBTNXOFFSET, IMGBTNYOFFSET, IMGBTNWIDTH, IMGBTNHEIGHT);
     [imgButton setBackgroundImage:[UIImage imageNamed:@"bed_status2.png"] forState:UIControlStateNormal];
@@ -125,80 +137,61 @@
     actionButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
     actionButton.frame =CGRectMake(STATBUTTON_X, STATBUTTON_Y, STATBUTTON_WIDTH, STATBUTTON_HEIGHT);
     [actionButton addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
-    NSString *str = [NSString stringWithFormat:@"cleaning done "];
-    [actionButton setTitle:str forState:UIControlStateNormal];
-    [actionButton setBackgroundColor:[UIColor whiteColor]];
+    [actionButton setBackgroundImage:[UIImage imageNamed:@"Status.jpg"] forState:UIControlStateNormal];
+    [actionButton setTitle:_bedNumber forState:UIControlStateNormal];
+    [actionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
+    actionButton.titleLabel.hidden =YES;
     [maintBedView addSubview:actionButton];
     
-    
-    [self.view addSubview:maintBedView];
+    [self.view addSubview: maintBedView];
     
 }        
 
 -(IBAction)maintStaffDetilView:(UIButton *) sender
 {
-    // (myInstanceVariable = [sender.titleLabel.text copy];)
     NSString * bed =sender.titleLabel.text;
     number =bed;
-    NSLog(@"bednumber %@",number);
     [self goDetailView];
-    
     
 }
 -(void)goDetailView
 {
     MaintStaffDetailView *maintStaff = [[MaintStaffDetailView alloc]initWithNibName:@"MaintStaffDetailView" bundle:nil];
-    
     maintStaff.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [maintStaff getbedtitle:number];
     [self presentModalViewController:maintStaff animated:YES];
-    
     
 }
 -(IBAction)imageDetailView:(UIButton *)sender
 {
     NSString * bed =sender.titleLabel.text;
     number =bed;
-    NSLog(@"bednumber %@",number);
-    
     [self goDetailView];
 }
 
 -(IBAction)listView:(id)sender
 {
     BedListView *listView = [[BedListView alloc]initWithNibName:@"BedListView" bundle:nil];
-    
     listView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
     [self presentModalViewController:listView animated:YES];
 }
 -(void)clickSignOut
 {
     MaintStaffLogin *maintLogin = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
-    
     maintLogin.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
     [self presentModalViewController:maintLogin animated:YES];
 }
-
--(IBAction)cleaningDone:(id)sender
+	
+-(IBAction)cleaningDone:(UIButton *)sender
 { 
-    //     NSMutableArray *str =[Bed getCleanBedNoList];
-    //    for (int i=0; i<[bedNoArray count]; i++) {
-    //         NSLog(@"bedid %@",[str objectAtIndex:i]);
-    //        
-    //          NSLog(@"bedid %@",bednumber);
-    //        if ([label.text isEqualToString:[str objectAtIndex:i]]){
+    NSString * bed =sender.titleLabel.text;
+    number = bed;
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
                                                       message:@"Are you sure that the bed is clean and it can be set as Available?"
                                                      delegate:self
                                             cancelButtonTitle:@"Ok"
                                             otherButtonTitles:@"Cancel", nil];
     [message show];
-    
-    
-    //        }
-    //    }
     
 }
 
@@ -208,21 +201,28 @@
     
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     Bed *bed =[[Bed alloc]init];
-    
-    NSLog(@"number is %@",bednumber);
     if([title isEqualToString:@"Ok"])
     {
-        [bed updateBedStatus:bednumber];
-        NSLog(@"number is %@",bednumber);
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
-                                                          message:@" The bed status has been changed to Available"
-                                                         delegate:nil
-                                                cancelButtonTitle:@"Ok"
-                                                otherButtonTitles:@"Cancel", nil];
-        [message show];
-        
-    }
+        [bed updateBedStatus:number];
+        [self hideView:number];
+         
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
+                                                              message:@" The bed status has been changed to Available"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"Ok"
+                                                    otherButtonTitles:@"Cancel", nil];
+            [message show];
+            
+        }
     
 }
 
+-(void) hideView:(NSString*) _bednumber
+{
+    if (self.maintBedView.hidden == NO){ 
+       // self.maintBedView.hidden = YES;
+        [self.maintBedView reloadInputViews];
+    }
+    
+}
 @end

@@ -22,6 +22,7 @@
     UIButton* cleaningDoneButton;
     
     NSMutableArray *staffArray;
+    NSMutableArray *staffID;
     NSString *bedNoValue;
 }
 

@@ -10,15 +10,9 @@
 		6C7420CA15775FC400AB7386 /* brookelyn.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6C7420C915775FC400AB7386 /* brookelyn.sqlite */; };
 		6C7420D2157762E900AB7386 /* employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7420D1157762E900AB7386 /* employee.m */; };
 		6C7420D61577631200AB7386 /* bed.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7420D51577631200AB7386 /* bed.m */; };
-		6C7420DA1577633300AB7386 /* patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7420D91577633300AB7386 /* patient.m */; };
 		6C7420DC157763BB00AB7386 /* trendwise_logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6C7420DB157763BB00AB7386 /* trendwise_logo.jpeg */; };
 		6C7583DE15860260009D7187 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7583DD15860260009D7187 /* QuartzCore.framework */; };
-		6C875D76157CCFD7002BD723 /* PatientDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C875D74157CCFD7002BD723 /* PatientDetailView.m */; };
-		6C875D77157CCFD7002BD723 /* PatientDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C875D75157CCFD7002BD723 /* PatientDetailView.xib */; };
-		6C875D7F157CD1D2002BD723 /* BedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C875D7D157CD1D1002BD723 /* BedView.m */; };
-		6C875D80157CD1D2002BD723 /* BedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C875D7E157CD1D2002BD723 /* BedView.xib */; };
-		6C875D88157CDB79002BD723 /* NurseStaffLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C875D86157CDB79002BD723 /* NurseStaffLogin.m */; };
-		6C875D89157CDB79002BD723 /* NurseStaffLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C875D87157CDB79002BD723 /* NurseStaffLogin.xib */; };
+		6CB1D7661592D689008286D5 /* Status.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6CB1D7651592D689008286D5 /* Status.jpg */; };
 		6CCB88BE15749ED6002456B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88BD15749ED6002456B0 /* UIKit.framework */; };
 		6CCB88C015749ED6002456B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88BF15749ED6002456B0 /* Foundation.framework */; };
 		6CCB88C215749ED6002456B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCB88C115749ED6002456B0 /* CoreGraphics.framework */; };
@@ -77,19 +71,9 @@
 		6C7420D1157762E900AB7386 /* employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = employee.m; sourceTree = "<group>"; };
 		6C7420D41577631200AB7386 /* bed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bed.h; sourceTree = "<group>"; };
 		6C7420D51577631200AB7386 /* bed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bed.m; sourceTree = "<group>"; };
-		6C7420D81577633300AB7386 /* patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = patient.h; sourceTree = "<group>"; };
-		6C7420D91577633300AB7386 /* patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = patient.m; sourceTree = "<group>"; };
 		6C7420DB157763BB00AB7386 /* trendwise_logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trendwise_logo.jpeg; sourceTree = "<group>"; };
 		6C7583DD15860260009D7187 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6C875D73157CCFD7002BD723 /* PatientDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailView.h; sourceTree = "<group>"; };
-		6C875D74157CCFD7002BD723 /* PatientDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailView.m; sourceTree = "<group>"; };
-		6C875D75157CCFD7002BD723 /* PatientDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientDetailView.xib; sourceTree = "<group>"; };
-		6C875D7C157CD1D1002BD723 /* BedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BedView.h; path = brooklyn/BedView.h; sourceTree = SOURCE_ROOT; };
-		6C875D7D157CD1D1002BD723 /* BedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BedView.m; path = brooklyn/BedView.m; sourceTree = SOURCE_ROOT; };
-		6C875D7E157CD1D2002BD723 /* BedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BedView.xib; path = brooklyn/BedView.xib; sourceTree = SOURCE_ROOT; };
-		6C875D85157CDB79002BD723 /* NurseStaffLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NurseStaffLogin.h; path = brooklyn/staffDetails/NurseStaffLogin.h; sourceTree = SOURCE_ROOT; };
-		6C875D86157CDB79002BD723 /* NurseStaffLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NurseStaffLogin.m; path = brooklyn/staffDetails/NurseStaffLogin.m; sourceTree = SOURCE_ROOT; };
-		6C875D87157CDB79002BD723 /* NurseStaffLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NurseStaffLogin.xib; path = brooklyn/staffDetails/NurseStaffLogin.xib; sourceTree = SOURCE_ROOT; };
+		6CB1D7651592D689008286D5 /* Status.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Status.jpg; sourceTree = "<group>"; };
 		6CCB88B915749ED6002456B0 /* brooklyn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brooklyn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CCB88BD15749ED6002456B0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6CCB88BF15749ED6002456B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -189,16 +173,6 @@
 			path = bedClass;
 			sourceTree = "<group>";
 		};
-		6C7420D71577633300AB7386 /* Patient Class */ = {
-			isa = PBXGroup;
-			children = (
-				6C7420D81577633300AB7386 /* patient.h */,
-				6C7420D91577633300AB7386 /* patient.m */,
-			);
-			name = "Patient Class";
-			path = patientClass;
-			sourceTree = "<group>";
-		};
 		6C7F5D8D158B15A200D50E79 /* Database Connection Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,16 +180,6 @@
 				D29FD807157F60B20004B0DC /* DBConnection.m */,
 			);
 			name = "Database Connection Class";
-			sourceTree = "<group>";
-		};
-		6C875D72157CCF91002BD723 /* PatientDetailView */ = {
-			isa = PBXGroup;
-			children = (
-				6C875D73157CCFD7002BD723 /* PatientDetailView.h */,
-				6C875D74157CCFD7002BD723 /* PatientDetailView.m */,
-				6C875D75157CCFD7002BD723 /* PatientDetailView.xib */,
-			);
-			name = PatientDetailView;
 			sourceTree = "<group>";
 		};
 		6CCB88AE15749ED5002456B0 = {
@@ -256,15 +220,12 @@
 				6C7F5D8D158B15A200D50E79 /* Database Connection Class */,
 				6C7420CF157762E900AB7386 /* Employee Class */,
 				6C7420D31577631200AB7386 /* Bed Class */,
-				6C7420D71577633300AB7386 /* Patient Class */,
-				6CCB88F315749FAC002456B0 /* en.lproj */,
-				6C875D72157CCF91002BD723 /* PatientDetailView */,
-				6CFFB6721578B80A000ED728 /* PatientBedView */,
 				6CCB88F815749FAC002456B0 /* MaintGridView */,
-				6CCB88FC15749FAC002456B0 /* images */,
 				6CCB890C15749FAC002456B0 /* MaintListView */,
 				6CCB891015749FAC002456B0 /* loginView */,
 				6CCB891815749FAC002456B0 /* MaintStaffDetailView */,
+				6CCB88FC15749FAC002456B0 /* images */,
+				6CCB88F315749FAC002456B0 /* en.lproj */,
 				6CCB88CC15749ED6002456B0 /* AppDelegate.h */,
 				6CCB88CD15749ED6002456B0 /* AppDelegate.m */,
 				6CCB88CF15749ED6002456B0 /* ViewController.h */,
@@ -328,6 +289,7 @@
 		6CCB88FC15749FAC002456B0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6CB1D7651592D689008286D5 /* Status.jpg */,
 				6C7420DB157763BB00AB7386 /* trendwise_logo.jpeg */,
 				6CCB88FD15749FAC002456B0 /* bed_status1.png */,
 				6CCB88FE15749FAC002456B0 /* bed_status2.png */,
@@ -362,9 +324,6 @@
 		6CCB891015749FAC002456B0 /* loginView */ = {
 			isa = PBXGroup;
 			children = (
-				6C875D85157CDB79002BD723 /* NurseStaffLogin.h */,
-				6C875D86157CDB79002BD723 /* NurseStaffLogin.m */,
-				6C875D87157CDB79002BD723 /* NurseStaffLogin.xib */,
 				6CCB891115749FAC002456B0 /* MaintStaffLogin.h */,
 				6CCB891215749FAC002456B0 /* MaintStaffLogin.m */,
 				6CCB891315749FAC002456B0 /* MaintStaffLogin.xib */,
@@ -391,16 +350,6 @@
 			);
 			name = sqlite;
 			path = brooklyn/sqlite;
-			sourceTree = "<group>";
-		};
-		6CFFB6721578B80A000ED728 /* PatientBedView */ = {
-			isa = PBXGroup;
-			children = (
-				6C875D7C157CD1D1002BD723 /* BedView.h */,
-				6C875D7D157CD1D1002BD723 /* BedView.m */,
-				6C875D7E157CD1D2002BD723 /* BedView.xib */,
-			);
-			path = PatientBedView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,9 +447,7 @@
 				6CCB893615749FAC002456B0 /* MaintStaffDetailView.xib in Resources */,
 				6C7420CA15775FC400AB7386 /* brookelyn.sqlite in Resources */,
 				6C7420DC157763BB00AB7386 /* trendwise_logo.jpeg in Resources */,
-				6C875D77157CCFD7002BD723 /* PatientDetailView.xib in Resources */,
-				6C875D80157CD1D2002BD723 /* BedView.xib in Resources */,
-				6C875D89157CDB79002BD723 /* NurseStaffLogin.xib in Resources */,
+				6CB1D7661592D689008286D5 /* Status.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,10 +491,6 @@
 				6CCB893515749FAC002456B0 /* MaintStaffDetailView.m in Sources */,
 				6C7420D2157762E900AB7386 /* employee.m in Sources */,
 				6C7420D61577631200AB7386 /* bed.m in Sources */,
-				6C7420DA1577633300AB7386 /* patient.m in Sources */,
-				6C875D76157CCFD7002BD723 /* PatientDetailView.m in Sources */,
-				6C875D7F157CD1D2002BD723 /* BedView.m in Sources */,
-				6C875D88157CDB79002BD723 /* NurseStaffLogin.m in Sources */,
 				D29FD808157F60B30004B0DC /* DBConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

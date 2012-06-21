@@ -9,21 +9,19 @@
 #import <UIKit/UIKit.h>
 
 #import "MaintStaffLogin.h"
-#import "NurseStaffLogin.h"
 #import "DBConnection.h"
 
 @interface ViewController : UIViewController
 {
-    UIButton *nurseStaffButton,*maintStaffButton,*staticButton;
+    UIButton *maintStaffButton;
     
     DBConnection * dbconn ;
 }
 
-@property(nonatomic,strong)IBOutlet UIButton *nurseStaffButton,*maintStaffButton,*staticButton;
+@property(nonatomic,strong)IBOutlet UIButton *maintStaffButton;
 
 -(void) initializeDBConnection ;
 
 -(IBAction)maintStaffButton:(id)sender;
 
--(IBAction)nurseStaffButton:(id)sender;
 @end

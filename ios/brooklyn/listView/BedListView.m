@@ -12,7 +12,8 @@
 @implementation BedListView
 
 @synthesize listView;
-
+@synthesize number;
+@synthesize bednumber;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,94 +55,67 @@
     UITableViewCell *cell =[self.listView dequeueReusableCellWithIdentifier:identifier];
     if (cell==nil)
         
-        cell=[self reuseTableViewCellWithIdentifier:identifier];
+         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier: identifier];
     
     list = [Array objectAtIndex:indexPath.row];
     
-    Employee *employ = [[Employee alloc]initWithEmployeeID:list.empId];
+   Employee *employ = [[Employee alloc]initWithEmployeeID:list.empId];
 
-    UILabel *bedIdLabel=(UILabel *)[cell viewWithTag:BEDID_TAG];
-    bedIdLabel.text = list.bedId;
-    NSLog(@"bedid %@",bedIdLabel.text);
-    bedIdLabel.textAlignment = UITextAlignmentCenter;
-    
-    UILabel *bedNoLabel=(UILabel *)[cell viewWithTag:BEDNO_TAG];
-    bedNoLabel.text = list.bedNo;
-    bedNoLabel.textAlignment = UITextAlignmentCenter;
-    
-    UILabel *patientLabel=(UILabel *)[cell viewWithTag:PATIENT_TAG];
-    patientLabel.text = employ.name;
-    patientLabel.textAlignment = UITextAlignmentCenter;
-    
-    UIButton *actionBtn =(UIButton *)[cell viewWithTag:ACTION_TAG];
-    actionBtn.backgroundColor =[UIColor whiteColor];
-   
-    
-    UILabel *bedTypeLabel=(UILabel *)[cell viewWithTag:BEDTYPE_TAG];
-    bedTypeLabel.text = @"Standard";
-    
-    
-    UIImageView *colorImage = (UIImageView* )[cell viewWithTag:COLOR_TAG];
-    colorImage.image =[UIImage imageNamed:@"icon_red.png"];
-   
-    UILabel *statusLabel=(UILabel *)[cell viewWithTag:STATUS_TAG];
-    statusLabel.text = @"Under maintenance";                    
-    
-    return cell;
-    
-}
-
--(UITableViewCell *)reuseTableViewCellWithIdentifier:(NSString *)identifier
-{
-    
-    CGRect cellRectangle;
-    
-    cellRectangle = CGRectMake(0,0,CELL_WIDTH,ROW_HEIGHT);    
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier: identifier];
-    cell.frame =cellRectangle;
-    
-    UILabel *bedIdLabel;
-    
     CGRect rect1 = CGRectMake(0,0, 58, 44);
-    bedIdLabel= [[UILabel alloc]initWithFrame:rect1];
+       UILabel *bedIdLabel= [[UILabel alloc]initWithFrame:rect1];
     bedIdLabel.tag =BEDID_TAG; 
-    [cell.contentView addSubview:bedIdLabel];
-    
+    bedIdLabel.text = list.bedId;
+    bedIdLabel.textAlignment = UITextAlignmentCenter;
+      [cell.contentView addSubview:bedIdLabel];
+   
     
     CGRect rect2 = CGRectMake(60,0, 74, 44);
     UILabel *bedNoLabel= [[UILabel alloc]initWithFrame:rect2];
-    bedNoLabel.tag =BEDNO_TAG; 
+    bedNoLabel.tag =BEDNO_TAG;
+    bedNoLabel.text = list.bedNo;
+    bedNoLabel.textAlignment = UITextAlignmentCenter;
     [cell.contentView addSubview:bedNoLabel];
-    
+        
     CGRect rect3 = CGRectMake(140,0, 170, 44);
     UILabel *patientLabel= [[UILabel alloc]initWithFrame:rect3];
     patientLabel.tag =PATIENT_TAG; 
+    patientLabel.text = employ.name;
+    patientLabel.textAlignment = UITextAlignmentCenter;
     [cell.contentView addSubview:patientLabel];
     
     UIButton *actionBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     actionBtn.frame = CGRectMake(315, 10, 150, 30);
-     [actionBtn setTitle:@"cleaning done" forState:UIControlStateNormal];
-     [actionBtn addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
+    number =list.bedNo;
+    [actionBtn addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
+    [actionBtn setBackgroundImage:[UIImage imageNamed:@"Status.jpg"] forState:UIControlStateNormal];
+    [actionBtn setTitle:number forState:UIControlStateNormal];
+    [actionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
+    actionBtn.titleLabel.hidden =YES;
     [cell.contentView addSubview:actionBtn];
-    
+        
     CGRect rect4 = CGRectMake(490, 0, 99, 44);
     UILabel *bedTypeLabel= [[UILabel alloc]initWithFrame:rect4];
-    bedTypeLabel.tag =BEDTYPE_TAG; 
-    [cell.contentView addSubview:bedTypeLabel];
+    bedTypeLabel.tag =BEDTYPE_TAG;
+    bedTypeLabel.text = @"Standard";
+    [cell.contentView addSubview:bedTypeLabel];    
+    
     
     CGRect rect5 = CGRectMake(595, 0,30, 30);
     UIImageView *colorImage = [[UIImageView alloc]initWithFrame:rect5];
     colorImage.tag =COLOR_TAG;
+    colorImage.image =[UIImage imageNamed:@"icon_red.png"];
     [cell.contentView addSubview:colorImage];
-    
-    
+      
     CGRect rect6 = CGRectMake(645,0, 170, 44);
     UILabel *statusLabel= [[UILabel alloc]initWithFrame:rect6];
     statusLabel.tag =STATUS_TAG; 
-    [cell.contentView addSubview:statusLabel];
+     statusLabel.text = @"Under maintenance";  
+    [cell.contentView addSubview:statusLabel];   
+    
     return cell;
     
 }
+
 
 -(NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    
 {
@@ -173,20 +147,18 @@
 
 -(IBAction)signOut:(id)sender
 {
+    
     MaintStaffLogin *login = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
     
     login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     [self presentModalViewController:login animated:YES];
 }
--(IBAction)cleaningDone:(id)sender
+-(IBAction)cleaningDone:(UIButton* )sender
 { 
-    //     NSMutableArray *str =[Bed getCleanBedNoList];
-    //    for (int i=0; i<[bedNoArray count]; i++) {
-    //         NSLog(@"bedid %@",[str objectAtIndex:i]);
-    //        
-    //          NSLog(@"bedid %@",bednumber);
-    //        if ([label.text isEqualToString:[str objectAtIndex:i]]){
+  
+    bednumber  =sender.titleLabel.text;
+    NSLog(@"number is %@",bednumber);
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
                                                       message:@"Are you sure that the bed is clean and it can be set as Available?"
                                                      delegate:self
@@ -194,10 +166,7 @@
                                             otherButtonTitles:@"Cancel", nil];
     [message show];
     
-    
-    //        }
-    //    }
-    
+     
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 3(ready to occupy)
@@ -207,11 +176,11 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     Bed *bed =[[Bed alloc]init];
     
-    NSLog(@"number is %@",bed.bedNo);
+    NSLog(@"number is %@",bednumber);
     if([title isEqualToString:@"Ok"])
     {
-        [bed updateBedStatus:bed.bedNo];
-        NSLog(@"number is %@",bed.bedNo);
+        [bed updateBedStatus:bednumber];
+        NSLog(@"number is %@",number);
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
                                                           message:@" The bed status has been changed to Available"
                                                          delegate:nil
@@ -219,6 +188,7 @@
                                                 otherButtonTitles:@"Cancel", nil];
         [message show];
         
+        [self.listView reloadData];
     }
     
 }

@@ -21,6 +21,7 @@
     NSString*   empId;
     NSString*   bedNo;
     NSInteger   bedstatus;
+    
 }
 
 @property(nonatomic,retain) NSString* bedId;
@@ -31,16 +32,17 @@
 @property(nonatomic,retain) NSString* bedNo; 
 @property(nonatomic,readonly)NSInteger bedstatus;
 
+
 +(NSMutableArray *) getBedList ;        //gets the list of beds in the hospital
 
 -(id) initWithBedId: (NSString*) _bedId ; //creating a Bed object using bedID
 
-+(NSMutableArray *) getCleanBedNoList ;
++(NSMutableArray *) getCleanBedNoList ;     // The name confuses. how about uncleanBeds
 
 -(NSMutableArray *)getCleaningStaffName; // make this non-static. Also change to a more meaningful name = getMaintenanceStaffName
 // do you want to create 2 separate methods getRepairStaffName and getCleaningStaffName
 
 -(NSString* )updateBedStatus:(NSString *)_bednumber; // make it non-static. Add parameter which status it should change to.
 
--(NSString* )updateRepairStatus:(NSString* )_status;
+
 @end

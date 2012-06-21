@@ -16,19 +16,18 @@
 
 @interface MaintStaffLogin : UIViewController 
 {
-    UITextField *txtUserName,*txtPassword;
-    
-    NSMutableArray *passwordArray;
-    UIButton *loginButton;
-    NSMutableArray *usernameArray;
-    int flg;
+    UITextField*    userName;
+    UITextField*    password;
+    UIButton*       loginButton;
+    NSMutableArray* passwordArray;
+    NSMutableArray* usernameArray;
+    int roleFlag;    //flag maintained to check the role - nurse, doctor or cleaning staff 
+    Employee *list;
 }
 
-@property(nonatomic,retain)IBOutlet UITextField *txtUserName,*txtPassword;
-
+@property(nonatomic,retain)IBOutlet UITextField* userName;
+@property(nonatomic,retain)IBOutlet UITextField* password;
 @property(nonatomic,retain)IBOutlet UIButton *loginButton;
 
 -(IBAction)loginClicked:(id)sender;
-
-
 @end

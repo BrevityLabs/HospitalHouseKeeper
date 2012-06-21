@@ -7,40 +7,37 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import <QuartzCore/QuartzCore.h>
-
 #import <sqlite3.h>
 
 #import "MaintStaffDetailView.h"
-
 #import "MaintStaffLogin.h"
-
 #import "BedListView.h"
-
 #import "bed.h"
 
 @interface BedStatusView : UIViewController <UIAlertViewDelegate>
 {
-    UIButton* gridViewButton;
-    UIButton* listViewButton;
-    UIButton* signOutButton;
-    UIButton* numberbutton;
-    UIButton *actionButton;
-    UIButton *imgButton;
-    UIView* maintBedView;
-    UILabel *label;
+    UIButton*   gridViewButton;
+    UIButton*   listViewButton;
+    UIButton*   signOutButton;
+    UIButton*   numberbutton;
+    UIButton*   actionButton;
+    UIButton*   imgButton;
+    UIView*     maintBedView;
+    UILabel*    label;
     
-    NSString* bedID;
-    NSString* bednumber;
-     NSString* number;
-    NSString* status;
-    NSMutableArray* bedNoArray;
-     NSMutableArray* beds;
+    NSString* bedID; //these may be unnecessary - :MB
+    NSString* bednumber;  //these may be unnecessary - :MB
+    NSString* number; //these may be unnecessary - :MB
+    NSString* status; //these may be unnecessary - :MB
+    NSMutableArray* bedNoArray;//these may be unnecessary - :MB
+    NSMutableArray* beds;
+    
+    
     enum imageButton_size {
         IMGBTNXOFFSET = 30,
         IMGBTNYOFFSET = 30,
-        IMGBTNWIDTH =200,
+        IMGBTNWIDTH =175,
         IMGBTNHEIGHT= 136
     };
     enum numberButton_size {
@@ -53,11 +50,16 @@
         STATBUTTON_X = 0,
         STATBUTTON_Y = 150,
         STATBUTTON_WIDTH =120,
-        STATBUTTON_HEIGHT= 25
+        STATBUTTON_HEIGHT= 40
         
     };
     
-    
+    enum bed_cell_dim {
+        WIDTH  = 200,
+        HEIGHT = 150,
+        OFFSETX = 12,
+        OFFSETY = 200
+    };
 }
 
 @property(nonatomic,retain)IBOutlet UIView* maintBedView;
@@ -90,9 +92,10 @@
 
 -(void)clickSignOut;
 
--(IBAction)cleaningDone:(id)sender;
+-(IBAction)cleaningDone:(UIButton *)sender;
 -(IBAction)imageDetailView:(UIButton *)sender;
 
--(void)getGridView;
+-(void)getGridView: (int) num_column;
 -(void)goDetailView;
+-(void)hideView:(NSString* )_bednumber;
 @end

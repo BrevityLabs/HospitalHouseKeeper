@@ -10,7 +10,7 @@
 
 @implementation ViewController
 
-@synthesize nurseStaffButton,maintStaffButton,staticButton;
+@synthesize maintStaffButton;
 
 -(IBAction)maintStaffButton:(id)sender
 {
@@ -22,15 +22,7 @@
     
 }
 
--(IBAction)nurseStaffButton:(id)sender
-{
-    NurseStaffLogin *nurseStaff = [[NurseStaffLogin alloc]initWithNibName:@"NurseStaffLogin" bundle:nil];
-    
-    nurseStaff.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    [self presentModalViewController:nurseStaff animated:YES];
-    
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
