@@ -26,10 +26,10 @@
     UIView*     maintBedView;
     UILabel*    label;
     
-    NSString* bedID; //these may be unnecessary - :MB
+   // NSString* bedID; //these may be unnecessary - :MB
     NSString* bednumber;  //these may be unnecessary - :MB
     NSString* number; //these may be unnecessary - :MB
-    NSString* status; //these may be unnecessary - :MB
+   // NSString* status; //these may be unnecessary - :MB
     NSMutableArray* bedNoArray;//these may be unnecessary - :MB
     NSMutableArray* beds;
     
@@ -56,7 +56,7 @@
     
     enum bed_cell_dim {
         WIDTH  = 200,
-        HEIGHT = 150,
+        HEIGHT = 190,
         OFFSETX = 12,
         OFFSETY = 200
     };
@@ -79,8 +79,8 @@
                        y : (float) y_pos  
                    width : (float) _width 
                   height : (float) _height 
-               bedNumber : (NSString*) _bedNumber ;//for displaying the gridview of beds to be cleaned.
-
+               bedNumber : (NSString*) _bedNumber //for displaying the gridview of beds to be cleaned.
+                   bedID : (NSString *)_bedid;
 
 -(IBAction)gridView:(id)sender;
 

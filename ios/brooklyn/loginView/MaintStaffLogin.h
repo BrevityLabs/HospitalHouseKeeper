@@ -21,6 +21,7 @@
     UIButton*       loginButton;
     NSMutableArray* passwordArray;
     NSMutableArray* usernameArray;
+    NSMutableArray* Array;
     int roleFlag;    //flag maintained to check the role - nurse, doctor or cleaning staff 
     Employee *list;
 }

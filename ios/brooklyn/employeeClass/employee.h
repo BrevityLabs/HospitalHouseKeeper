@@ -33,7 +33,7 @@
 @property (nonatomic,retain) NSString* statusTime;
 @property (nonatomic,retain) NSString* password ;
 -(id) initWithEmployeeID : (NSString*) empID ;
-//-(id) initWithLoginID;
+-(id) initWithLoginID : (NSString*) _loginID;
 
 +(BOOL) newEmployee: (NSString*) _empID 
               name : (NSString*) _name
@@ -43,8 +43,7 @@
 
 -(BOOL) deleteEmployee ;
 
--(NSString*) getLoginDetails :(NSString*) _loginid; //incorrect :MB
-
++(NSMutableArray*) getLoginID;
 +(NSMutableArray*) getEmployeeList ; 
 -(NSString*) getEmployeeID: (NSString*) _employeeId;
 

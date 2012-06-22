@@ -67,25 +67,45 @@
     bedNoArray = [Bed getCleanBedNoList]; //try getting the list of the objects instead of just their numbers :MB
     
     //int j=1; //initialized to 1 because this var has been used in layout design
-     NSLog(@"arraycount %d",[bedNoArray count]);
-    NSLog(@"numcol %d",num_column);
-    int num_rows = [bedNoArray count] / num_column ;
-     NSLog(@"numrow %d",num_rows);
-    int remainder = [bedNoArray count] % num_column ;
-     NSLog(@"rem %d",remainder);
-    num_rows = (remainder > 0) ? num_rows++ : num_rows ;
+    //     NSLog(@"arraycount %d",[bedNoArray count]);
+    //    NSLog(@"numcol %d",num_column);
+    //    int num_rows = [bedNoArray count] / num_column ;
+    //     //NSLog(@"numrow %d",num_rows);
+    //    int remainder = [bedNoArray count] % num_column ;
+    //     //NSLog(@"rem %d",remainder);
+    //    num_rows = (remainder > 0) ? num_rows++ : num_rows ;
+    int num_rows;
+    int remainder;
+    NSLog(@"arraycount %d",[bedNoArray count]);
+    if ([bedNoArray count]>= num_column) {
+        num_rows = [bedNoArray count] / num_column ;
+        remainder = [bedNoArray count] % num_column ;
+        num_rows = (remainder > 0) ? num_rows++ : num_rows ;
+    }
+    
+    else{
+        num_rows = num_column /[bedNoArray count]; 
+        NSLog(@"numrow %d",num_rows);
+        remainder = num_column %[bedNoArray count];
+        NSLog(@"REminder %d",remainder);
+        num_rows = (remainder > 0) ? num_rows : num_rows++ ;
+    }
     
     
-    for (int i = 0 ; i <= num_rows; i++)    {
+    for (int i = 0 ; i < num_rows; i++)    {
         for (int j = 0; j < num_column; j++)  {
-            NSString *str   = [bedNoArray objectAtIndex:(i * num_column + j)];
-            Bed *bed        = [[Bed alloc]initWithBedId:str];
-            [self drawBedAvailable:(OFFSETX + (WIDTH * i)) y: (OFFSETY + (HEIGHT * j)) width:WIDTH height:HEIGHT bedNumber:bed.number] ;  
+            if (j>=[bedNoArray count]) {
+                break;
+            }
+            
+            NSString *str= [bedNoArray objectAtIndex:(i * num_column + j)];
+            Bed *bed = [[Bed alloc]initWithBedId:str];
+            [self drawBedAvailable:(OFFSETX + (WIDTH * j)) y: (OFFSETY + (HEIGHT * i)) width:WIDTH height:HEIGHT bedNumber:bed.number bedID:bed.bedId] ;  
         }
         
     }
 }
-
+// [self drawBedAvailable:(OFFSETX + (WIDTH * i)) y: (OFFSETY + (HEIGHT * j)) width:WIDTH height:HEIGHT bedNumber:bed.number] ; 
 
 -(IBAction)signOut:(id)sender
 {
@@ -96,11 +116,11 @@
 {
     // Return YES for supported orientations
     
-    if (interfaceOrientation == UIInterfaceOrientationPortrait) {
-        [self getGridView: 4] ;
-    } else if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        [self getGridView: 5] ;
-    } 
+    //    if (interfaceOrientation == UIInterfaceOrientationPortrait) {
+    //        [self getGridView: 4] ;
+    //    } else if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+    //        [self getGridView: 5] ;
+    //    } 
     
 	return YES;
 }
@@ -110,13 +130,15 @@
                    width : (float) _width 
                   height : (float) _height 
                bedNumber : (NSString *)_bedNumber
+                   bedID : (NSString *)_bedid
 {
     
     CGRect myRect = CGRectMake(x_pos, y_pos, _width, _height);
     maintBedView = [[UIView alloc]initWithFrame:myRect];
     maintBedView.layer.borderColor = [UIColor blueColor].CGColor;
     maintBedView.layer.borderWidth = 3.0f; 
-
+    maintBedView.tag = (int)_bedid;
+    
     imgButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     imgButton.frame = CGRectMake(IMGBTNXOFFSET, IMGBTNYOFFSET, IMGBTNWIDTH, IMGBTNHEIGHT);
     [imgButton setBackgroundImage:[UIImage imageNamed:@"bed_status2.png"] forState:UIControlStateNormal];
@@ -181,7 +203,7 @@
     maintLogin.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentModalViewController:maintLogin animated:YES];
 }
-	
+
 -(IBAction)cleaningDone:(UIButton *)sender
 { 
     NSString * bed =sender.titleLabel.text;
@@ -205,23 +227,25 @@
     {
         [bed updateBedStatus:number];
         [self hideView:number];
-         
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
-                                                              message:@" The bed status has been changed to Available"
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"Ok"
-                                                    otherButtonTitles:@"Cancel", nil];
-            [message show];
-            
-        }
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
+                                                          message:@" The bed status has been changed to Available"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"Ok"
+                                                otherButtonTitles:@"Cancel", nil];
+        [message show];
+        
+    }
     
 }
 
 -(void) hideView:(NSString*) _bednumber
 {
     if (self.maintBedView.hidden == NO){ 
-       // self.maintBedView.hidden = YES;
+        // self.maintBedView.hidden = YES;
         [self.maintBedView reloadInputViews];
+        
+        
     }
     
 }

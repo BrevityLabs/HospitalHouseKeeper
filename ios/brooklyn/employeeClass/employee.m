@@ -39,7 +39,7 @@
                 employeeID   = empID ;
                 name         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
                 dept         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
-               // [self getEmployeeID:empID];
+              //  [self getEmployeeID:empID];
             }
         } else {
             NSLog(@"Class bed: Method initWithBedId::Query on Bed table failed.") ;
@@ -48,27 +48,29 @@
     
     return self ;
 }
-//-(id) initWithLoginID
-//{
-//    if (self = [super init]) {
-//        
-//        sqlite3* database = [DBConnection connectionFactory ] ;
-//        static sqlite3_stmt* _selectStmt = nil;
-//        NSString* sql_statement = [NSString stringWithFormat: @"select loginID from User "] ;
-//        const char* stmch = [sql_statement UTF8String];
-//        
-//        if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
-//            while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
-//                 loginID  = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
-//                        }
-//        } else {
-//            NSLog(@"Class bed: Method initWithBedId::Query on Bed table failed.") ;
-//        }
-//    }
-//    
-//    return self ;
-//  
-//}
+-(id) initWithLoginID:(NSString *)_loginID
+{
+    if (self = [super init]) {
+        sqlite3* database = [DBConnection connectionFactory ] ;
+        sqlite3_stmt* _selectStmt ;
+        if (employeeID == NULL) {
+            NSString* nsatt = [NSString stringWithFormat:@" SELECT U.password,E.dept FROM Employee E, User U WHERE E.empID = U.empID AND U.loginID = '%@'",_loginID] ;
+          const char* stmch=[nsatt UTF8String];
+            if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
+            while (sqlite3_step(_selectStmt) == SQLITE_ROW) { 
+                 loginID =_loginID;
+                 NSLog(@"d  :%@",loginID);
+                 password = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+                NSLog(@"d  :%@",password);
+               role = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
+                 NSLog(@"e  :%@",role);
+            }
+          }        
+        }
+        sqlite3_finalize(_selectStmt);
+     }
+     return self ;
+}
 +(NSMutableArray*) getEmployeeList  {
     
     sqlite3*  database = [DBConnection connectionFactory ] ;
@@ -191,25 +193,24 @@
 }
 
 
--(NSString*) getLoginDetails :(NSString*) _loginid 
++(NSMutableArray*) getLoginID  //method to get loginID from database
 {
+    NSMutableArray * _loginIdArray =[[NSMutableArray alloc]init];
     sqlite3* database = [DBConnection connectionFactory ] ;
-      sqlite3_stmt* _selectStmt ;
-    NSString* empid;
-    if (employeeID == NULL) {
-        NSString* nsatt = [NSString stringWithFormat:@" SELECT E.dept, E.empid FROM Employee E, User U WHERE E.empID = U.empID AND U.loginID = '%@'",_loginid]; ;
-        const char* stmch=[nsatt UTF8String];
-        if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
-            while (sqlite3_step(_selectStmt) == SQLITE_ROW) { 
-               role = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
-                NSLog(@"d  :%@",role);
-                empid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
-                NSLog(@"e  :%@",empid);
-            }
-        }        
-    }
+    static sqlite3_stmt* _selectStmt = nil;
+    NSString* sql_statement = [NSString stringWithFormat: @"select loginID from User "] ;
+    const char* stmch = [sql_statement UTF8String];
+    
+    if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
+        while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
+            NSString *_loginid  = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+             [_loginIdArray addObject:_loginid];
+            Employee *emp = [[Employee alloc]initWithLoginID:_loginid];
+            NSLog(@"login id  %@",emp);
+        }
+    } 
     sqlite3_finalize(_selectStmt);
-    return role;
+    return _loginIdArray;
 }
 
 +(NSMutableArray *) getBedBeingCleaned:(NSString* )_bedNo
