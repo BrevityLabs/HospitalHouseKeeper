@@ -54,11 +54,11 @@
 @interface BedListView : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     IBOutlet UITableView *listView;    
-    
+    NSMutableArray *Array1;
     NSMutableArray *Array;
-    Bed* list ;
     NSString* number;
-     NSString* bednumber;
+    NSString* bednumber;
+    
 }
 
 @property(nonatomic,retain)IBOutlet UITableView *listView;

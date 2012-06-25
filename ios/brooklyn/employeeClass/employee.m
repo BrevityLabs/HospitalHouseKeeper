@@ -37,8 +37,11 @@
         if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
             while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
                 employeeID   = empID ;
+                 NSLog(@"empid %@",employeeID);
                 name         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+                 NSLog(@"BEDID %@",name);
                 dept         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
+                 NSLog(@"BEDID %@",dept);
               //  [self getEmployeeID:empID];
             }
         } else {

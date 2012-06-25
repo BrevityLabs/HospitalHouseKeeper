@@ -28,9 +28,13 @@
         if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
             while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
                 bedId   = _bedId ;
+                  NSLog(@"%@",_bedId);
                 number  = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
+                  NSLog(@"%@",number);
                 status  = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
+                  NSLog(@"%@",status);
                 type    = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 2)];
+                  NSLog(@"%@",type);
             }
         } else {
             NSLog(@"Class bed: Method initWithBedId::Query on Bed table failed.") ;
@@ -96,31 +100,31 @@
         }
     }
     sqlite3_finalize(_selectStmt);
-    return _bedNoArray;  //an array of all the bed Id
+    return _bedNoArray;
+    //an array of all the bed Id
 }
 
--(NSMutableArray *)getCleaningStaffName // for getting the cleaning staff name.
+-(NSMutableArray *)getCleaningStaffName :(NSString*)_bedid // for getting the cleaning staff name.
 {
     sqlite3 *database = [DBConnection connectionFactory];
     static sqlite3_stmt *selectStmt = nil;
     NSMutableArray *array =[[NSMutableArray alloc]init];
-    NSString *nsatt=[NSString stringWithFormat:@"select Bed.bedID,Bed.bedno,Employee.name,Employee.empID from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID=Bed.bedID"];
+    NSString *nsatt=[NSString stringWithFormat:@"SELECT Bed.bedNo,Employee.empID from Employee Inner join BedStaff on Employee.empID=BedStaff.empID Inner join Bed on BedStaff.bedID =Bed.bedID and Bed.bedID =%@",_bedid];
     const char *stmch=[nsatt UTF8String];
     if(sqlite3_prepare_v2(database, stmch, -1, &selectStmt,NULL)==SQLITE_OK)
     {
         while (sqlite3_step(selectStmt)==SQLITE_ROW)
         {
-            NSString *eno = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
-            NSString *ebedno = [NSString stringWithUTF8String:(char*)sqlite3_column_text(selectStmt, 1)];
-            NSString *ename = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 2)];
-            NSString *empid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 3)];
-            Bed* maint =[[Bed alloc]init];
-            Employee *emp = [[Employee alloc]init];
-            maint.bedId = eno;
-            maint.bedNo = ebedno;
-            emp.name = ename;
-            maint.empId =empid;
-            [array addObject:maint];
+            bedId = _bedid;
+             NSLog(@"BEDID %@",_bedid);
+            bedNo  =  [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 0)];
+             NSLog(@"BEDno %@",bedNo);
+            NSString *empid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStmt, 1)];
+             NSLog(@"empID %@",empid);
+           Employee *emp = [[Employee alloc]initWithEmployeeID:empid];
+            emp.employeeID =empid;
+             NSLog(@"empid %@",emp.employeeID);
+            [array addObject:emp];
         }
     }
     sqlite3_finalize(selectStmt);

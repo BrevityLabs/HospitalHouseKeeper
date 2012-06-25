@@ -47,7 +47,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self getGridView:4];
+    [self getGridView:5];
 }
 - (void)viewDidUnload
 {
@@ -63,36 +63,14 @@
 
 -(void) getGridView : (int) num_column
 {
+    [self showHeader];
     
     bedNoArray = [Bed getCleanBedNoList]; //try getting the list of the objects instead of just their numbers :MB
+    int num_rows = [bedNoArray count] / num_column ;
+    int remainder = [bedNoArray count] % num_column ;
+    num_rows = (remainder > 0) ? num_rows++ : num_rows ;
     
-    //int j=1; //initialized to 1 because this var has been used in layout design
-    //     NSLog(@"arraycount %d",[bedNoArray count]);
-    //    NSLog(@"numcol %d",num_column);
-    //    int num_rows = [bedNoArray count] / num_column ;
-    //     //NSLog(@"numrow %d",num_rows);
-    //    int remainder = [bedNoArray count] % num_column ;
-    //     //NSLog(@"rem %d",remainder);
-    //    num_rows = (remainder > 0) ? num_rows++ : num_rows ;
-    int num_rows;
-    int remainder;
-    NSLog(@"arraycount %d",[bedNoArray count]);
-    if ([bedNoArray count]>= num_column) {
-        num_rows = [bedNoArray count] / num_column ;
-        remainder = [bedNoArray count] % num_column ;
-        num_rows = (remainder > 0) ? num_rows++ : num_rows ;
-    }
-    
-    else{
-        num_rows = num_column /[bedNoArray count]; 
-        NSLog(@"numrow %d",num_rows);
-        remainder = num_column %[bedNoArray count];
-        NSLog(@"REminder %d",remainder);
-        num_rows = (remainder > 0) ? num_rows : num_rows++ ;
-    }
-    
-    
-    for (int i = 0 ; i < num_rows; i++)    {
+    for (int i = 0 ; i <= num_rows; i++)    {
         for (int j = 0; j < num_column; j++)  {
             if (j>=[bedNoArray count]) {
                 break;
@@ -100,7 +78,12 @@
             
             NSString *str= [bedNoArray objectAtIndex:(i * num_column + j)];
             Bed *bed = [[Bed alloc]initWithBedId:str];
-            [self drawBedAvailable:(OFFSETX + (WIDTH * j)) y: (OFFSETY + (HEIGHT * i)) width:WIDTH height:HEIGHT bedNumber:bed.number bedID:bed.bedId] ;  
+            [self drawBedAvailable:(OFFSETX + (WIDTH * j)) y: (OFFSETY + (HEIGHT * i)) width:WIDTH height:HEIGHT bedNumber:bed.number ] ; 
+            
+            //            NSString *str1 =[NSString stringWithFormat:@"%@",maintBedView.tag];
+            //            [bedIdArray addObject:str1];
+            //            //             NSString *str2 =[NSString stringWithFormat:@"%D",actionButton.tag];
+            //            //            [tagArray addObject:str2];
         }
         
     }
@@ -109,18 +92,20 @@
 
 -(IBAction)signOut:(id)sender
 {
-    [self clickSignOut];
+    MaintStaffLogin *maintLogin = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
+    maintLogin.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:maintLogin animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
+    //   Return YES for supported orientations
     
-    //    if (interfaceOrientation == UIInterfaceOrientationPortrait) {
-    //        [self getGridView: 4] ;
-    //    } else if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-    //        [self getGridView: 5] ;
-    //    } 
+    if (interfaceOrientation == UIInterfaceOrientationPortrait) {
+        [self getGridView: 4] ;
+    } else if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        [self getGridView: 5] ;
+    } 
     
 	return YES;
 }
@@ -130,15 +115,16 @@
                    width : (float) _width 
                   height : (float) _height 
                bedNumber : (NSString *)_bedNumber
-                   bedID : (NSString *)_bedid
 {
     
     CGRect myRect = CGRectMake(x_pos, y_pos, _width, _height);
     maintBedView = [[UIView alloc]initWithFrame:myRect];
     maintBedView.layer.borderColor = [UIColor blueColor].CGColor;
     maintBedView.layer.borderWidth = 3.0f; 
-    maintBedView.tag = (int)_bedid;
-    
+    [ maintBedView setTag:(int)_bedNumber];
+    //    NSString *str =[NSString stringWithFormat:@"%D",maintBedView.tag];
+    //    [beds addObject:str];
+    NSLog(@"maint  %@",maintBedView.tag);
     imgButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     imgButton.frame = CGRectMake(IMGBTNXOFFSET, IMGBTNYOFFSET, IMGBTNWIDTH, IMGBTNHEIGHT);
     [imgButton setBackgroundImage:[UIImage imageNamed:@"bed_status2.png"] forState:UIControlStateNormal];
@@ -161,6 +147,7 @@
     [actionButton addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
     [actionButton setBackgroundImage:[UIImage imageNamed:@"Status.jpg"] forState:UIControlStateNormal];
     [actionButton setTitle:_bedNumber forState:UIControlStateNormal];
+    //    [actionButton setTag:(int)_bedid];
     [actionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
     actionButton.titleLabel.hidden =YES;
     [maintBedView addSubview:actionButton];
@@ -197,17 +184,13 @@
     listView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentModalViewController:listView animated:YES];
 }
--(void)clickSignOut
-{
-    MaintStaffLogin *maintLogin = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
-    maintLogin.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentModalViewController:maintLogin animated:YES];
-}
 
 -(IBAction)cleaningDone:(UIButton *)sender
 { 
     NSString * bed =sender.titleLabel.text;
     number = bed;
+    bednumber =(int)[sender currentTitle];
+    NSLog(@"tag %@",bednumber);
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
                                                       message:@"Are you sure that the bed is clean and it can be set as Available?"
                                                      delegate:self
@@ -216,18 +199,21 @@
     [message show];
     
 }
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 3(ready to occupy)
 {
     
     
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     Bed *bed =[[Bed alloc]init];
-    if([title isEqualToString:@"Ok"])
-    {
+    if([title isEqualToString:@"Ok"]){
         [bed updateBedStatus:number];
-        [self hideView:number];
         
+        
+        
+        
+        // [bedIdArray addObjectsFromArray:bedNoArray];
+        
+        //      
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
                                                           message:@" The bed status has been changed to Available"
                                                          delegate:nil
@@ -236,17 +222,63 @@
         [message show];
         
     }
-    
-}
-
--(void) hideView:(NSString*) _bednumber
-{
-    if (self.maintBedView.hidden == NO){ 
-        // self.maintBedView.hidden = YES;
-        [self.maintBedView reloadInputViews];
-        
+  
+    //[maintBedView removeFromSuperview];
+    for (maintBedView in [self.view subviews]) {
+        [maintBedView setHidden:YES];
+        [self.view setHidden:NO];
         
     }
+    [self.view reloadInputViews];
+      [bedNoArray removeLastObject];
+    [bedNoArray removeAllObjects];
+    [self  getGridView:5];
+   
+    //[self.view reloadInputViews];
+    
+}
+-(void)showHeader
+{ 
+    UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(IMG_X, IMG_Y, IMG_WIDTH, IMG_HEIGHT)];
+    imageView.image =[UIImage imageNamed:@"loginheader.png"];
+    [self.view addSubview:imageView];
+    
+    UILabel *label1 =[[UILabel alloc]initWithFrame:CGRectMake(LAB1_X, LAB1_Y, LAB1_WIDTH, LAB1_HEIGHT)];
+    label1.text =@"Cleaning Station";
+    [label1 setTextAlignment:UITextAlignmentCenter];
+    [label1 setTextColor:[UIColor blackColor]];
+    [label1 setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:label1];
+    
+    UILabel *label2 =[[UILabel alloc]initWithFrame:CGRectMake(LAB2_X, LAB2_Y, LAB2_WIDTH, LAB2_HEIGHT)];
+    label2.text =@"    Bed Status";
+  [label2 setFont: [UIFont fontWithName:@"Arial" size:25.0]];
+    [label2 setTextColor:[UIColor blackColor]];
+    [label2 setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:label2];
+    
+    listViewButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    listViewButton.frame =CGRectMake(LISTBTN_X,LISTBTN_Y, LISTBTN_WIDTH, LISTBTN_HEIGHT);
+     //[listViewButton setBackgroundColor:[UIColor whiteColor]];
+    [listViewButton setBackgroundImage:[UIImage imageNamed:@"icon_list.png"] forState:UIControlStateNormal];
+    [listViewButton addTarget:self action:@selector(listView:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:listViewButton];
+    
+    gridViewButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    gridViewButton.frame =CGRectMake(GRIDBTN_X,GRIDBTN_Y, GRIDBTN_WIDTH, GRIDBTN_HEIGHT);
+    //[gridButton setBackgroundColor:[UIColor whiteColor]];
+     [gridViewButton  setBackgroundImage:[UIImage imageNamed:@"icon_tile.png"] forState:UIControlStateNormal];
+    [gridViewButton  addTarget:self action:@selector(gridView:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:gridViewButton] ;
+    
+   signOutButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    signOutButton .frame =CGRectMake(SIGNOUTBTN_X,SIGNOUTBTN_Y, SIGNOUTBTN_WIDTH,SIGNOUTBTN_HEIGHT);
+ //[signOutButton setBackgroundColor:[UIColor whiteColor]];
+     [signOutButton setTitle:@"Sign out" forState:UIControlStateNormal];
+    [signOutButton  addTarget:self action:@selector(signOut:) forControlEvents:UIControlEventTouchUpInside];
+   
+    [self.view addSubview:signOutButton] ;
+    
     
 }
 @end

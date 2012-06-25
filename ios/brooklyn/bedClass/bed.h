@@ -39,7 +39,7 @@
 
 +(NSMutableArray *) getCleanBedNoList ;     // The name confuses. how about uncleanBeds
 
--(NSMutableArray *)getCleaningStaffName; // make this non-static. Also change to a more meaningful name = getMaintenanceStaffName
+-(NSMutableArray *)getCleaningStaffName :(NSString*)_bedid; // make this non-static. Also change to a more meaningful name = getMaintenanceStaffName
 // do you want to create 2 separate methods getRepairStaffName and getCleaningStaffName
 
 -(NSString* )updateBedStatus:(NSString *)_bednumber; // make it non-static. Add parameter which status it should change to.

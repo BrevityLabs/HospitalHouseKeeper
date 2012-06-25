@@ -26,13 +26,12 @@
     UIView*     maintBedView;
     UILabel*    label;
     
-   // NSString* bedID; //these may be unnecessary - :MB
-    NSString* bednumber;  //these may be unnecessary - :MB
-    NSString* number; //these may be unnecessary - :MB
-   // NSString* status; //these may be unnecessary - :MB
-    NSMutableArray* bedNoArray;//these may be unnecessary - :MB
-    NSMutableArray* beds;
     
+    NSInteger bednumber;  //these may be unnecessary - :MB
+    NSString* number; //these may be unnecessary - :MB
+    NSMutableArray* bedNoArray;//these may be unnecessary - :MB
+    NSMutableArray* bedIdArray;
+    NSMutableArray* tagArray;
     
     enum imageButton_size {
         IMGBTNXOFFSET = 30,
@@ -60,6 +59,51 @@
         OFFSETX = 12,
         OFFSETY = 200
     };
+    enum imageView_dim {
+        IMG_X = 0,
+        IMG_Y = 0,
+        IMG_WIDTH  = 1024,
+        IMG_HEIGHT = 110,
+
+    };
+    enum label1_dim {
+        LAB1_X = 0,
+        LAB1_Y = 110,
+        LAB1_WIDTH  = 400,
+        LAB1_HEIGHT = 34,
+        
+    };
+    enum label2_dim {
+        LAB2_X =400,
+        LAB2_Y = 110,
+        LAB2_WIDTH  = 624,
+        LAB2_HEIGHT = 34,
+        
+    };
+
+    enum listButton_dim {
+        LISTBTN_X =770,
+        LISTBTN_Y = 110,
+        LISTBTN_WIDTH  =25,
+        LISTBTN_HEIGHT = 34,
+        
+    };
+    enum gridButton_dim {
+        GRIDBTN_X =810,
+        GRIDBTN_Y = 110,
+        GRIDBTN_WIDTH  =25,
+        GRIDBTN_HEIGHT = 34,
+        
+    };
+    enum signoutButton_dim {
+        SIGNOUTBTN_X =900,
+        SIGNOUTBTN_Y = 117,
+        SIGNOUTBTN_WIDTH  =66,
+        SIGNOUTBTN_HEIGHT = 22,
+        
+    };
+
+
 }
 
 @property(nonatomic,retain)IBOutlet UIView* maintBedView;
@@ -70,7 +114,7 @@
 @property(nonatomic,retain)IBOutlet UIButton* actionButton;
 @property(nonatomic,retain)IBOutlet UIButton *imgButton;
 @property(nonatomic,retain)IBOutlet UILabel *label;
-@property(nonatomic,retain)NSString* bednumber;
+@property(nonatomic,readwrite)NSInteger bednumber;
 @property(nonatomic,retain)NSString* number;
 @property(nonatomic,retain)NSString* status;
 @property(nonatomic,retain)NSString* bedID;
@@ -79,23 +123,15 @@
                        y : (float) y_pos  
                    width : (float) _width 
                   height : (float) _height 
-               bedNumber : (NSString*) _bedNumber //for displaying the gridview of beds to be cleaned.
-                   bedID : (NSString *)_bedid;
+               bedNumber : (NSString*) _bedNumber; //for displaying the gridview of beds to be cleaned.
 
 -(IBAction)gridView:(id)sender;
-
 -(IBAction)listView:(id)sender;
-
 -(IBAction)maintStaffDetilView:(UIButton *)sender;
-
 -(IBAction)signOut:(id)sender;
-
--(void)clickSignOut;
-
 -(IBAction)cleaningDone:(UIButton *)sender;
 -(IBAction)imageDetailView:(UIButton *)sender;
-
 -(void)getGridView: (int) num_column;
 -(void)goDetailView;
--(void)hideView:(NSString* )_bednumber;
+-(void)showHeader;
 @end

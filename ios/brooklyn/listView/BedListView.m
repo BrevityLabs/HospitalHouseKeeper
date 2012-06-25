@@ -38,9 +38,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    Bed *beds =[[Bed alloc]init];
-    Array =[beds getCleaningStaffName];
+    Array =[Bed getCleanBedNoList];  
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -57,8 +55,9 @@
         
          cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier: identifier];
     
-    list = [Array objectAtIndex:indexPath.row];
-    
+    NSString *str =[Array objectAtIndex:indexPath.row];
+    Bed *list =[[Bed alloc]initWithBedId:str]; 
+    [list getCleaningStaffName:list.bedId];
    Employee *employ = [[Employee alloc]initWithEmployeeID:list.empId];
 
     CGRect rect1 = CGRectMake(0,0, 58, 44);
@@ -80,6 +79,7 @@
     UILabel *patientLabel= [[UILabel alloc]initWithFrame:rect3];
     patientLabel.tag =PATIENT_TAG; 
     patientLabel.text = employ.name;
+    NSLog(@"employee name %@",employ.name);
     patientLabel.textAlignment = UITextAlignmentCenter;
     [cell.contentView addSubview:patientLabel];
     
