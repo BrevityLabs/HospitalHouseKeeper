@@ -32,7 +32,9 @@
 @property (nonatomic,retain) NSString* bedNo;
 @property (nonatomic,retain) NSString* statusTime;
 @property (nonatomic,retain) NSString* password ;
+
 -(id) initWithEmployeeID : (NSString*) empID ;
+
 -(id) initWithLoginID : (NSString*) _loginID;
 
 +(BOOL) newEmployee: (NSString*) _empID 
@@ -44,7 +46,9 @@
 -(BOOL) deleteEmployee ;
 
 +(NSMutableArray*) getLoginID;
-+(NSMutableArray*) getEmployeeList ; 
+
++(NSMutableArray*) getEmployeeList ;
+
 -(NSString*) getEmployeeID: (NSString*) _employeeId;
 
 +(NSMutableArray *) getBedBeingCleaned:(NSString* )_bedNo;

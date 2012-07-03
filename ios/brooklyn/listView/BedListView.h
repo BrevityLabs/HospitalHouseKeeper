@@ -56,13 +56,10 @@
     IBOutlet UITableView *listView;    
     NSMutableArray *Array1;
     NSMutableArray *Array;
-    NSString* number;
     NSString* bednumber;
-    
 }
 
 @property(nonatomic,retain)IBOutlet UITableView *listView;
-@property(nonatomic,retain)NSString* number;
 @property(nonatomic,retain) NSString* bednumber;
 
 -(IBAction)cleaningDone:(UIButton* )sender;

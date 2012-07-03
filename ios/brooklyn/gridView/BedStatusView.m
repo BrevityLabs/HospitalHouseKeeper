@@ -56,42 +56,32 @@
     // e.g. self.myOutlet = nil;
 }
 
--(IBAction)gridView:(id)sender
-{
+-(IBAction)gridView:(id)sender {
     [self getGridView: 5];    
 }
 
--(void) getGridView : (int) num_column
-{
+-(void) getGridView : (int) num_column {
     [self showHeader];
-    
-    bedNoArray = [Bed getCleanBedNoList]; //try getting the list of the objects instead of just their numbers :MB
+
+    bedNoArray = [Bed uncleanBeds]; //try getting the list of the objects instead of just their numbers :MB
     int num_rows = [bedNoArray count] / num_column ;
     int remainder = [bedNoArray count] % num_column ;
     num_rows = (remainder > 0) ? num_rows++ : num_rows ;
-    
     for (int i = 0 ; i <= num_rows; i++)    {
         for (int j = 0; j < num_column; j++)  {
             if (j>=[bedNoArray count]) {
                 break;
             }
-            
             NSString *str= [bedNoArray objectAtIndex:(i * num_column + j)];
             Bed *bed = [[Bed alloc]initWithBedId:str];
             [self drawBedAvailable:(OFFSETX + (WIDTH * j)) y: (OFFSETY + (HEIGHT * i)) width:WIDTH height:HEIGHT bedNumber:bed.number ] ; 
-            
-            //            NSString *str1 =[NSString stringWithFormat:@"%@",maintBedView.tag];
-            //            [bedIdArray addObject:str1];
-            //            //             NSString *str2 =[NSString stringWithFormat:@"%D",actionButton.tag];
-            //            //            [tagArray addObject:str2];
         }
         
     }
 }
 // [self drawBedAvailable:(OFFSETX + (WIDTH * i)) y: (OFFSETY + (HEIGHT * j)) width:WIDTH height:HEIGHT bedNumber:bed.number] ; 
 
--(IBAction)signOut:(id)sender
-{
+-(IBAction)signOut:(id)sender {
     MaintStaffLogin *maintLogin = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
     maintLogin.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentModalViewController:maintLogin animated:YES];
@@ -114,16 +104,13 @@
                        y : (float) y_pos  
                    width : (float) _width 
                   height : (float) _height 
-               bedNumber : (NSString *)_bedNumber
-{
-    
+               bedNumber : (NSString *)_bedNumber  {
+
     CGRect myRect = CGRectMake(x_pos, y_pos, _width, _height);
     maintBedView = [[UIView alloc]initWithFrame:myRect];
     maintBedView.layer.borderColor = [UIColor blueColor].CGColor;
     maintBedView.layer.borderWidth = 3.0f; 
-    [ maintBedView setTag:(int)_bedNumber];
-    //    NSString *str =[NSString stringWithFormat:@"%D",maintBedView.tag];
-    //    [beds addObject:str];
+    [maintBedView setTag:(int)_bedNumber];
     NSLog(@"maint  %@",maintBedView.tag);
     imgButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     imgButton.frame = CGRectMake(IMGBTNXOFFSET, IMGBTNYOFFSET, IMGBTNWIDTH, IMGBTNHEIGHT);
@@ -147,46 +134,38 @@
     [actionButton addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
     [actionButton setBackgroundImage:[UIImage imageNamed:@"Status.jpg"] forState:UIControlStateNormal];
     [actionButton setTitle:_bedNumber forState:UIControlStateNormal];
-    //    [actionButton setTag:(int)_bedid];
     [actionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
     actionButton.titleLabel.hidden =YES;
     [maintBedView addSubview:actionButton];
     
     [self.view addSubview: maintBedView];
-    
 }        
 
--(IBAction)maintStaffDetilView:(UIButton *) sender
-{
+-(IBAction)maintStaffDetilView:(UIButton *) sender {
     NSString * bed =sender.titleLabel.text;
     number =bed;
     [self goDetailView];
-    
 }
--(void)goDetailView
-{
+-(void)goDetailView {
     MaintStaffDetailView *maintStaff = [[MaintStaffDetailView alloc]initWithNibName:@"MaintStaffDetailView" bundle:nil];
     maintStaff.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [maintStaff getbedtitle:number];
     [self presentModalViewController:maintStaff animated:YES];
     
 }
--(IBAction)imageDetailView:(UIButton *)sender
-{
+-(IBAction)imageDetailView:(UIButton *)sender {
     NSString * bed =sender.titleLabel.text;
     number =bed;
     [self goDetailView];
 }
 
--(IBAction)listView:(id)sender
-{
+-(IBAction)listView:(id)sender {
     BedListView *listView = [[BedListView alloc]initWithNibName:@"BedListView" bundle:nil];
     listView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentModalViewController:listView animated:YES];
 }
 
--(IBAction)cleaningDone:(UIButton *)sender
-{ 
+-(IBAction)cleaningDone:(UIButton *)sender { 
     NSString * bed =sender.titleLabel.text;
     number = bed;
     bednumber =(int)[sender currentTitle];
@@ -199,21 +178,12 @@
     [message show];
     
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 3(ready to occupy)
-{
-    
-    
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex  {  // updating the status = 3(ready to occupy) 
+
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     Bed *bed =[[Bed alloc]init];
     if([title isEqualToString:@"Ok"]){
         [bed updateBedStatus:number];
-        
-        
-        
-        
-        // [bedIdArray addObjectsFromArray:bedNoArray];
-        
-        //      
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
                                                           message:@" The bed status has been changed to Available"
                                                          delegate:nil
@@ -222,23 +192,17 @@
         [message show];
         
     }
-  
-    //[maintBedView removeFromSuperview];
     for (maintBedView in [self.view subviews]) {
         [maintBedView setHidden:YES];
         [self.view setHidden:NO];
-        
     }
     [self.view reloadInputViews];
-      [bedNoArray removeLastObject];
+    [bedNoArray removeLastObject];
     [bedNoArray removeAllObjects];
     [self  getGridView:5];
-   
-    //[self.view reloadInputViews];
     
 }
--(void)showHeader
-{ 
+-(void)showHeader { 
     UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(IMG_X, IMG_Y, IMG_WIDTH, IMG_HEIGHT)];
     imageView.image =[UIImage imageNamed:@"loginheader.png"];
     [self.view addSubview:imageView];
@@ -252,33 +216,28 @@
     
     UILabel *label2 =[[UILabel alloc]initWithFrame:CGRectMake(LAB2_X, LAB2_Y, LAB2_WIDTH, LAB2_HEIGHT)];
     label2.text =@"    Bed Status";
-  [label2 setFont: [UIFont fontWithName:@"Arial" size:25.0]];
+    [label2 setFont: [UIFont fontWithName:@"Arial" size:25.0]];
     [label2 setTextColor:[UIColor blackColor]];
     [label2 setBackgroundColor:[UIColor redColor]];
     [self.view addSubview:label2];
     
     listViewButton =[UIButton buttonWithType:UIButtonTypeCustom];
     listViewButton.frame =CGRectMake(LISTBTN_X,LISTBTN_Y, LISTBTN_WIDTH, LISTBTN_HEIGHT);
-     //[listViewButton setBackgroundColor:[UIColor whiteColor]];
     [listViewButton setBackgroundImage:[UIImage imageNamed:@"icon_list.png"] forState:UIControlStateNormal];
     [listViewButton addTarget:self action:@selector(listView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:listViewButton];
     
     gridViewButton=[UIButton buttonWithType:UIButtonTypeCustom];
     gridViewButton.frame =CGRectMake(GRIDBTN_X,GRIDBTN_Y, GRIDBTN_WIDTH, GRIDBTN_HEIGHT);
-    //[gridButton setBackgroundColor:[UIColor whiteColor]];
-     [gridViewButton  setBackgroundImage:[UIImage imageNamed:@"icon_tile.png"] forState:UIControlStateNormal];
+    [gridViewButton  setBackgroundImage:[UIImage imageNamed:@"icon_tile.png"] forState:UIControlStateNormal];
     [gridViewButton  addTarget:self action:@selector(gridView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gridViewButton] ;
     
-   signOutButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    signOutButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
     signOutButton .frame =CGRectMake(SIGNOUTBTN_X,SIGNOUTBTN_Y, SIGNOUTBTN_WIDTH,SIGNOUTBTN_HEIGHT);
- //[signOutButton setBackgroundColor:[UIColor whiteColor]];
-     [signOutButton setTitle:@"Sign out" forState:UIControlStateNormal];
+    [signOutButton setTitle:@"Sign out" forState:UIControlStateNormal];
     [signOutButton  addTarget:self action:@selector(signOut:) forControlEvents:UIControlEventTouchUpInside];
-   
     [self.view addSubview:signOutButton] ;
-    
     
 }
 @end

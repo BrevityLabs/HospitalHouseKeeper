@@ -61,15 +61,11 @@
     Array =[Employee getLoginID];
     for (int j=0;j<[Array count]; j++)
     {
-        NSLog(@"userarray  %@",[Array objectAtIndex:j]);
         NSString *str =[Array objectAtIndex:j];
         Employee *emp = [[Employee alloc]initWithLoginID:str];
         NSString* UseName =emp.loginID;
-        NSLog(@"username  %@",UseName);
         NSString* PassWord =emp.password;
-        NSLog(@"password %@",PassWord);
         NSString* Role =emp.role;
-        NSLog(@"role  %@",Role);
 
         if ([Array count]==0) {
             roleFlag =0;

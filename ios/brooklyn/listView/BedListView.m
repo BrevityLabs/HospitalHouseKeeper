@@ -12,7 +12,6 @@
 @implementation BedListView
 
 @synthesize listView;
-@synthesize number;
 @synthesize bednumber;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,61 +37,61 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    Array =[Bed getCleanBedNoList];  
+    Array =[Bed uncleanBeds]; 
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Configure the cell...
-    //MaintDB *emp = [Array objectAtIndex:indexPath.row];
-	//cell.textLabel.text= [NSString stringWithFormat:@"%@           %@    %@", emp.Eid,emp.Bedno,emp.Ename];
+     static NSString *CellIdentifier = @"CountryCell";
     
-    static NSString *identifier =@"My Cell";
-    
-    UITableViewCell *cell =[self.listView dequeueReusableCellWithIdentifier:identifier];
-    if (cell==nil)
-        
-         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier: identifier];
-    
-    NSString *str =[Array objectAtIndex:indexPath.row];
-    Bed *list =[[Bed alloc]initWithBedId:str]; 
-    [list getCleaningStaffName:list.bedId];
-   Employee *employ = [[Employee alloc]initWithEmployeeID:list.empId];
+    UITableViewCell *cell = [listView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
+    }
 
+    //NSString *str =[Array objectAtIndex:indexPath.row];
+    Bed *list =[[Bed alloc]initWithBedId:[Array objectAtIndex:indexPath.row]];
+    
+    NSLog(@"bedid %@",list.bedId);
+     NSLog(@"bedid %@",list.number);
+    NSString *employeeid =[list getCleaningStaffName:list.bedId];
+    
+    NSLog(@"str %@",employeeid);
+    Employee *employee =[[Employee alloc]initWithEmployeeID:employeeid];
+    
     CGRect rect1 = CGRectMake(0,0, 58, 44);
-       UILabel *bedIdLabel= [[UILabel alloc]initWithFrame:rect1];
+    UILabel *bedIdLabel= [[UILabel alloc]initWithFrame:rect1];
     bedIdLabel.tag =BEDID_TAG; 
     bedIdLabel.text = list.bedId;
     bedIdLabel.textAlignment = UITextAlignmentCenter;
-      [cell.contentView addSubview:bedIdLabel];
-   
+    [cell.contentView addSubview:bedIdLabel];
+    
     
     CGRect rect2 = CGRectMake(60,0, 74, 44);
     UILabel *bedNoLabel= [[UILabel alloc]initWithFrame:rect2];
     bedNoLabel.tag =BEDNO_TAG;
-    bedNoLabel.text = list.bedNo;
+    bedNoLabel.text = list.number;
+    NSLog(@"employee name %@",list.number);
     bedNoLabel.textAlignment = UITextAlignmentCenter;
     [cell.contentView addSubview:bedNoLabel];
-        
+    
     CGRect rect3 = CGRectMake(140,0, 170, 44);
     UILabel *patientLabel= [[UILabel alloc]initWithFrame:rect3];
     patientLabel.tag =PATIENT_TAG; 
-    patientLabel.text = employ.name;
-    NSLog(@"employee name %@",employ.name);
+    patientLabel.text = employee.name;
+    
     patientLabel.textAlignment = UITextAlignmentCenter;
     [cell.contentView addSubview:patientLabel];
     
     UIButton *actionBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     actionBtn.frame = CGRectMake(315, 10, 150, 30);
-    number =list.bedNo;
-    [actionBtn addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
     [actionBtn setBackgroundImage:[UIImage imageNamed:@"Status.jpg"] forState:UIControlStateNormal];
-    [actionBtn setTitle:number forState:UIControlStateNormal];
-    [actionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];    
+    [actionBtn setTitle:list.number forState:UIControlStateNormal];
+    [actionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal]; 
+    [actionBtn addTarget:self action:@selector(cleaningDone:) forControlEvents:UIControlEventTouchUpInside];
     actionBtn.titleLabel.hidden =YES;
     [cell.contentView addSubview:actionBtn];
-        
+    
     CGRect rect4 = CGRectMake(490, 0, 99, 44);
     UILabel *bedTypeLabel= [[UILabel alloc]initWithFrame:rect4];
     bedTypeLabel.tag =BEDTYPE_TAG;
@@ -105,11 +104,11 @@
     colorImage.tag =COLOR_TAG;
     colorImage.image =[UIImage imageNamed:@"icon_red.png"];
     [cell.contentView addSubview:colorImage];
-      
+    
     CGRect rect6 = CGRectMake(645,0, 170, 44);
     UILabel *statusLabel= [[UILabel alloc]initWithFrame:rect6];
     statusLabel.tag =STATUS_TAG; 
-     statusLabel.text = @"Under maintenance";  
+    statusLabel.text = @"Under maintenance";  
     [cell.contentView addSubview:statusLabel];   
     
     return cell;
@@ -117,48 +116,36 @@
 }
 
 
--(NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    
-{
+-(NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [Array count];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-   NSMutableArray *ary = [Bed getCleanBedNoList];
+    NSMutableArray *ary = [Bed uncleanBeds];
     Bed *bed =[[Bed alloc]initWithBedId:[ary objectAtIndex:indexPath.row]];
     if (indexPath.row ==indexPath.row) 
     {
-    MaintStaffDetailView *detailViewController = [[MaintStaffDetailView alloc] initWithNibName:@"MaintStaffDetailView" bundle:nil];
+        MaintStaffDetailView *detailViewController = [[MaintStaffDetailView alloc] initWithNibName:@"MaintStaffDetailView" bundle:nil];
         detailViewController.modalTransitionStyle =UIModalTransitionStyleCrossDissolve;
         [detailViewController getbedtitle:bed.number];
         [self presentModalViewController:detailViewController animated:YES];
     }
 }
--(IBAction)getGridView:(id)sender
-{
+-(IBAction)getGridView:(id)sender {
     BedStatusView *grid = [[BedStatusView alloc]initWithNibName:@"BedStatusView" bundle:nil];
-    
     grid.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
     [self presentModalViewController:grid animated:YES];
-    
 }
 
--(IBAction)signOut:(id)sender
-{
-    
+-(IBAction)signOut:(id)sender {
     MaintStaffLogin *login = [[MaintStaffLogin alloc]initWithNibName:@"MaintStaffLogin" bundle:nil];
-    
     login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
     [self presentModalViewController:login animated:YES];
 }
--(IBAction)cleaningDone:(UIButton* )sender
-{ 
-  
+-(IBAction)cleaningDone:(UIButton* )sender { 
+    
     bednumber  =sender.titleLabel.text;
-    NSLog(@"number is %@",bednumber);
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@""
                                                       message:@"Are you sure that the bed is clean and it can be set as Available?"
                                                      delegate:self
@@ -166,21 +153,15 @@
                                             otherButtonTitles:@"Cancel", nil];
     [message show];
     
-     
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex // updating the status = 3(ready to occupy)
-{
-    
-    
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex { // updating the status = 3(ready to occupy)
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     Bed *bed =[[Bed alloc]init];
     
-    NSLog(@"number is %@",bednumber);
-    if([title isEqualToString:@"Ok"])
-    {
+    if([title isEqualToString:@"Ok"]){
+        NSLog(@"employee name %@",bednumber);
         [bed updateBedStatus:bednumber];
-        NSLog(@"number is %@",number);
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Thanks"
                                                           message:@" The bed status has been changed to Available"
                                                          delegate:nil
@@ -188,9 +169,11 @@
                                                 otherButtonTitles:@"Cancel", nil];
         [message show];
         
-        [self.listView reloadData];
-    }
-    
+       [Array removeAllObjects];
+   [Array removeLastObject];
+         Array =[Bed uncleanBeds]; 
+        [listView reloadData];
+           }
 }
 
 - (void)viewDidUnload

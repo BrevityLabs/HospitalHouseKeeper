@@ -29,19 +29,15 @@
         
         sqlite3* database = [DBConnection connectionFactory ] ;
         static sqlite3_stmt* _selectStmt = nil;
-        //NSString* _bedId ;
-        
         NSString *nsatt = [NSString stringWithFormat:@"SELECT name,dept FROM Employee WHERE empID = '%@'",empID] ;
         const char* stmch=[nsatt UTF8String];
         
         if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt,NULL) == SQLITE_OK) {
             while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
                 employeeID   = empID ;
-                 NSLog(@"empid %@",employeeID);
+                NSLog(@"empid  %@",employeeID);
                 name         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
-                 NSLog(@"BEDID %@",name);
                 dept         = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
-                 NSLog(@"BEDID %@",dept);
               //  [self getEmployeeID:empID];
             }
         } else {
@@ -62,11 +58,8 @@
             if(sqlite3_prepare_v2(database, stmch, -1, &_selectStmt, NULL) == SQLITE_OK) {
             while (sqlite3_step(_selectStmt) == SQLITE_ROW) { 
                  loginID =_loginID;
-                 NSLog(@"d  :%@",loginID);
                  password = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
-                NSLog(@"d  :%@",password);
                role = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 1)];
-                 NSLog(@"e  :%@",role);
             }
           }        
         }
@@ -89,7 +82,6 @@
         while (sqlite3_step(_selectStmt)==SQLITE_ROW) {
             NSString* patientId = [NSString stringWithUTF8String:(char *)sqlite3_column_text(_selectStmt, 0)];
             Employee* temp =[[Employee alloc] initWithEmployeeID:patientId];
-            
             [patientArray addObject: temp];
             
         }

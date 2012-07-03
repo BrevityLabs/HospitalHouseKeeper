@@ -35,14 +35,12 @@
 
 +(NSMutableArray *) getBedList ;        //gets the list of beds in the hospital
 
--(id) initWithBedId: (NSString*) _bedId ; //creating a Bed object using bedID
+-(id) initWithBedId: (NSString*) _bedId ; 
 
-+(NSMutableArray *) getCleanBedNoList ;     // The name confuses. how about uncleanBeds
++(NSMutableArray *) uncleanBeds;  
 
--(NSMutableArray *)getCleaningStaffName :(NSString*)_bedid; // make this non-static. Also change to a more meaningful name = getMaintenanceStaffName
-// do you want to create 2 separate methods getRepairStaffName and getCleaningStaffName
+-(NSString* )getCleaningStaffName :(NSString*)_bedid ; 
 
--(NSString* )updateBedStatus:(NSString *)_bednumber; // make it non-static. Add parameter which status it should change to.
-
+-(NSString* )updateBedStatus:(NSString *)_bednumber; 
 
 @end
